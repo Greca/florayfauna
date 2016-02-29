@@ -1,0 +1,56 @@
+RewriteEngine On
+
+# Error Pages
+ErrorDocument 401 /not-found.html
+ErrorDocument 403 /not-found.html
+ErrorDocument 404 /not-found.html
+ErrorDocument 500 /not-found.html
+
+# Prevent directory browsing
+Options -Indexes +FollowSymLinks -MultiViews
+
+# Canonical host
+RewriteCond %{HTTP_HOST}    ^www\.(.*)      [NC]
+RewriteRule ^(.*)$          http://%1/$1    [L,R,NE]
+
+#Needed
+RewriteRule ^sitemap.xml$ sitemap.xml
+
+# Rewrite Rules
+
+
+# Front End
+RewriteRule ^$ 		/index.php?section=1
+
+RewriteRule ^espacios/$ 						/espacios.php?section=2
+RewriteRule ^links/$ 							/links.php?section=7
+RewriteRule ^banner/$ 							/banner.php?section=17
+RewriteRule ^aliados/$ 							/aliados.php?section=18
+
+
+
+
+RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=2&sectionId=$1
+RewriteRule ^espacios/([0-9]+)/([A-Za-z0-9-]+)/$ 		/espacios.php?section=3&sectionId=$1
+RewriteRule ^noticia/([0-9]+)/([A-Za-z0-9-]+)/$ 		/noticia.php?section=4&sectionId=$1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

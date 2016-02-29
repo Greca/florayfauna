@@ -1,0 +1,122 @@
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+/*========================================================
+                      Transfers - Booking Area
+=========================================================*/
+/* Booking basic styles
+========================================================*/
+
+#transfers {
+    position: relative;
+    margin-top: 45px;
+    
+}
+
+#transfers .left-side {
+    
+}
+
+#transfers .left-side .brand {
+    
+}
+
+#transfers .left-side .info {
+    
+}
+
+#transfers .left-side .info h2 {
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-transform: none;
+}
+
+#transfers .left-side .info p {
+    font-size: 11px;
+    color: #CCC;
+    letter-spacing: 1px;
+    text-transform: none;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+#transfers .left-side .info p span {
+    color: #FF6600;
+}
+
+#transfers .left-side .info a {
+    display: inline-block;
+    position: relative;
+    margin: 10px 0;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+    font: bold 12px/25px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    color: #3e5706;
+    background: #a5cd4e;
+    /* Old browsers */
+    
+    background: -moz-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    /* FF3.6+ */
+    
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a5cd4e), color-stop(100%, #6b8f1a));
+    /* Chrome,Safari4+ */
+    
+    background: -webkit-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    /* Chrome10+,Safari5.1+ */
+    
+    background: -o-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    /* Opera 11.10+ */
+    
+    background: -ms-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    /* IE10+ */
+    
+    background: linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    /* W3C */
+}
+
+#transfers .left-side .info a:hover {
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px rgba(0, 0, 0, .5);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#transfers .left-side .info a:active {
+    -webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+    -moz-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+}
+
+.process-transfer {
+    display: none;
+}
+
+.process-transfer h4 {
+    font-size: 16px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-transform: none;
+    line-height: 1;
+    margin-bottom: 10px;
+    
+}
+
+.process-transfer label {
+    width: 80.3%!important;
+}
+
+.process-transfer textarea {
+    height: 60px!important;
+}

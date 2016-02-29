@@ -1,0 +1,14 @@
+.git
+.gitignore
+
+.DS_Store
+
+.project
+.buildpath
+.settings
+
+deploy/
+databases/
+
+#Framework/Connection_Data.php
+#fonts/

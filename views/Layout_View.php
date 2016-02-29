@@ -944,7 +944,7 @@ class Layout_View
     	ob_start();
     	?>
 		<div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="thumbnail thumbnail-1">
+			<div class="thumbnail thumbnail-news">
 				<a class="thumb" data-fancybox-group="1" href="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $picture['picture']; ?>">
 					<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/medium/<?php echo $picture['picture']; ?>" alt="">
 					<span class="thumb_overlay"></span>

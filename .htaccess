@@ -26,6 +26,7 @@ RewriteRule ^espacios/$ 						/espacios.php?section=2
 RewriteRule ^links/$ 							/links.php?section=7
 RewriteRule ^banner/$ 							/banner.php?section=17
 RewriteRule ^aliados/$ 							/aliados.php?section=18
+RewriteRule ^directorio/$ 						/directorio.php?section=19
 
 
 
@@ -33,6 +34,7 @@ RewriteRule ^aliados/$ 							/aliados.php?section=18
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=2&sectionId=$1
 RewriteRule ^espacios/([0-9]+)/([A-Za-z0-9-]+)/$ 		/espacios.php?section=3&sectionId=$1
 RewriteRule ^noticia/([0-9]+)/([A-Za-z0-9-]+)/$ 		/noticia.php?section=4&sectionId=$1
+
 
 
 

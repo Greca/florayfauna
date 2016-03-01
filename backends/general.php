@@ -113,6 +113,11 @@ class generalFrontBackend
 				$data['videos'] = $videosArray;
 			break;
 			
+			case 'directorio':
+				$directorioArray = $this->model->getDirectorio();
+				$data['directorio'] = $directorioArray;
+			break;
+			
 			default:
 			break;
 		}

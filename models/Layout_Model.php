@@ -188,4 +188,14 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getDirectorio()
+	{
+		try {
+			$query = 'SELECT * FROM directorio ORDER BY directorio_id ASC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

@@ -104,6 +104,9 @@ class Layout_View
 				case 'noticia':
  					echo self::getSingleNoticiaHeader();
  				break;
+ 				
+				case 'directorio':
+				break;
 			}
 			?>
 		</head>
@@ -130,6 +133,10 @@ class Layout_View
 					
 					case 'noticia':
 						echo self::getSingleNoticiaContent();
+					break;
+					
+					case 'directorio':
+						echo self::getDirectorio();
 					break;
 					
 					default :
@@ -272,9 +279,7 @@ class Layout_View
                                             <a href="logros.html">Logros </a>
                                         </li>
 
-                                        <li>
-                                            <a href="directorio.html">Directorio </a>
-                                        </li>
+                                        <li><a href="/directorio/">Directorio</a></li>
 
                                         <li>
                                             <a href="aliados.html">Aliados y Donantes </a>
@@ -716,7 +721,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-    	<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+    	<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
 					<h3><?php echo $this->data['section']['title']; ?></h3>
@@ -976,6 +981,64 @@ class Layout_View
     	ob_end_clean();
     	return $item;
     }
+    
+    public function getDirectorio()
+    {
+    	ob_start();
+    	?>
+    	<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
+    		<div class="container">
+    			<h3 class="text-center">Directorio</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['directorio'])
+				{
+					$i = 0;
+					foreach ($this->data['directorio'] as $directorio)
+					{
+						?>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-6 col-sm-6 col-xs-12 clear-flt">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $directorio['icon']; ?>" alt="">
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<p class="mwidth">
+								<strong><?php echo $directorio['name']; ?></strong>
+								<br> <?php echo $directorio['charge']; ?>
+							</p>
+							<?php 
+							if ($directorio['e_mail'])
+							{
+								?>
+							<a class="font-directory" href="#"><?php echo $directorio['e_mail']; ?></a>
+								<?php
+							}
+							?>
+						</div>
+					</div>
+						<?php
+						$i++;
+						if ($i == 3)
+						{
+							$i = 0;
+							?>
+					</div>
+					<div class="row offs1 center767">
+							<?php
+						}
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    
     
     public function getFooter()
     {

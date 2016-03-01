@@ -94,6 +94,11 @@ class generalFrontBackend
 				$data['section'] = $sectionRow;
 			break;
 			
+			case 'all-causas':
+				$topArray			= $this->model->getCausas();
+				$data['causas']		= $topArray;
+			break;
+			
 			case 'espacios':
 				$sectionRow = $this->model->getEspaciosByEspacioId($_GET['sectionId']);
 				$data['section'] = $sectionRow;

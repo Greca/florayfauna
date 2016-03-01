@@ -143,6 +143,10 @@ class Layout_View
 						echo self::getAliados();
 					break;
 					
+					case 'all-causas':
+						echo self::getAllCausas();
+					break;
+					
 					default :
 						# code...
 					break;
@@ -284,16 +288,14 @@ class Layout_View
                                         </li>
 
                                         <li><a href="/directorio/">Directorio</a></li>
-                                        <li><a href="/aliados-y-donantes/">Aliados y Donantes </a></li>
+                                        <li><a href="/aliados-y-donantes/">Aliados y Donantes</a></li>
                                     </ul>
                                 </li>
 
                                 <li class="dropdown">
                                     <a href="que-hacemos.html">Qué Hacemos</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="causas.html">Causas </a>
-                                        </li>
+                                        <li><a href="/causas/">Causas</a></li>
                                         <li>
                                             <a href="proyectos.html">Proyectos </a>
                                         </li>
@@ -1065,6 +1067,46 @@ class Layout_View
     	return $index;	
     }
     
+    public function getAllCausas()
+    {
+    	ob_start();
+    	?>
+		<section class="well well4">
+			<div class="container">
+				<h3 class="text-center">Causas</h3>
+				<div class="row col-4_mod">
+				<?php 
+				foreach ($this->data['causas'] as $causa)
+				{
+					?>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<a class="thumb" data-fancybox-group="1" href="<?php echo "/causas/".$causa['causas_id']."/".Tools::slugify($causa['title']).'/'; ?>">
+								<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $causa['icon']; ?>" alt="<?php echo $causa['title']; ?>">
+								<span class="thumb_overlay"></span>
+							</a>  
+							<div class="caption">
+								<p class="text-info">
+									<?php echo $causa['title']; ?><br />
+									<span><?php echo $causa['description']; ?></span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    
+    
     public function getFooter()
     {
     	ob_start();
@@ -1096,7 +1138,6 @@ class Layout_View
 				</div> 
 			</section>  
 		</footer>
-    	
     	<?php
     	$footer = ob_get_contents();
     	ob_end_clean();

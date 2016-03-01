@@ -65,6 +65,9 @@ class generalFrontBackend
 		);
 		
 		$data['appInfo'] = $appInfo;
+		
+		$espaciosArray 		= $this->model->getEspacios();
+		$data['espacios'] 	= $espaciosArray;
 
 		switch ($section)
 		{
@@ -78,14 +81,11 @@ class generalFrontBackend
 				$topArray			= $this->model->getCausas();
 				$data['causas']		= $topArray;
 				
-				$linksArray		= $this->model->getLinks();
+				$linksArray			= $this->model->getLinks();
 				$data['links']		= $linksArray;
 				
-				$espaciosArray = $this->model->getEspacios();
-				$data['espacios'] = $espaciosArray;
-				
-				$noticiasArray	= $this->model->getLastTwoNews();
-				$data['noticias'] = $noticiasArray;
+				$noticiasArray		= $this->model->getLastTwoNews();
+				$data['noticias'] 	= $noticiasArray;
 				
 			break;
 			

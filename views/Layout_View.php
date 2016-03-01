@@ -311,35 +311,21 @@ class Layout_View
                                         <li>
                                             <a href="materiales-educativos.html">Materiales Educativos </a>
                                         </li>
-
-                                        <li>
-                                            <a href="noticias.html">Noticias</a>
-                                        </li>
+                                        <li><a href="/noticias/">Noticias</a></li>
 
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="espacios.html">Espacios</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="parque-la-ceiba.html">Parque La Ceiba </a>
-                                        </li>
-                                        <li>
-                                            <a href="vivero.html">Vivero </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="cc-chemuyil.html">CC Chemuyil </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="cc-tulum.html">CC Tulum </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="campamentos-tortugueros.html">Campamentos Tortugueros </a>
-                                        </li>
-
+                                    	<?php 
+                                    	foreach ($this->data['espacios'] as $espacio)
+                                    	{
+                                    		?>
+                                    	<li><a href="<?php echo "/espacios/".$espacio['espacios_id']."/".Tools::slugify($espacio['title']."/")."/"; ?>"><?php echo $espacio['title']; ?></a></li>
+                                    		<?php
+                                    	}
+                                    	?>
                                     </ul>
                                 </li>
 
@@ -577,7 +563,6 @@ class Layout_View
 							}
 						}
 						?>
-
 					</div>
 				</div>
 		</section>
@@ -1104,8 +1089,6 @@ class Layout_View
     	ob_end_clean();
     	return $index;	
     }
-    
-    
     
     public function getFooter()
     {

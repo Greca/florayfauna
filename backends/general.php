@@ -118,6 +118,11 @@ class generalFrontBackend
 				$data['directorio'] = $directorioArray;
 			break;
 			
+			case 'aliados':
+				$slidersArray 		= $this->model->getAliados();
+				$data['aliados'] 	= $slidersArray;
+			break;
+			
 			default:
 			break;
 		}

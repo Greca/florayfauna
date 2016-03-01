@@ -139,6 +139,10 @@ class Layout_View
 						echo self::getDirectorio();
 					break;
 					
+					case 'aliados':
+						echo self::getAliados();
+					break;
+					
 					default :
 						# code...
 					break;
@@ -280,12 +284,7 @@ class Layout_View
                                         </li>
 
                                         <li><a href="/directorio/">Directorio</a></li>
-
-                                        <li>
-                                            <a href="aliados.html">Aliados y Donantes </a>
-                                        </li>
-
-                                        
+                                        <li><a href="/aliados-y-donantes/">Aliados y Donantes </a></li>
                                     </ul>
                                 </li>
 
@@ -604,6 +603,42 @@ class Layout_View
     	return $itemVideo;
     }
     
+    public function getSponsorItem($aliado)
+    {
+    	ob_start();
+    	?>
+    	<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+			<div class="box2 ta__c">
+				<div class="member">
+					<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $aliado['aliado'];?>" alt="Flora, Fauna y Cultura de México">
+					<div class="member_info">
+						<div class="box1">
+							<div class="box1_wr">
+								<div class="box1_cnt ta__c">
+									<ul class="socials-mini">
+										<?php 
+										if ($aliado['facebook'])
+										{ ?><li><a class="fa fa-facebook" href="<?php echo $aliado['facebook']; ?>"></a></li><?php }
+										
+										if ($aliado['twitter'])
+										{ ?><li><a class="fa fa-twitter" href="<?php echo $aliado['twitter']; ?>"></a></li><?php }
+										
+										if ($aliado['gplus'])
+										{ ?><li><a class="fa fa-google-plus" href="<?php echo $aliado['gplus']; ?>"></a></li><?php } ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    	<?php
+    	$item = ob_get_contents();
+    	ob_end_clean();
+    	return $item;
+    }
+    
     public function getSponsors()
     {
     	ob_start();
@@ -627,65 +662,21 @@ class Layout_View
                         foreach ($this->data['aliados'] as $aliado)
                         {
                         	$i++;
-                        	?>
-                        	<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <div class="box2 ta__c">
-                                    <div class="member">
-                                        <img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $aliado['aliado'];?>" alt="Flora, Fauna y Cultura de México">
-                                        <div class="member_info">
-											<div class="box1">
-                                                <div class="box1_wr">
-                                                    <div class="box1_cnt ta__c">
-                                                        <ul class="socials-mini">
-                                                        	<?php 
-                                                        	if ($aliado['facebook'])
-                                                        	{
-                                                        		?>
-                                                        	<li>
-                                                                <a class="fa fa-facebook" href="<?php echo $aliado['facebook']; ?>"></a>
-                                                            </li>
-                                                        		<?php
-                                                        	}
-
-                                                        	if ($aliado['twitter'])
-                                                        	{
-                                                        		?>
-                                                        	<li>
-                                                                <a class="fa fa-twitter" href="<?php echo $aliado['twitter']; ?>"></a>
-                                                            </li>
-                                                        		<?php
-                                                        	}
-
-                                                        	if ($aliado['gplus'])
-                                                        	{
-                                                        		?>
-                                                        	<li>
-                                                                <a class="fa fa-google-plus" href="<?php echo $aliado['gplus']; ?>"></a>
-                                                            </li>
-                                                        		<?php
-                                                        	}
-                                                        	?>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                           	</div>
-                                       	</div>
-                                    </div>
-                                </div>
-                            </div>
-                        	<?php
+                        	
+                        	echo self::getSponsorItem($aliado);
+                        	
                         	if ($i >= 6)
                         	{
                         		?>
-                        	</div>
-                        </div>	
-                        <div class="item">
-                           	<div class="row">
+                        </div>
+					</div>	
+					<div class="item">
+						<div class="row">
                         	<?php
                         	$i = 0;
-                        }
-                    }
-                    ?>
+                        	}
+                    	}
+                    	?>
                         </div>
                     </div>
 					<?php
@@ -773,15 +764,13 @@ class Layout_View
         		$( '.swipebox-video' ).swipebox();
         	});
         });
-    </script>
+    	</script>
     	
     	<?php
     	$indexHeader = ob_get_contents();
     	ob_end_clean();
     	return $indexHeader;
     }
-    
-    
     
     public function getSingleEspaciosContent()
     {
@@ -878,8 +867,6 @@ class Layout_View
     	ob_end_clean();
     	return $indexHeader;
     }
-    
-    
     
     public function getSingleNoticiaContent()
     {
@@ -1038,7 +1025,45 @@ class Layout_View
     	return $index;	
     }
     
-    
+    public function getAliados()
+    {
+    	ob_start();
+    	?>
+		<section class="well well4">
+			<div class="container">
+				<h3 class="text-center">Aliados y Donantes</h3>
+				<div class="donantes_grid">
+					<div class="item">
+						<div class="row">
+						<?php 
+						if ($this->data['aliados'])
+						{
+							$i = 0;
+							foreach ($this->data['aliados'] as $aliado)
+							{
+								echo self::getSponsorItem($aliado);
+								$i++;
+								if ($i == 6)
+								{
+									$i = 0;
+									?>
+							</div>
+							<div class="row">
+									<?php
+								}
+							}
+						}
+						?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
     
     public function getFooter()
     {

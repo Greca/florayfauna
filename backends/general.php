@@ -92,6 +92,24 @@ class generalFrontBackend
 			case 'causas':
 				$sectionRow = $this->model->getSingleCausas($_GET['sectionId']);
 				$data['section'] = $sectionRow;
+				
+				switch ($_GET['sectionId'])
+				{
+					case 100:
+						$newsArray 		= $this->model->getLastConservacionTwoNews();
+						$data['news'] 	= $newsArray;
+					break;
+					
+					case 101:
+						$newsArray 		= $this->model->getLastBienestarTwoNews();
+						$data['news'] 	= $newsArray;
+					break;
+					
+					case 102:
+						$newsArray 		= $this->model->getLastEducacionTwoNews();
+						$data['news'] 	= $newsArray;
+					break;
+				}
 			break;
 			
 			case 'all-causas':

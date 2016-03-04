@@ -169,6 +169,39 @@ class Layout_Model
 		}
 	}
 	
+	public function getLastConservacionTwoNews()
+	{
+		try {
+			$query = 'SELECT * FROM noticias WHERE conservacion = 1 ORDER BY date DESC';
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getLastBienestarTwoNews()
+	{
+		try {
+			$query = 'SELECT * FROM noticias WHERE bienestar = 1 ORDER BY date DESC';
+				
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getLastEducacionTwoNews()
+	{
+		try {
+			$query = 'SELECT * FROM noticias WHERE educacion = 1 ORDER BY date DESC';
+	
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function getNewsGallery($noticias_id)
 	{
 		try {

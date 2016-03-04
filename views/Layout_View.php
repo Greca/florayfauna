@@ -604,14 +604,10 @@ class Layout_View
 								<div class="box1_cnt ta__c">
 									<ul class="socials-mini">
 										<?php 
-										if ($aliado['facebook'])
-										{ ?><li><a class="fa fa-facebook" href="<?php echo $aliado['facebook']; ?>"></a></li><?php }
-										
-										if ($aliado['twitter'])
-										{ ?><li><a class="fa fa-twitter" href="<?php echo $aliado['twitter']; ?>"></a></li><?php }
-										
-										if ($aliado['gplus'])
-										{ ?><li><a class="fa fa-google-plus" href="<?php echo $aliado['gplus']; ?>"></a></li><?php } ?>
+										if ($aliado['facebook']){ ?><li><a class="fa fa-facebook" href="<?php echo $aliado['facebook']; ?>"></a></li><?php }
+										if ($aliado['twitter']){ ?><li><a class="fa fa-twitter" href="<?php echo $aliado['twitter']; ?>"></a></li><?php }
+										if ($aliado['gplus']){ ?><li><a class="fa fa-google-plus" href="<?php echo $aliado['gplus']; ?>"></a></li><?php } 
+										?>
 									</ul>
 								</div>
 							</div>
@@ -707,6 +703,20 @@ class Layout_View
 				</div>
             </div>
         </section>
+        
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center"><?php echo $this->data['section']['title']; ?> - Noticias</h3>
+				<div class="row offs1 center767">
+				<?php 
+				foreach ($this->data['news'] as $new)
+				{
+					echo self::getNewsIdenxItems($new);
+				}
+				?>
+				</div>
+			</div>
+		</section>
     	<?php
     	$index = ob_get_contents();
     	ob_end_clean();
@@ -769,9 +779,8 @@ class Layout_View
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['title']; ?></h3>
 						<a rel="vimeo" href="https://youtu.be/<?php echo $this->data['section']['video']; ?>" class="swipebox-video">
-							<img class="wow fadeInLeft" data-wow-duration='1s' src="http://img.youtube.com/vi/<?php echo $this->data['section']['video']; ?>/0.jpg" alt="Parque la ceiba">
+							<img class="wow fadeInLeft" data-wow-duration='1s' src="http://img.youtube.com/vi/<?php echo $this->data['section']['video']; ?>/0.jpg" alt="<?php echo $this->data['section']['title']; ?>">
 						</a>
-						<br />
 						<br />
 						<div class="text-justify">
 							<?php echo $this->data['section']['content']; ?>
@@ -847,8 +856,7 @@ class Layout_View
         		$( '.swipebox-video' ).swipebox();
         	});
         });
-    </script>
-    	
+    	</script>
     	<?php
     	$indexHeader = ob_get_contents();
     	ob_end_clean();
@@ -859,7 +867,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+		<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
 					<h3>

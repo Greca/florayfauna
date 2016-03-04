@@ -724,6 +724,8 @@ class Layout_View
     	<?php
         }
         
+        echo self::getSobreNosotros();
+        
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1102,6 +1104,48 @@ class Layout_View
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
+    }
+    
+    public function getSobreNosotros()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Más Sobre Nosotros</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="logros.html">Logros</a></li>
+							<li><a href="directorio.html">Directorio</a></li>
+							<li><a href="aliados.html">Aliados</a></li>
+							<li><a href="informes.html">Más información</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="causas.html">Causas</a></li>
+							<li><a href="proyectos.html">Proyectos</a></li>
+							<li><a href="actividades.html">Actividades</a></li>
+							<li><a href="campanas.html">Campañas</a></li>
+							<li><a href="materiales-educativos.html">Materiales Educativos</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="practicas-profesionales.html">Prácticas Profesionales</a></li>
+							<li><a href="voluntariado-dia.html">Voluntariado por un día</a></li>
+							<li><a href="experiencia-360.html">Experiencia 360</a></li>
+							<li><a href="embajador.html">Embajadores por el mundo</a></li>
+						</ul>
+					</div>
+				</div>    
+			</div>
+		</section>
+    	<?php
+    	$nosotros = ob_get_contents();
+    	ob_end_clean();
+    	return $nosotros;
     }
     
     public function getFooter()

@@ -704,7 +704,11 @@ class Layout_View
             </div>
         </section>
         
-		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+        <?php 
+        if ($this->data['news'])
+        {
+        ?>
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
 			<div class="container">
 				<h3 class="text-center"><?php echo $this->data['section']['title']; ?> - Noticias</h3>
 				<div class="row offs1 center767">
@@ -718,6 +722,8 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+        }
+        
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	

@@ -26,6 +26,7 @@ RewriteRule ^espacios/$ 						/espacios.php?section=2
 RewriteRule ^aliados-y-donantes/$				/aliados.php?section=18
 RewriteRule ^directorio/$ 						/directorio.php?section=19
 RewriteRule ^causas/$ 							/all-causas.php?section=19
+RewriteRule ^nosotros/$ 						/nosotros.php?section=19
 
 
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=2&sectionId=$1

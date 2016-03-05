@@ -191,6 +191,15 @@ class Layout_Model
 		}
 	}
 	
+// 	public static function ()
+// 	{
+// 		try {
+			
+// 		} catch (Exception $e) {
+// 			return false; 
+// 		}
+// 	}
+
 	public function getLastEducacionTwoNews()
 	{
 		try {

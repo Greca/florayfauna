@@ -123,6 +123,10 @@ class Layout_View
 						echo self :: getIndexContent();
 					break;
 					
+					case 'nosotros':
+						echo self::getNosotrosMain();
+					break;
+					
 					case 'causas':
 						echo self :: getSingleCausasContent();
 					break;
@@ -280,7 +284,7 @@ class Layout_View
                                     <a href="/">Inicio</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="nosotros.html">Nosotros</a>
+                                    <a href="/nosotros/">Nosotros</a>
                                     <ul class="dropdown-menu">
 
                                         <li>
@@ -379,7 +383,6 @@ class Layout_View
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                 </nav>
             </div>
@@ -971,6 +974,83 @@ class Layout_View
     	ob_end_clean();
     	return $item;
     }
+    
+	public function getNosotrosMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>Flora, Fauna y Cultura de México AC.</h3>
+					<h5>Sembrando futuro...</h5>
+					<p class="text-justify">
+					Somos Flora Fauna y Cultura de México A.C., organización de la sociedad civil sin fines de 
+					lucro y trabajamos por la conservación de nuestro patrimonio natural y cultural.
+					                
+					Surgimos como respuesta a las problemáticas ambientales y culturales generadas por el 
+					acelerado desarrollo urbano y turístico registrado en el estado de Quintana Roo en las 
+					últimas décadas. Fungimos como un vínculo entre los diferentes actores sociales con el 
+					fin es sumar esfuerzos para conseguir beneficios colectivos. 
+					</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well6">
+			<div class="container">
+				<div class="row col-4_mod">
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<img src="/images/mision.png" alt="Mision - Flora, Fauna y Cultura de México AC.">
+							<div class="caption">
+								<p class="text-info">
+									<span>Contribuir a mejorar la calidad de vida de nuestra sociedad 
+									a través de fomentar la revalorización, el respeto y la conservación 
+									del patrimonio natural y cultural de México. 
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<img src="/images/vision.png" alt="Vision - Flora, Fauna y Cultura de México AC.">
+							<div class="caption">
+								<p class="text-info">
+									<span>Un mundo en el que nuestro patrimonio natural y cultural sea 
+									valorado, cuidado, respetado y compartido por toda la sociedad 
+									como algo propio y para beneficio de todos.
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<img src="/images/valores.png" alt="Valores - Flora, Fauna y Cultura de México AC.">
+							<div class="caption">
+								<p class="text-info">
+									<span>Amor por la cultura mexicana, amor a la naturaleza, amor a las 
+									personas, transparencia, compromiso, alegría, congruencia y 
+									honestidad.<br>
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>        
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
     
     public function getDirectorio()
     {

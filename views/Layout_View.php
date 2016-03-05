@@ -127,6 +127,10 @@ class Layout_View
 						echo self::getNosotrosMain();
 					break;
 					
+					case 'que-hacemos':
+						echo self::getQueHacemosMain();
+					break;
+					
 					case 'causas':
 						echo self :: getSingleCausasContent();
 					break;
@@ -297,7 +301,7 @@ class Layout_View
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="que-hacemos.html">Qué Hacemos</a>
+                                    <a href="/que-hacemos/">Qué Hacemos</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/causas/">Causas</a></li>
                                         <li>
@@ -1052,6 +1056,28 @@ class Layout_View
 		return $section;
 	}
     
+	public function getQueHacemosMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>Conoce nuestro trabajo</h3>
+					<p class="text-justify">Flora, Fauna y Cultura de México A.C, trabaja día a día para generar estrategias 
+					para el cuidado del medio ambiente así como para la promoción de espacios culturales 
+					que generen actividades de bienestar comunitario.</p>
+					<br>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getAllCausas();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
     public function getDirectorio()
     {
     	ob_start();

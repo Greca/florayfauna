@@ -146,6 +146,11 @@ class generalFrontBackend
 				$data['aliados'] 	= $slidersArray;
 			break;
 			
+			case 'que-hacemos':
+				$topArray			= $this->model->getCausas();
+				$data['causas']		= $topArray;
+			break;
+			
 			default:
 			break;
 		}

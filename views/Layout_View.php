@@ -1083,6 +1083,49 @@ class Layout_View
 		</section>
 		<?php
 		echo self::getAllCausas();
+		?>
+		<section class="well well3 well3_ins1 text-center">
+			<h3 class="text-center">QU&Eacute; HACEMOS</h3>
+			<div class="img_block">
+				<div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
+					<img src="/images/proyectos.jpg" alt="Proyectos Flora, Fauna y Cultura">
+					<div class="overlay">
+						<time datetime="2015"><span> Proyectos FFCM </span></time>
+						<p class="ins3"></p>
+						<a href="/proyectos/" class="btn btn-default">Ver proyectos</a>
+					</div>
+				</div>
+				
+				<div class="img_cnt wow fadeInLeft" data-wow-duration='2.5s'>
+					<img src="/images/actividades.jpg" alt="Actividades Flora, Fauna y Cultura">
+					<div class="overlay">
+						<time datetime="2015"> <span>Actividades </span></time>
+						<p class="ins3"></p>
+						<a href="/actividades/" class="btn btn-default"> ver actividades</a>
+					</div>
+				</div>
+				
+				<div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
+					<img src="/images/campanas.jpg" alt="Campanas Flora, Fauna y Cultura">
+					<div class="overlay">
+						<time datetime="2015"><span> Campañas</span></time>
+						<p class="ins3"></p>
+						<a href="/campanas/" class="btn btn-default">ver campañas</a>
+					</div>
+				</div>
+				
+				<div class="img_cnt wow fadeInLeft" data-wow-duration='1.5s'>
+					<img src="/images/materiales-educativos.jpg" alt="Mateiales Educativos Flora, Fauna y Cultura">
+					<div class="overlay">
+						<time datetime="2015"><span> Materiales Educativos</span></time>
+						<p class="ins3"></p>
+						<a href="/materiales-educativos/" class="btn btn-default">ver más</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
 		$section = ob_get_contents();
 		ob_end_clean();
 		return $section;
@@ -1113,8 +1156,6 @@ class Layout_View
 		ob_end_clean();
 		return $section;
 	}
-	
-	
 	
     public function getDirectorio()
     {

@@ -5383,7 +5383,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-primary:after {
-    background: #111;
+    /*background: #111;*/
     left: 50%;
     -moz-transform: translate(-50%);
     -ms-transform: translate(-50%);
@@ -5432,7 +5432,6 @@ fieldset[disabled] .btn-primary:focus.active {
 }
 
 .btn-primary:hover {
-    color: #111;
     background-color: transparent;
     border-color: transparent;
 }
@@ -5471,7 +5470,6 @@ fieldset[disabled] .btn-primary:hover.active {
 }
 
 .btn-primary:hover:after {
-    background: #ffffff;
 }
 
 .btn-left:after {

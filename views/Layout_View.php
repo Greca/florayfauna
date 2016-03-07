@@ -109,7 +109,12 @@ class Layout_View
  					echo self::getLogrosHeader();
  				break;
  				
-				case 'directorio':
+				case 'contacto':
+					echo self::getContactoHeader();
+				break;
+				
+				case 'registro':
+					echo self::getRegistroHeader();
 				break;
 			}
 			?>
@@ -166,6 +171,18 @@ class Layout_View
 					case 'logros':
 						echo self::getLogros();
 					break;
+					
+					case 'noticias':
+						echo self::getNoticias();
+					break;
+					
+					case 'contacto':
+						echo self::getContacto();
+					break;
+					
+					case 'registro':
+	 					echo self::getRegistro();
+	 				break;
 					
 					default :
 						# code...
@@ -387,11 +404,9 @@ class Layout_View
                                 </li>
                                 
                                 <li class="dropdown">
-                                    <a href="contacto.html">Contacto</a>
+                                    <a href="/contacto/">Contacto</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="registro.html">Registrarte </a>
-                                        </li>
+                                        <li><a href="/registrarte/">Registrarte </a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -1287,6 +1302,7 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+    	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1311,8 +1327,6 @@ class Layout_View
     	ob_end_clean();
     	return $indexHeader;
     }
-    
-    
     
     public function getLogros()
     {
@@ -1394,6 +1408,261 @@ class Layout_View
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
+    }
+    
+    public function getNoticias()
+    {
+    	ob_start();
+    	?>
+		<section class="well well4">
+			<div class="container">
+				<h3 class="text-center">Noticias</h3>
+				<div class="row offs1">
+				<?php 
+				foreach ($this->data['noticias'] as $noticia)
+				{
+					?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+		              <img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $noticia['icon']; ?>" alt="<?php echo $noticia['title']; ?>" alt="">
+		            </div>
+		            <div class="col-md-3 col-sm-6 col-xs-12">
+						<div class=" mwidth">
+							<time datetime='2015'><?php echo Tools::formatMYSQLToFront($noticia['date']); ?></time>
+							<p class="text-info"><?php echo $noticia['title']; ?></p>
+							<p class=""><?php echo $noticia['description']; ?> </p>
+							<p class="text-info"> <a href="/noticia/<?php echo $noticia['noticias_id'].'/'.Tools::slugify($noticia['title']).'/';  ?>">Leer más</a></p>
+						</div>  
+					</div>
+				<?php
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Noticias Pasadas</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="noticia.html">January 2014</a></li>
+							<li><a href="#">February 2014</a></li>
+							<li><a href="#">March 2014</a></li>
+							<li><a href="#">April 2014</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="#">May 2014</a></li>
+							<li><a href="#">June 2014</a></li>  
+							<li><a href="#">July 2014</a></li>
+							<li><a href="#">August 2014</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="#">September 2014</a></li>
+							<li><a href="#">October 2014</a></li>
+							<li><a href="#">November 2014</a></li>
+							<li><a href="#">December 2014</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+		</section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getContactoHeader()
+    {
+    	ob_start();
+    	?>
+    	<link rel="stylesheet" href="/css/contact-form.css">
+    	<link rel="stylesheet" href="/css/google-map.css">
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    
+    
+    public function getContacto()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 well7_ins1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-xs-12">
+						<h3 class="text-center">Direccion</h3>
+						<h5 class=" offs1">Playa Del Carmen</h5>
+						<address>Calle</address>
+						<address class="addr1">                                           
+							<p class="text-primary">Tel:</p>    
+							<p>Office<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+						</address>
+					</div>
+					
+					<div class="col-md-9 col-xs-12">
+						<h3 class="text-center">Contacto</h3>
+						<form id="contact-form" class='contact-form'>
+							<div class="contact-form-loader"></div>
+							<fieldset>
+								<label class="name">
+									<input type="text" name="name" placeholder="Name" value="" data-constraints="@Required @JustLetters" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid name.</span>
+								</label>
+								
+								<label class="email">
+									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid email.</span>
+								</label>
+								
+								<label class="phone">
+									<input type="text" name="phone" placeholder="Phone" value="" data-constraints="@JustNumbers" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid phone.</span>
+								</label>
+								
+								<label class="message">
+									<textarea name="message" placeholder="Message" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*The message is too short.</span>
+								</label>
+								
+								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
+								
+								<div class="btn-wr text-primary">
+								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Send</a>
+								</div>
+							</fieldset>
+							<div class="modal fade response-message">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+											</button>
+											<h4 class="modal-title">Modal title</h4>
+										</div>
+										<div class="modal-body">You message has been sent! We will be in touch soon.</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$section = ob_get_contents();
+    	ob_end_clean();
+    	return $section;
+    }
+    
+    public function getRegistroHeader()
+    {
+    	ob_start();
+    	?>
+    	<link rel="stylesheet" href="/css/contact-form.css">
+    	<link rel="stylesheet" href="/css/google-map.css">
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getRegistro()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 well7_ins1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-xs-12">
+						<h3 class="text-center">Direccion</h3>
+						<h5 class=" offs1">Playa Del Carmen</h5>
+						<address>Calle</address>
+						<address class="addr1">                                           
+							<p class="text-primary">Tel:</p>    
+							<p>Office<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+						</address>
+					</div>
+					
+					<div class="col-md-9 col-xs-12">
+						<h3 class="text-center">NEWSLETTER</h3>
+						<form id="contact-form" class='contact-form'>
+							<div class="contact-form-loader"></div>
+							<fieldset>
+								<label class="name">
+									<input type="text" name="name" placeholder="Name" value="" data-constraints="@Required @JustLetters" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid name.</span>
+								</label>
+								
+								<label class="email">
+									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid email.</span>
+								</label>
+								
+								<label class="phone">
+									<input type="text" name="phone" placeholder="Phone" value="" data-constraints="@JustNumbers" />
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*This is not a valid phone.</span>
+								</label>
+								
+								<label class="message">
+									<textarea name="message" placeholder="Message" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+									<span class="empty-message">*This field is required.</span>
+									<span class="error-message">*The message is too short.</span>
+								</label>
+								
+								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
+								
+								<div class="btn-wr text-primary">
+								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Send</a>
+								</div>
+							</fieldset>
+							<div class="modal fade response-message">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+											</button>
+											<h4 class="modal-title">Modal title</h4>
+										</div>
+										<div class="modal-body">You message has been sent! We will be in touch soon.</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$section = ob_get_contents();
+    	ob_end_clean();
+    	return $section;
     }
     
     public function getSobreNosotros()

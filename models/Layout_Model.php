@@ -169,6 +169,16 @@ class Layout_Model
 		}
 	}
 	
+	public function getAllNews()
+	{
+		try {
+			$query = 'SELECT * FROM noticias ORDER BY date DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function getLastConservacionTwoNews()
 	{
 		try {

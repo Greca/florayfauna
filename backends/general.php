@@ -166,6 +166,11 @@ class generalFrontBackend
 				$data['otrosLogros'] = $otrosLogros;
 			break;
 			
+			case 'noticias':
+				$noticiasArray = $this->model->getAllNews();
+				$data['noticias'] = $noticiasArray;
+			break;
+			
 			default:
 			break;
 		}

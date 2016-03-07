@@ -240,4 +240,40 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getAllLogros()
+	{
+		try {
+			$query = 'SELECT * FROM logros';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAllLogrosFechasDestacadas()
+	{
+		try {
+			$query = 'SELECT * FROM logros_fechas ORDER BY logros_fechas_id DESC';
+	
+			return $this->db->getArray($query);
+	
+			return $prep->execute();
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAllLogrosOtros()
+	{
+		try {
+			$query = 'SELECT * FROM logros_otros ORDER BY logros_otros_id DESC';
+	
+			return $this->db->getArray($query);
+	
+			return $prep->execute();
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

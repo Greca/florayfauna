@@ -117,6 +117,10 @@ class generalFrontBackend
 				$data['causas']		= $topArray;
 			break;
 			
+			case 'all-espacios':
+				
+			break;
+			
 			case 'espacios':
 				$sectionRow = $this->model->getEspaciosByEspacioId($_GET['sectionId']);
 				$data['section'] = $sectionRow;
@@ -149,6 +153,17 @@ class generalFrontBackend
 			case 'que-hacemos':
 				$topArray			= $this->model->getCausas();
 				$data['causas']		= $topArray;
+			break;
+			
+			case 'logros':
+				$logrosArray = $this->model->getAllLogros();
+				$data['logros'] = $logrosArray;
+				
+				$fechasLogros = $this->model->getAllLogrosFechasDestacadas();
+				$data['fechasDestacadas'] = $fechasLogros;
+				
+				$otrosLogros = $this->model->getAllLogrosOtros();
+				$data['otrosLogros'] = $otrosLogros;
 			break;
 			
 			default:

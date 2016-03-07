@@ -105,6 +105,10 @@ class Layout_View
  					echo self::getSingleNoticiaHeader();
  				break;
  				
+ 				case 'logros':
+ 					echo self::getLogrosHeader();
+ 				break;
+ 				
 				case 'directorio':
 				break;
 			}
@@ -131,6 +135,10 @@ class Layout_View
 						echo self::getQueHacemosMain();
 					break;
 					
+					case 'all-espacios':
+						echo self::getAllEspacios();
+					break;
+					
 					case 'causas':
 						echo self :: getSingleCausasContent();
 					break;
@@ -153,6 +161,10 @@ class Layout_View
 					
 					case 'all-causas':
 						echo self::getAllCausas();
+					break;
+					
+					case 'logros':
+						echo self::getLogros();
 					break;
 					
 					default :
@@ -291,10 +303,7 @@ class Layout_View
                                     <a href="/nosotros/">Nosotros</a>
                                     <ul class="dropdown-menu">
 
-                                        <li>
-                                            <a href="logros.html">Logros </a>
-                                        </li>
-
+                                        <li><a href="/logros/">Logros </a></li>
                                         <li><a href="/directorio/">Directorio</a></li>
                                         <li><a href="/aliados-y-donantes/">Aliados y Donantes</a></li>
                                     </ul>
@@ -324,7 +333,7 @@ class Layout_View
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="espacios.html">Espacios</a>
+                                    <a href="/todos-los-espacios/">Espacios</a>
                                     <ul class="dropdown-menu">
                                     	<?php 
                                     	foreach ($this->data['espacios'] as $espacio)
@@ -827,6 +836,7 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+    	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1078,6 +1088,34 @@ class Layout_View
 		return $section;
 	}
 	
+	public function getAllEspacios()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>ESPACIOS</h3>
+					<p class="text-justify">Flora, Fauna y Cultura de México A.C. opera cinco espacios, ubicados desde el 
+					municipio de Tulum hasta el municipio de Solidaridad. Estos espacios son base para el desarrollo 
+					de diversos proyectos de Conservación tanto de especies como de ecosistemas claves para la salud 
+					ambiental; de Bienestar Comunitario, donde la vinculación con la comunidad y la búsqueda de su bienestar 
+					es otro de los ejes principales de trabajo; y de Educación Ambiental que consideramos imprescindibles para 
+					un adecuado equilibrio entre ser humano y la naturaleza.</p>
+					<br>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSpaces();
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	
+	
     public function getDirectorio()
     {
     	ob_start();
@@ -1169,6 +1207,7 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+    	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1207,6 +1246,110 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getLogrosHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    
+    
+    public function getLogros()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 parallax" data-url="/images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Logros</h3>
+				<div class="row">
+				<?php 
+				if ($this->data['logros'])
+				{
+					foreach ($this->data['logros'] as $logro)
+					{
+						?>
+						
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<a class="thumb" data-fancybox-group="1" href="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $logro['portrait']; ?>">
+								<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $logro['icon']; ?>" alt="<?php echo $logro['title']; ?>">
+								<span class="thumb_overlay"></span>
+							</a>
+							<div class="caption">
+								<h5><a href="#"><?php echo $logro['title']; ?></a></h5>
+								<p><?php echo $logro['description']; ?></p>
+							</div>
+						</div>
+					</div>
+					<?php
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<section class="well well8 wow fadeIn" data-wow-duration='3s'>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="text-center">Fechas Destacadas</h3>
+						<div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 0;">
+							<ul class="index-list fa-ul">
+							<?php 
+							if ($this->data['fechasDestacadas'])
+							{
+								foreach ($this->data['fechasDestacadas'] as $fecha)
+								{
+								?>
+								<li class="fa fa-calendar-check-o"><a href="<?php echo $fecha['url']; ?>"><?php echo $fecha['title']; ?></a></li><br>
+								<?php
+								}
+							}
+							?>
+							</ul>
+						</div>
+					</div>
+		
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center">Otros logros</h3>
+						<ul class="marked-list">
+						<?php 
+						if ($this->data['otrosLogros'])
+						{
+							foreach ($this->data['fechasDestacadas'] as $fecha)
+							{
+							?>
+							<li>- <?php echo $fecha['title']; ?></li>
+							<?php
+							}
+						}
+						?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	

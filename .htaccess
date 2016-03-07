@@ -28,6 +28,8 @@ RewriteRule ^directorio/$ 						/directorio.php?section=19
 RewriteRule ^causas/$ 							/all-causas.php?section=19
 RewriteRule ^nosotros/$ 						/nosotros.php?section=19
 RewriteRule ^que-hacemos/$ 						/que-hacemos.php?section=19
+RewriteRule ^todos-los-espacios/$ 				/all-espacios.php?section=19
+RewriteRule ^logros/$ 							/logros.php?section=19
 
 
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=2&sectionId=$1

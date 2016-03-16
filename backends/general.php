@@ -122,21 +122,21 @@ class generalFrontBackend
 			break;
 			
 			case 'espacios':
-				$sectionRow = $this->model->getEspaciosByEspacioId($_GET['sectionId']);
-				$data['section'] = $sectionRow;
+				$sectionRow 		= $this->model->getEspaciosByEspacioId($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
 				
-				$bloquesArray = $this->model->getEspaciosBloques($_GET['sectionId']);
-				$data['bloques'] = $bloquesArray;
+				$bloquesArray 		= $this->model->getEspaciosBloques($_GET['sectionId']);
+				$data['bloques'] 	= $bloquesArray;
 			break;
 			
 			case 'noticia':
-				$sectionRow = $this->model->getNewsById($_GET['sectionId']);
-				$data['section'] = $sectionRow;
+				$sectionRow 		= $this->model->getNewsById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
 				
-				$galleryArray = $this->model->getNewsGallery($_GET['sectionId']);
-				$data['gallery'] = $galleryArray;
+				$galleryArray 		= $this->model->getNewsGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
 				
-				$videosArray = $this->model->getNewsVideo($_GET['sectionId']);
+				$videosArray 	= $this->model->getNewsVideo($_GET['sectionId']);
 				$data['videos'] = $videosArray;
 			break;
 			
@@ -156,19 +156,44 @@ class generalFrontBackend
 			break;
 			
 			case 'logros':
-				$logrosArray = $this->model->getAllLogros();
+				$logrosArray 	= $this->model->getAllLogros();
 				$data['logros'] = $logrosArray;
 				
-				$fechasLogros = $this->model->getAllLogrosFechasDestacadas();
-				$data['fechasDestacadas'] = $fechasLogros;
+				$fechasLogros 				= $this->model->getAllLogrosFechasDestacadas();
+				$data['fechasDestacadas'] 	= $fechasLogros;
 				
-				$otrosLogros = $this->model->getAllLogrosOtros();
-				$data['otrosLogros'] = $otrosLogros;
+				$otrosLogros 			= $this->model->getAllLogrosOtros();
+				$data['otrosLogros'] 	= $otrosLogros;
 			break;
 			
 			case 'noticias':
-				$noticiasArray = $this->model->getAllNews();
-				$data['noticias'] = $noticiasArray;
+				$noticiasArray 		= $this->model->getAllNews();
+				$data['noticias'] 	= $noticiasArray;
+			break;
+			
+			case 'proyectos':
+				$proyectosArray 	= $this->model->getProyectos();
+				$data['proyectos'] 	= $proyectosArray;
+			break;
+			
+			case 'proyecto':
+				$sectionRow 		= $this->model->getSingleProyecto($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+				
+				$linksArray 		= $this->model->getProyectosLinksByIdAndType($_GET['sectionId'], 1);
+				$data['links-1'] 	= $linksArray;
+				
+				$linksArray 		= $this->model->getProyectosLinksByIdAndType($_GET['sectionId'], 2);
+				$data['links-2'] 	= $linksArray;
+				
+				$linksArray 		= $this->model->getProyectosLinksByIdAndType($_GET['sectionId'], 3);
+				$data['links-3'] 	= $linksArray;
+				
+				$galleryArray  		= $this->model->getProyectosGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
+				
+				$videosArray		= $this->model->getProyectosVideo($_GET['sectionId']);
+				$data['videos'] 	= $videosArray;
 			break;
 			
 			default:

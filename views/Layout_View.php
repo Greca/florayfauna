@@ -116,6 +116,14 @@ class Layout_View
 				case 'registro':
 					echo self::getRegistroHeader();
 				break;
+				
+				case 'proyectos':
+					echo self::getProyectosHeader();
+				break;
+				
+				case 'proyecto':
+					echo self::getSingleProyectoHeader();
+				break;
 			}
 			?>
 		</head>
@@ -183,7 +191,15 @@ class Layout_View
 					case 'registro':
 	 					echo self::getRegistro();
 	 				break;
+	 				
+	 				case 'proyectos':
+	 					echo self::getProyectos();
+ 					break;
 					
+	 				case 'proyecto':
+	 					echo self::getSingleProyecto();
+	 				break;
+ 					
 					default :
 						# code...
 					break;
@@ -331,7 +347,7 @@ class Layout_View
                                     <ul class="dropdown-menu">
                                         <li><a href="/causas/">Causas</a></li>
                                         <li>
-                                            <a href="proyectos.html">Proyectos </a>
+                                            <a href="/proyectos/">Proyectos </a>
                                         </li>
 
                                         <li>
@@ -1223,6 +1239,7 @@ class Layout_View
 			</div>
 		</section>
     	<?php
+    	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1665,6 +1682,197 @@ class Layout_View
     	return $section;
     }
     
+    public function getProyectosHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getProyectos()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Proyectos</h3>
+	        	<div class="row">
+	        	<?php 
+	        	foreach ($this->data['proyectos'] as $proyecto)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $proyecto['icon']; ?>"" alt="">
+							<div class="caption">
+								<h5><a href="/proyecto/<?php echo $proyecto['proyectos_id']; ?>/<?php echo Tools::slugify($proyecto['title']); ?>/"><?php echo $proyecto['title']; ?></a></h5>
+								<p><?php echo $proyecto['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getSingleProyectoHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getSingleProyecto()
+    {
+    	ob_start();
+    	?>
+		<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3><?php echo $this->data['section']['title']; ?></h3>
+					<div class="text-justify"><?php echo $this->data['section']['content']; ?></div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well8 wow fadeIn" data-wow-duration='3s'>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['first_column_title']; ?></h3>
+              			<ul class="index-list fa-ul">
+              			<?php 
+              			foreach ($this->data['links-1'] as $link)
+              			{
+              				?>
+              				<li><i class="fa-li fa fa-asterisk"></i><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+              				<?php
+              			}
+              			?>
+              			</ul>  
+            		</div>
+
+            		<div class="col-md-4 col-sm-6 col-xs-12">
+	              		<h3 class="text-center"><?php echo $this->data['section']['second_column_title']; ?></h3>
+	                	<ul class="marked-list">
+	                	<?php 
+	              		foreach ($this->data['links-2'] as $link)
+	              		{
+	              			?>
+	              			<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+	              			<?php
+	              		}
+	              		?>            
+	              		</ul>
+	            	</div>
+	            	
+            		<div class="col-md-4 col-sm-12 col-xs-12">
+	                	<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
+	                	
+	                	<ul class="marked-list">
+		                	<?php 
+		              		foreach ($this->data['links-3'] as $link)
+		              		{
+		              			?>
+		              		<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+		              			<?php
+		              		}
+		              		?>            
+	              		</ul>
+              		</div>
+				</div>
+			</div>
+		</section>
+
+		<?php 
+    	if ($this->data['gallery'])
+    	{
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['gallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<?php 
+    	}
+      	?>
+      	
+      	<?php
+      	if ($this->data['videos'])
+      	{ 
+      	?>
+      	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+        	<div class="container">
+        		<h3 class="h3 text-center">Galeria de Videos</h3>
+          		<div class="row">
+          		<?php 
+          		foreach ($this->data['videos'] as $video)
+          		{
+          			echo self::getNewsVideoItem($video);
+          		}
+          		?>
+          		</div>
+          	</div>
+		</section>
+		<?php 
+      	}
+		?>
+    	<?php
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
     public function getSobreNosotros()
     {
     	ob_start();
@@ -1675,19 +1883,19 @@ class Layout_View
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="logros.html">Logros</a></li>
-							<li><a href="directorio.html">Directorio</a></li>
-							<li><a href="aliados.html">Aliados</a></li>
-							<li><a href="informes.html">Más información</a></li>
+							<li><a href="/logros/">Logros</a></li>
+							<li><a href="/directorio/">Directorio</a></li>
+							<li><a href="/aliados-y-donantes/">Aliados</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="causas.html">Causas</a></li>
-							<li><a href="proyectos.html">Proyectos</a></li>
+							<li><a href="/causas/">Causas</a></li>
+							<li><a href="/proyectos/">Proyectos</a></li>
 							<li><a href="actividades.html">Actividades</a></li>
 							<li><a href="campanas.html">Campañas</a></li>
 							<li><a href="materiales-educativos.html">Materiales Educativos</a></li>
+							<li><a href="/noticias/">Noticias</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-4">

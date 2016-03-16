@@ -286,4 +286,56 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getProyectos()
+	{
+		try {
+			$query = 'SELECT * FROM proyectos ORDER BY proyectos_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getSingleProyecto($proyectoId)
+	{
+		try {
+			$proyectoId = (int) $proyectoId;
+			$query = 'SELECT * FROM proyectos WHERE proyectos_id = '.$proyectoId;
+				
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProyectosLinksByIdAndType($sectionId, $type)
+	{
+		try {
+			$query = 'SELECT * FROM proyectos_links WHERE proyectos_id = '.$sectionId.' AND kind = '.$type.' ORDER BY proyectos_links_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProyectosGallery($proyectos_id)
+	{
+		try {
+			$query = 'SELECT * FROM proyectos_gallery WHERE proyectos_id = '.$proyectos_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProyectosVideo($noticias_id)
+	{
+		try {
+			$query = 'SELECT * FROM proyectos_videos WHERE proyectos_id= '.$noticias_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

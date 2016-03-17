@@ -132,6 +132,14 @@ class Layout_View
 				case 'actividad':
 					echo self::getSingleActividadHeader();
 				break;
+				
+				case 'campanas':
+					echo self::getCampanasHeader();
+				break;
+				
+				case 'campana':
+					echo self::getSingleCampanaHeader();
+				break;
 			}
 			?>
 		</head>
@@ -207,6 +215,14 @@ class Layout_View
 	 				case 'proyecto':
 	 					echo self::getSingleProyecto();
 	 				break;
+	 				
+	 				case 'campanas':
+	 					echo self::getCampanas();
+ 					break;
+ 					
+ 					case 'campana':
+ 						echo self::getSingleCampanaContent();
+ 					break;
  					
 	 				case 'actividades':
 	 					echo self::getActividades();
@@ -364,10 +380,7 @@ class Layout_View
                                         <li><a href="/causas/">Causas</a></li>
                                         <li><a href="/proyectos/">Proyectos </a></li>
                                         <li><a href="/actividades/">Actividades </a></li>
-
-                                        <li>
-                                            <a href="campanas.html">Campañas </a>
-                                        </li>
+                                        <li><a href="/campanas/">Campa&ntilde;as </a></li>
 
                                         <li>
                                             <a href="materiales-educativos.html">Materiales Educativos </a>
@@ -2121,6 +2134,242 @@ class Layout_View
     	return $index;	
     }
     
+    public function getCampanasHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getCampanas()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Campa&ntilde;as</h3>
+	        	<div class="row offs1">
+	        	<?php 
+	        	foreach ($this->data['promoted'] as $campana)
+	        	{
+	        		?>
+					<div class="col-sm-6 col-xs-12">
+						<div class="thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $campana['portrait']; ?>" alt="">
+							<div class="caption">
+								<p><strong><?php echo $campana['title']; ?></strong></p><br>
+								<p><?php echo $campana['description']; ?></p>
+								<br>
+								<a href="/campana/<?php echo $campana['campanas_id']; ?>/<?php echo Tools::slugify($campana['title']); ?>/">Leer m&aacute;s</a>
+							</div>
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+        
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Otras Campa&ntilde;as</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['campanas'] as $campana)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $campana['icon']; ?>" alt="">
+							<div class="caption">
+								<h5><a href="/campana/<?php echo $campana['campanas_id']; ?>/<?php echo Tools::slugify($campana['title']); ?>/"><?php echo $campana['title']; ?></a></h5>
+								<p><?php echo $campana['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getSingleCampanaHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getSingleCampanaContent()
+    {
+    	ob_start();
+    	?>
+        <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<div class="row offs1">
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['title']; ?></h3>
+						<a rel="vimeo" href="https://youtu.be/<?php echo $this->data['section']['video']; ?>" class="swipebox-video">
+							<img class="wow fadeInLeft" data-wow-duration='1s' src="http://img.youtube.com/vi/<?php echo $this->data['section']['video']; ?>/0.jpg" alt="<?php echo $this->data['section']['title']; ?>">
+						</a>
+						<br />
+						<div class="text-justify">
+							<?php echo $this->data['section']['content']; ?>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['second_column_title']; ?></h3>
+						
+						<article>
+                  			<?php echo $this->data['section']['second_column_content']; ?>
+              			</article>
+              			
+              			<h3 class="text-center">SPOTS DE RADIO</h3>
+						
+						<article>
+	                  		<ul class="marked-list"> 
+	                  		<?php 
+							if ($this->data['links-4'])
+							{
+								foreach ($this->data['links-4'] as $link)
+								{
+									?>
+							<li>
+			                  <a href="<?php echo $link['url']; ?>" target="_blank">
+			                    <?php echo $link['title']; ?>
+			                  </a>
+			                </li>
+									<?php
+								}
+							}
+							?>    
+	              			</ul>
+              			</article>
+              			
+						<h3 class="text-center">Otros</h3>
+						
+						<article>
+                  		<?php echo $this->data['section']['otros_content']; ?>
+              			</article>
+                    </div>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
+						<div class="text-justify"><?php echo $this->data['section']['third_column_content']; ?></div>
+						
+						<ul class="marked-list"> 
+	                  		<?php 
+							if ($this->data['links-3'])
+							{
+								foreach ($this->data['links-3'] as $link)
+								{
+									?>
+							<li>
+			                  <a href="<?php echo $link['url']; ?>" target="_blank">
+			                    <?php echo $link['title']; ?>
+			                  </a>
+			                </li>
+									<?php
+								}
+							}
+							?>    
+              			</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<?php 
+    	if ($this->data['gallery'])
+    	{
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['gallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<?php 
+    	}
+      	?>
+      	
+      	<?php
+      	if ($this->data['videos'])
+      	{ 
+      	?>
+      	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+        	<div class="container">
+        		<h3 class="h3 text-center">Galeria de Videos</h3>
+          		<div class="row">
+          		<?php 
+          		foreach ($this->data['videos'] as $video)
+          		{
+          			echo self::getNewsVideoItem($video);
+          		}
+          		?>
+          		</div>
+          	</div>
+		</section>
+		<?php 
+      	}
+		?>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    
     
     
     public function getSobreNosotros()
@@ -2143,7 +2392,7 @@ class Layout_View
 							<li><a href="/causas/">Causas</a></li>
 							<li><a href="/proyectos/">Proyectos</a></li>
 							<li><a href="/actividades/">Actividades</a></li>
-							<li><a href="campanas.html">Campañas</a></li>
+							<li><a href="/campanas/">Campa&ntilde;as</a></li>
 							<li><a href="materiales-educativos.html">Materiales Educativos</a></li>
 							<li><a href="/noticias/">Noticias</a></li>
 						</ul>

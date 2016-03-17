@@ -379,4 +379,65 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getCampanasPromoted()
+	{
+		try {
+			$query = 'SELECT * FROM campanas WHERE promoted = 1 ORDER BY campanas_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCampanas()
+	{
+		try {
+			$query = 'SELECT * FROM campanas WHERE promoted = 0 ORDER BY campanas_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCampanasById($campanas_id)
+	{
+		try {
+			$campanas_id = (int) $campanas_id;
+			$query = 'SELECT * FROM campanas WHERE campanas_id = '.$campanas_id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCampanasLinksByIdAndType($sectionId, $type)
+	{
+		try {
+			$query = 'SELECT * FROM campanas_links WHERE campanas_id = '.$sectionId.' AND kind = '.$type.' ORDER BY proyectos_links_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCampanasGallery($campanas_id)
+	{
+		try {
+			$query = 'SELECT * FROM campanas_gallery WHERE campanas_id = '.$campanas_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCampanasVideo($campanas_id)
+	{
+		try {
+			$query = 'SELECT * FROM campanas_videos WHERE campanas_id = '.$campanas_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

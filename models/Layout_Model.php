@@ -440,4 +440,45 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getMateriales()
+	{
+		try {
+			$query = 'SELECT * FROM materiales ORDER BY materiales_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getMaterialesById($id)
+	{
+		try {
+			$id = (int) $id;
+			$query = 'SELECT * FROM materiales WHERE materiales_id = '.$id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getMaterialesGallery($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM materiales_gallery WHERE materiales_id = '.$materiales_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getMaterialesVideo($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM materiales_videos WHERE materiales_id = '.$materiales_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

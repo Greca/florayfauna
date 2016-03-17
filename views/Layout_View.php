@@ -140,6 +140,14 @@ class Layout_View
 				case 'campana':
 					echo self::getSingleCampanaHeader();
 				break;
+				
+				case 'materiales':
+					echo self::getMaterialesHeader();
+				break;
+				
+				case 'material':
+					echo self::getSingleMaterialHeader();
+				break;
 			}
 			?>
 		</head>
@@ -232,6 +240,14 @@ class Layout_View
  						echo self::getSingleActividadContent();
  					break;
 	 				
+ 					case 'materiales':
+ 						echo self::getMateriales();
+ 					break;
+ 					
+ 					case 'material':
+ 						echo self::getSingleMaterialContent();
+ 					break;
+ 					
 					default :
 						# code...
 					break;
@@ -381,10 +397,7 @@ class Layout_View
                                         <li><a href="/proyectos/">Proyectos </a></li>
                                         <li><a href="/actividades/">Actividades </a></li>
                                         <li><a href="/campanas/">Campa&ntilde;as </a></li>
-
-                                        <li>
-                                            <a href="materiales-educativos.html">Materiales Educativos </a>
-                                        </li>
+                                        <li><a href="/materiales/">Materiales Educativos </a></li>
                                         <li><a href="/noticias/">Noticias</a></li>
 
                                     </ul>
@@ -2364,6 +2377,156 @@ class Layout_View
 		?>
     	<?php
     	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getMaterialesHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getMateriales()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Materiales Educativos</h3>
+	        	<div class="row offs1">
+	        	<?php 
+	        	foreach ($this->data['materiales'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<a class="thumb" data-fancybox-group="1" href="/material/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<span class="thumb_overlay"></span>
+							</a>  
+							<div class="caption">
+								<p class="text-info">
+								<?php echo $item['title']; ?><br />
+								<span><?php echo $item['description']; ?></span>
+								</p>
+							</div>
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getSingleMaterialHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getSingleMaterialContent()
+    {
+    	ob_start();
+    	?>
+		<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>
+						<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $this->data['section']['icon']; ?>" alt="<?php echo $this->data['section']['title']; ?>">
+					</h3>
+					<h5><?php echo $this->data['section']['title']; ?></h5>
+					<div class="text-justify"><?php echo $this->data['section']['content']; ?></div>
+				</div>
+			</div>
+		</section>
+    	
+    	<?php 
+    	if ($this->data['gallery'])
+    	{
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['gallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<?php 
+    	}
+      	?>
+      	
+      	<?php
+      	if ($this->data['videos'])
+      	{ 
+      	?>
+      	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+        	<div class="container">
+        		<h3 class="h3 text-center">Galeria de Videos</h3>
+          		<div class="row">
+          		<?php 
+          		foreach ($this->data['videos'] as $video)
+          		{
+          			echo self::getNewsVideoItem($video);
+          		}
+          		?>
+          		</div>
+          	</div>
+		</section>
+		<?php 
+      	}
+		?>
+    	<?php
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	

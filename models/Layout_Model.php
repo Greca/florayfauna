@@ -338,4 +338,45 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getLastTwoActividades()
+	{
+		try {
+			$query = 'SELECT * FROM actividades ORDER BY date DESC LIMIT 2';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getActividadesById($actividades_id)
+	{
+		try {
+			$actividades_id = (int) $actividades_id;
+			$query = 'SELECT * FROM actividades WHERE actividades_id = '.$actividades_id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getActividadesGallery($actividades_id)
+	{
+		try {
+			$query = 'SELECT * FROM actividades_gallery WHERE actividades_id = '.$actividades_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getActividadesVideo($actividades_id)
+	{
+		try {
+			$query = 'SELECT * FROM actividades_videos WHERE actividades_id = '.$actividades_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

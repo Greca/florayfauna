@@ -196,6 +196,22 @@ class generalFrontBackend
 				$data['videos'] 	= $videosArray;
 			break;
 			
+			case 'actividades':
+				$newsArray 			= $this->model->getLastTwoActividades();
+				$data['actividades'] 	= $newsArray;
+			break;
+			
+			case 'actividad':
+				$sectionRow 		= $this->model->getActividadesById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+			
+				$galleryArray 		= $this->model->getActividadesGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
+			
+				$videosArray 	= $this->model->getActividadesVideo($_GET['sectionId']);
+				$data['videos'] = $videosArray;
+			break;
+			
 			default:
 			break;
 		}

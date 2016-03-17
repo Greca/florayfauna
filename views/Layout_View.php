@@ -124,6 +124,14 @@ class Layout_View
 				case 'proyecto':
 					echo self::getSingleProyectoHeader();
 				break;
+				
+				case 'actividades':
+					echo self::getActividadesHeader();
+				break;
+				
+				case 'actividad':
+					echo self::getSingleActividadHeader();
+				break;
 			}
 			?>
 		</head>
@@ -200,6 +208,14 @@ class Layout_View
 	 					echo self::getSingleProyecto();
 	 				break;
  					
+	 				case 'actividades':
+	 					echo self::getActividades();
+ 					break;
+ 					
+ 					case 'actividad':
+ 						echo self::getSingleActividadContent();
+ 					break;
+	 				
 					default :
 						# code...
 					break;
@@ -346,13 +362,8 @@ class Layout_View
                                     <a href="/que-hacemos/">Qué Hacemos</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/causas/">Causas</a></li>
-                                        <li>
-                                            <a href="/proyectos/">Proyectos </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="actividades.html">Actividades </a>
-                                        </li>
+                                        <li><a href="/proyectos/">Proyectos </a></li>
+                                        <li><a href="/actividades/">Actividades </a></li>
 
                                         <li>
                                             <a href="campanas.html">Campañas </a>
@@ -1873,6 +1884,245 @@ class Layout_View
     	return $index;	
     }
     
+    public function getActividadesHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getActividades()
+    {
+    	ob_start();
+    	?>
+		<section class="well well7">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Actividades</h3>
+	        	<div class="row offs1">
+	        	<?php 
+	        	foreach ($this->data['actividades'] as $actividad)
+	        	{
+	        		?>
+					<div class="col-sm-6 col-xs-12">
+						<div class="thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $actividad['portrait']; ?>" alt="">
+							<div class="caption">
+								<time datetime='2016'><?php echo Tools::formatMYSQLToFront($actividad['date']); ?></time>
+								<p>
+								<?php echo $actividad['description']; ?> 
+								</p>
+								<br>
+								<a href="/actividad/<?php echo $actividad['actividades_id']; ?>/<?php echo Tools::slugify($actividad['title']); ?>/">Leer más</a>
+							</div>
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+        <section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>Participa</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+				</div>
+			</div>
+		</section>
+		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+        <div class="container">
+          
+            <h3 class="text-center">
+              Calendario de Actividades
+            </h3>
+          <div class="row offs1">
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-enero.html">Enero </a></li>
+                <li><a href="actividades-febrero.html">Febrero</a></li>
+                <li><a href="actividades-marzo.html">Marzo</a></li>
+                <li><a href="actividades-abril.html">Abril</a></li>
+                               
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-mayo.html">Mayo</a></li>
+                <li><a href="actividades-junio.html">Junio</a></li>
+                <li><a href="actividades-julio.html">Julio</a></li>
+                <li><a href="actividades-agosto.html">Agosto</a></li>
+                
+                               
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-septiembre.html">Septiembre</a></li>
+                <li><a href="actividades-octubre.html">Octubre</a></li>
+                <li><a href="actividades-noviembre.html">Noviembre</a></li>
+                <li><a href="actividades-diciembre.html">Diciembre</a></li>
+                               
+              </ul>
+            </div>
+          </div>    
+          
+        </div>
+      </section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    public function getSingleActividadHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getSingleActividadContent()
+    {
+    	ob_start();
+    	?>
+		<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>
+						<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $this->data['section']['portrait']; ?>" alt="<?php echo $this->data['section']['title']; ?>">
+					</h3>
+					<h5><?php echo $this->data['section']['title']; ?></h5>
+					<div class="text-justify"><?php echo $this->data['section']['content']; ?></div>
+				</div>
+			</div>
+		</section>
+    	
+    	<?php 
+    	if ($this->data['gallery'])
+    	{
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['gallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<?php 
+    	}
+      	?>
+      	
+      	<?php
+      	if ($this->data['videos'])
+      	{ 
+      	?>
+      	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+        	<div class="container">
+        		<h3 class="h3 text-center">Galeria de Videos</h3>
+          		<div class="row">
+          		<?php 
+          		foreach ($this->data['videos'] as $video)
+          		{
+          			echo self::getNewsVideoItem($video);
+          		}
+          		?>
+          		</div>
+          	</div>
+		</section>
+		<?php 
+      	}
+		?>
+		
+		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+        <div class="container">
+          
+            <h3 class="text-center">
+              Calendario de Actividades
+            </h3>
+          <div class="row offs1">
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-enero.html">Enero </a></li>
+                <li><a href="actividades-febrero.html">Febrero</a></li>
+                <li><a href="actividades-marzo.html">Marzo</a></li>
+                <li><a href="actividades-abril.html">Abril</a></li>
+                               
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-mayo.html">Mayo</a></li>
+                <li><a href="actividades-junio.html">Junio</a></li>
+                <li><a href="actividades-julio.html">Julio</a></li>
+                <li><a href="actividades-agosto.html">Agosto</a></li>
+                
+                               
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <ul class="marked-list offs2">
+                <li><a href="actividades-septiembre.html">Septiembre</a></li>
+                <li><a href="actividades-octubre.html">Octubre</a></li>
+                <li><a href="actividades-noviembre.html">Noviembre</a></li>
+                <li><a href="actividades-diciembre.html">Diciembre</a></li>
+                               
+              </ul>
+            </div>
+          </div>    
+          
+        </div>
+      </section>
+    	<?php
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
+    
+    
+    
     public function getSobreNosotros()
     {
     	ob_start();
@@ -1892,7 +2142,7 @@ class Layout_View
 						<ul class="marked-list offs2">
 							<li><a href="/causas/">Causas</a></li>
 							<li><a href="/proyectos/">Proyectos</a></li>
-							<li><a href="actividades.html">Actividades</a></li>
+							<li><a href="/actividades/">Actividades</a></li>
 							<li><a href="campanas.html">Campañas</a></li>
 							<li><a href="materiales-educativos.html">Materiales Educativos</a></li>
 							<li><a href="/noticias/">Noticias</a></li>

@@ -37,17 +37,33 @@ RewriteRule ^logros/$ 							/logros.php?section=19
 RewriteRule ^noticias/$ 						/noticias.php?section=19
 RewriteRule ^contacto/$ 						/contacto.php?section=19
 RewriteRule ^registrarte/$ 						/registro.php?section=19
+RewriteRule ^voluntariado/$ 					/voluntariado.php?section=19
+RewriteRule ^servicio-social/$ 					/servicio-social.php?section=19
+RewriteRule ^practicas/$ 						/practicas.php?section=19
+RewriteRule ^donativos/$ 						/donativos.php?section=19
+RewriteRule ^que-puedes-aportar/$ 				/aportaciones.php?section=19
+RewriteRule ^voluntariado-por-un-dia/$ 			/voluntariado-dia.php?section=19
+RewriteRule ^experiencia-360/$ 					/experiencia-360.php?section=19
+RewriteRule ^embajadores/$ 						/embajadores.php?section=19
+RewriteRule ^quiero-ayudar/$ 					/quiero-ayudar.php?section=19
+RewriteRule ^productos/$ 						/productos.php?section=19
 
 
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=2&sectionId=$1
 RewriteRule ^espacios/([0-9]+)/([A-Za-z0-9-]+)/$ 		/espacios.php?section=3&sectionId=$1
 RewriteRule ^noticia/([0-9]+)/([A-Za-z0-9-]+)/$ 		/noticia.php?section=4&sectionId=$1
+
 RewriteRule ^proyecto/([0-9]+)/([A-Za-z0-9-]+)/$ 		/proyecto.php?section=4&sectionId=$1
 RewriteRule ^actividad/([0-9]+)/([A-Za-z0-9-]+)/$ 		/actividad.php?section=4&sectionId=$1
 RewriteRule ^campana/([0-9]+)/([A-Za-z0-9-]+)/$ 		/campana.php?section=4&sectionId=$1
 RewriteRule ^material/([0-9]+)/([A-Za-z0-9-]+)/$ 		/material.php?section=4&sectionId=$1
-
-
+RewriteRule ^contenidos/([0-9]+)/([A-Za-z0-9-]+)/$ 		/contenido.php?section=4&sectionId=$1
+RewriteRule ^voluntariado-item/([0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 	/voluntariado-item.php?section=4&sectionId=$1&kind=$3
+RewriteRule ^embajador/([0-9]+)/([A-Za-z0-9-]+)/$ 		/embajador.php?section=4&sectionId=$1
+RewriteRule ^noticias/todas/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/noticias.php?section=4&from=$1&to=$2
+RewriteRule ^actividades/todas/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.php?section=4&from=$1&to=$2
+RewriteRule ^actividades/voluntariado/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.php?section=4&from=$1&to=$2&kind=voluntariado
+RewriteRule ^producto/([0-9]+)/([A-Za-z0-9-]+)/$ 		/producto.php?section=4&sectionId=$1
 
 
 

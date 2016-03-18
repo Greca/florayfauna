@@ -148,6 +148,23 @@ class Layout_View
 				case 'material':
 					echo self::getSingleMaterialHeader();
 				break;
+				
+				case 'embajador':
+					echo self::getSingleMaterialHeader();
+				break;
+				
+				case 'contenidos':
+					echo self::getSingleNoticiaHeader();
+				break;
+				
+				case 'producto':
+					echo self::getSingleNoticiaHeader();
+				break;
+				
+				case 'voluntariado-item':
+					echo self::getSingleVoluntariadoHeader();
+				break;
+				
 			}
 			?>
 		</head>
@@ -246,6 +263,62 @@ class Layout_View
  					
  					case 'material':
  						echo self::getSingleMaterialContent();
+ 					break;
+ 					
+ 					case 'voluntariado':
+ 						echo self::getVoluntariadoMain();
+ 					break;
+ 					
+ 					case 'servicio':
+ 						echo self::getServicioMain();
+ 					break;
+ 					
+ 					case 'practicas':
+ 						echo self::getPracticasMain();
+ 					break;
+ 					
+ 					case 'donativos':
+ 						echo self::getDonativosMain();
+ 					break;
+ 					
+ 					case 'aportaciones':
+ 						echo self::getAportacionesMain();
+ 					break;
+ 						
+ 					case 'un-dia':
+ 						echo self::getUnDiaMain();
+ 					break;
+ 					
+ 					case 'experiencia':
+ 						echo self::getExperienciaMain();
+ 					break;
+ 					
+ 					case 'embajadores':
+ 						echo self::getEmbajadoresMain();
+ 					break;
+ 					
+ 					case 'embajador':
+ 						echo self::getSingleMaterialContent();
+ 					break;
+ 					
+ 					case 'voluntariado-item':
+ 						echo self::getSingleVoluntariadoContent();
+ 					break;
+ 					
+ 					case 'contenido':
+ 						echo self::getSingleNoticiaContent();
+ 					break;
+ 					
+ 					case 'ayudar':
+ 						echo self::getAyudarMain();
+ 					break;
+ 					
+ 					case 'productos':
+ 						echo self::getProductosMain();
+ 					break;
+ 					
+ 					case 'producto':
+ 						echo self::getSingleNoticiaContent();
  					break;
  					
 					default :
@@ -354,7 +427,7 @@ class Layout_View
 
     	if ($this->data['section']['has_bg'] == 1 || $_GET['section'] == 1)
     	{
-    		$headerClass = '';
+    		$headerClass = 'head1';
     		$stuckClass = 'stuck_container';
     		$stuckStyle = '';
     	}
@@ -417,42 +490,22 @@ class Layout_View
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="voluntariado.html">Voluntariado</a>
+                                    <a href="/voluntariado/">Voluntariado</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="servicio-social.html">Servicio Social </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="practicas-profesionales.html">Prácticas Profesionales </a>
-                                        </li>
-                                        <li>
-                                            <a href="voluntariado-dia.html">Voluntario por un día </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="experiencia-360.html">Experiencia 360 </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="embajador.html">Embajadores por el mundo </a>
-                                        </li>
+                                        <li><a href="/servicio-social/">Servicio Social </a></li>
+                                        <li><a href="/practicas/">Prácticas Profesionales </a></li>
+                                        <li><a href="/voluntariado-por-un-dia/">Voluntario por un día </a></li>
+                                        <li><a href="/experiencia-360/">Experiencia 360 </a></li>
+                                        <li><a href="/embajadores/">Embajadores por el mundo </a></li>
                                     </ul>
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="quiero-ayudar.html">Quiero Ayudar</a>
+                                    <a href="/quiero-ayudar/">Quiero Ayudar</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="dotativos.html">Donativos </a>
-                                        </li>
-                                        <li>
-                                            <a href="aportaciones.html">Qué puedes aportar </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="productos-con-causa.html">Productos con causa </a>
-                                        </li>
+                                        <li><a href="/donativos/">Donativos </a></li>
+                                        <li><a href="/que-puedes-aportar/">Qué puedes aportar </a></li>
+                                        <li><a href="/productos/">Productos con causa </a></li>
                                     </ul>
                                 </li>
                                 
@@ -469,7 +522,19 @@ class Layout_View
             </div>
 
             <?php 
-    		if ($this->data['section']['has_bg'] == 1 || $_GET['section'] == 1)
+    		if ($this->data['section']['has_bg'] == 1)
+    		{
+    			?>
+    		<section class="well well1">
+                <div class="container">
+                </div>
+            </section>
+    		<?php 
+    		}
+    		?>
+    		
+    		<?php 
+    		if ($_GET['section'] == 1)
     		{
     			?>
     		<section class="well well1">
@@ -788,6 +853,30 @@ class Layout_View
             </div>
         </section>
         
+        <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Proyectos - <?php echo $this->data['section']['title']; ?></h3>
+	        	<div class="row">
+	        	<?php 
+	        	foreach ($this->data['proyectos'] as $proyecto)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $proyecto['icon']; ?>"" alt="">
+							<div class="caption">
+								<h5><a href="/proyecto/<?php echo $proyecto['proyectos_id']; ?>/<?php echo Tools::slugify($proyecto['title']); ?>/"><?php echo $proyecto['title']; ?></a></h5>
+								<p><?php echo $proyecto['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+        
         <?php 
         if ($this->data['news'])
         {
@@ -834,6 +923,8 @@ class Layout_View
     		header 
     		{
 		    	background: #000000 url(<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $banner; ?>) no-repeat;
+		    	padding-top: 64px;
+    			padding-bottom: 40px;
 			}
     			<?php
     		}
@@ -900,6 +991,30 @@ class Layout_View
 						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
 						<div class="text-justify"><?php echo $this->data['section']['third_column_content']; ?></div>
 					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Contenidos destacados</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['contenidos'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/contenidos/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
 				</div>
 			</div>
 		</section>
@@ -1149,9 +1264,36 @@ class Layout_View
 				</div>
 			</div>
 		</section>
-		<?php
-		echo self::getAllCausas();
-		?>
+		
+		<section class="well well4">
+			<div class="container">
+				<h3 class="text-center">Causas</h3>
+				<div class="row col-4_mod">
+				<?php 
+				foreach ($this->data['causas'] as $causa)
+				{
+					?>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail-2">
+							<a class="thumb" data-fancybox-group="1" href="<?php echo "/causas/".$causa['causas_id']."/".Tools::slugify($causa['title']).'/'; ?>">
+								<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $causa['icon']; ?>" alt="<?php echo $causa['title']; ?>">
+								<span class="thumb_overlay"></span>
+							</a>  
+							<div class="caption">
+								<p class="text-info">
+									<?php echo $causa['title']; ?><br />
+									<span><?php echo $causa['description']; ?></span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		
 		<section class="well well3 well3_ins1 text-center">
 			<h3 class="text-center">QU&Eacute; HACEMOS</h3>
 			<div class="img_block">
@@ -1187,7 +1329,7 @@ class Layout_View
 					<div class="overlay">
 						<time datetime="2015"><span> Materiales Educativos</span></time>
 						<p class="ins3"></p>
-						<a href="/materiales-educativos/" class="btn btn-default">ver más</a>
+						<a href="/materiales/" class="btn btn-default">ver más</a>
 					</div>
 				</div>
 			</div>
@@ -1495,32 +1637,32 @@ class Layout_View
 		</section>
 		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
 			<div class="container">
-				<h3 class="text-center">Noticias Pasadas</h3>
+				<h3 class="text-center">Calendario Noticias</h3>
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="noticia.html">January 2014</a></li>
-							<li><a href="#">February 2014</a></li>
-							<li><a href="#">March 2014</a></li>
-							<li><a href="#">April 2014</a></li>
+							<li><a href="/noticias/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
+							<li><a href="/noticias/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
+							<li><a href="/noticias/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
+							<li><a href="/noticias/todas/2016-04-01/2016-05-01/">Abril 2016</a></li>
 						</ul>
 					</div>
 					
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="#">May 2014</a></li>
-							<li><a href="#">June 2014</a></li>  
-							<li><a href="#">July 2014</a></li>
-							<li><a href="#">August 2014</a></li>
+							<li><a href="/noticias/todas/2016-05-01/2016-06-01/">Mayo 2016</a></li>
+							<li><a href="/noticias/todas/2016-06-01/2016-07-01/">Junio 2016</a></li>  
+							<li><a href="/noticias/todas/2016-07-01/2016-08-01/">Julio 2016</a></li>
+							<li><a href="/noticias/todas/2016-08-01/2016-09-01/">Agosto 2016</a></li>
 						</ul>
 					</div>
 					
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="#">September 2014</a></li>
-							<li><a href="#">October 2014</a></li>
-							<li><a href="#">November 2014</a></li>
-							<li><a href="#">December 2014</a></li>               
+							<li><a href="/noticias/todas/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
+							<li><a href="/noticias/todas/2016-10-01/2016-11-01/">Octubre 2016</a></li>
+							<li><a href="/noticias/todas/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
+							<li><a href="/noticias/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
 						</ul>
 					</div>
 				</div>    
@@ -1903,8 +2045,9 @@ class Layout_View
 		</section>
 		<?php 
       	}
-		?>
-    	<?php
+		
+      	echo self::getSponsors();
+      	
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1969,51 +2112,101 @@ class Layout_View
 				</div>
 			</div>
 		</section>
-		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
-        <div class="container">
-          
-            <h3 class="text-center">
-              Calendario de Actividades
-            </h3>
-          <div class="row offs1">
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-enero.html">Enero </a></li>
-                <li><a href="actividades-febrero.html">Febrero</a></li>
-                <li><a href="actividades-marzo.html">Marzo</a></li>
-                <li><a href="actividades-abril.html">Abril</a></li>
-                               
-              </ul>
-            </div>
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-mayo.html">Mayo</a></li>
-                <li><a href="actividades-junio.html">Junio</a></li>
-                <li><a href="actividades-julio.html">Julio</a></li>
-                <li><a href="actividades-agosto.html">Agosto</a></li>
-                
-                               
-              </ul>
-            </div>
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-septiembre.html">Septiembre</a></li>
-                <li><a href="actividades-octubre.html">Octubre</a></li>
-                <li><a href="actividades-noviembre.html">Noviembre</a></li>
-                <li><a href="actividades-diciembre.html">Diciembre</a></li>
-                               
-              </ul>
-            </div>
-          </div>    
-          
-        </div>
-      </section>
     	<?php
+    	echo self::getActividadesCalendar();
     	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
     }
+    
+    public function getActividadesCalendar()
+    {
+    	ob_start();
+    	?>
+    	<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Calendario Actividades</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
+							<li><a href="/actividades/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
+							<li><a href="/actividades/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
+							<li><a href="/actividades/todas/2016-04-01/2016-05-01/">Abril 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-05-01/2016-06-01/">Mayo 2016</a></li>
+							<li><a href="/actividades/todas/2016-06-01/2016-07-01/">Junio 2016</a></li>  
+							<li><a href="/actividades/todas/2016-07-01/2016-08-01/">Julio 2016</a></li>
+							<li><a href="/actividades/todas/2016-08-01/2016-09-01/">Agosto 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
+							<li><a href="/actividades/todas/2016-10-01/2016-11-01/">Octubre 2016</a></li>
+							<li><a href="/actividades/todas/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
+							<li><a href="/actividades/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+		</section>
+    	<?php
+    	$calendar = ob_get_contents();
+    	ob_end_clean();
+    	return $calendar;
+    }
+    
+    public function getActividadesCalendarVoluntariado()
+    {
+    	ob_start();
+    	?>
+    	<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Calendario Actividades</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2016-01-01/2016-02-01/">Enero 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-02-01/2016-03-01/">Febrero 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-03-01/2016-04-01/">Marzo 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-04-01/2016-05-01/">Abril 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2016-05-01/2016-06-01/">Mayo 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-06-01/2016-07-01/">Junio 2016</a></li>  
+							<li><a href="/actividades/voluntariado/2016-07-01/2016-08-01/">Julio 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-08-01/2016-09-01/">Agosto 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-10-01/2016-11-01/">Octubre 2016</a></li>
+							<li><a href="/actividades/voluntariados/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
+							<li><a href="/actividades/voluntariado/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+		</section>
+    	<?php
+    	$calendar = ob_get_contents();
+    	ob_end_clean();
+    	return $calendar;
+    }
+    
+    
     
     public function getSingleActividadHeader()
     {
@@ -2523,18 +2716,791 @@ class Layout_View
           		</div>
           	</div>
 		</section>
-		<?php 
+		
+		<?php
       	}
+      	
+      	?>
+      	
+      	<?php 
+		if ($this->data['testimonios'])
+		{
 		?>
-    	<?php
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		
+		<?php
+		} 
+		echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
     }
     
+    public function getVoluntariadoMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3>Voluntariado</h3>
+		            <h5>¿Qué es ser un voluntario para Flora Fauna y Cultura de México A.C.?</h5>
+		            <p>
+		              	Es donar tu tiempo a cambio de experiencias extraordinarias; 
+		                experiencias que cambian tu perspectivas personales y te 
+		                hacen más consciente de tu responsabilidad con el medio 
+		                ambiente y tu  comunidad.
+		            </p>
+		            <h5>¿Quieres ser parte del cambio?</h5>
+		              
+					<p>Aporta tu tiempo a cualquiera de nuestros proyectos<br> <br> <br>
+		             <strong>“La mejor forma de encontrarse con uno mismo. 
+		                 Es perderse en el servicio hacia otros”</strong><br> Gandhi.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		
+		<!-- ALIADOS Y DONANTES -->
+		<section class="well well4">
+			<div class="container">
+				<h3 class="text-center">Voluntariado</h3>
+				<div class="donantes_grid">
+					<div class="item">
+						<div class="row text-center">
+							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+								<div class="box2 ta__c">
+									<div class="member">
+										<a href="/servicio-social/"> <img src="/images/servicio-social.jpg" alt="Flora y Fauna"></a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+								<div class="box2 ta__c">
+									<div class="member">
+										<a href="/practicas/"> <img src="/images/practicas.jpg" alt="Flora y Fauna"></a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+								<div class="box2 ta__c">
+									<div class="member">
+										<a href="/voluntariado-por-un-dia/"> <img src="/images/por-un-dia.jpg" alt="Flora y Fauna"></a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+								<div class="box2 ta__c">
+									<div class="member">
+										<a href="/experiencia-360/"> <img src="/images/experiencia.jpg" alt="Flora y Fauna"></a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+								<div class="box2 ta__c">
+									<div class="member">
+										<a href="/embajadores/"> <img src="/images/embajadores.jpg" alt="Flora y Fauna"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+				
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getTestimoniosItem($testimonio)
+	{
+		ob_start();
+		?>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $testimonio['icon']; ?>" alt="">
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<p class="mwidth"><span class="span_blc"><?php echo $testimonio['description']; ?></span></p>
+		</div>
+		<br>
+		<br>
+		<?php
+		$testimonio = ob_get_contents();
+		ob_end_clean();
+		return $testimonio;
+	}
+	
+	public function getServicioMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Servicio Social</h5>
+		            
+		            <p class="text-justify">
+		              El servicio social es una actividad en la cual contribuyes a mejorar 
+		              el medio ambiente y tu comunidad.También es la oportunidad perfecta 
+		              para que desarrolles nuevas actitudes y habilidades además que puede 
+		              poner en práctica los conocimientos obtenidos a lo largo de tus estudios 
+		              universitarios.
+		            </p>
+		            <p class="text-justify">¡Puede ser que desarrolles pasiones que nunca creíste tener!</p>
+		              
+		            <p class="text-justify">La duración del servicio social depende de la institución a la 
+		                  que perteneces.Te invitamos a hacer tu servicio social en el 
+		                  programa que más se ajuste a la experiencia que estás buscando.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">OPCIONES PARA TU SERVICIO SOCIAL</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/servicios/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getPracticasMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Pr&aacute;cticas profesionales</h5>
+		            
+		            <p class="text-justify">
+		              Es un estancia temporal en la cual puedes adentrarte al mundo laboral y desarrollar 
+		              experiencia en causas como conservación protección, rescate e investigación de 
+		              nuestros ecosistemas, especies amenazadas y en peligro de extinción así como en el 
+		              impulso de educación ambiental y bienestar comunitario.
+		            </p>
+		            <br><br>
+		            <p class="text-justify">La duración depende de la institución a la que perteneces. 
+		            Debido a que somos una organización sin ánimo de lucro no podemos ofrecerte una beca 
+		            pero en todos nuestros programas ofrecemos una comida diaria, uniforme, si tu estancia 
+		            es igual o mayor de un mes eres acreedor a un pase sencillo para los parques Xcaret o 
+		            Xel-Há y en algunos espacios puedes recibir alojamiento.</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">OPCIONES PARA TUS PRÁCTICAS PROFESIONALES</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/practicas/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getUnDiaMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Voluntariado por un d&iacute;a</h5>
+		            
+		            <p class="text-justify">
+		              ¿Quieres ayudar a tu comunidad pero trabajas o tienes tu tiempo reducido? Ser 
+		              voluntario es aportar lo más preciado que tienes (tiempo) para mejorar tu entorno 
+		              y llevarte una experiencia única. Tenemos muchos espacios donde podrás ser voluntario 
+		              por un día. Descubre cuál se ajusta a la experiencia que estás buscando
+		            </p>
+				</div>
+			</div>
+		</section>
+		<?php echo self::getActividadesCalendarVoluntariado(); ?>
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getExperienciaMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Experiencia 360</h5>
+		            
+		            <p class="text-justify">
+		              FFCM es una organización con muchos espacios y actividades donde generamos 
+		              comunidad. Experiencia 360 te ayuda a conocer a nuestra organización siendo 
+		              voluntario por un día en cada uno de nuestros espacios y programas.
+		            </p>
+				</div>
+			</div>
+		</section>
+		<?php echo self::getActividadesCalendar(); ?>
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getEmbajadoresMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Embajadores por el mundo</h5>
+		            
+		            <p class="text-justify">
+		              Nos gusta compartir nuestros conocimientos y tener personas que puedan replicar
+		               lo que hacemos en nuestra organización. Un embajador podrá adaptar y utilizar 
+		               esta información para dar soluciones a una problemática local. Siendo embajador 
+		               de FFCM estarás formando parte clave de nuestra organización, a través de la difusión 
+		               de actividades locales, el fomento a la revalorización del patrimonio natural y cultural 
+		               de tu región y sobre todo realizando acciones que enriquezcan a la comunidad. Acércate a 
+		               nosotros para que en juntos demos soluciones locales para una acción global.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">INFORMACIÓN BÁSICA</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/embajador/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getSingleVoluntariadoHeader()
+    {
+    	ob_start();
+    	?>
+    	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
+    	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
+    	<script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
     
+    public function getSingleVoluntariadoContent()
+    {
+    	ob_start();
+    	?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3><?php echo $this->data['section']['title']; ?></h3>
+					<div class="text-justify"><?php echo $this->data['section']['content']; ?></div>
+				</div>
+			</div>
+		</section>
+      
+        <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<div class="row offs1">
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['first_column_title']; ?></h3>
+						<br />
+						<div class="text-justify first-column">
+							<?php echo $this->data['section']['first_column_content']; ?>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['second_column_title']; ?></h3>
+						<br />
+						<div class="text-justify">
+							<?php echo $this->data['section']['second_column_content']; ?>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
+						<br />
+						<div class="text-justify">
+							<?php echo $this->data['section']['third_column_content']; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<?php 
+    	if ($this->data['gallery'])
+    	{
+    	?>
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['gallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<?php 
+    	}
+      	?>
+      	
+      	<?php
+      	if ($this->data['videos'])
+      	{ 
+      	?>
+      	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+        	<div class="container">
+        		<h3 class="h3 text-center">Galeria de Videos</h3>
+          		<div class="row">
+          		<?php 
+          		foreach ($this->data['videos'] as $video)
+          		{
+          			echo self::getNewsVideoItem($video);
+          		}
+          		?>
+          		</div>
+          	</div>
+		</section>
+		<?php 
+      	}
+		?>
+		
+		<?php 
+		if ($this->data['testimonios'])
+		{
+		?>
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+    	<?php
+		}
+    	echo self::getSobreNosotros();
+    	$index = ob_get_contents();
+    	ob_end_clean();
+    	return $index;	
+    }
     
-    
+    public function getAyudarMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Quiero Ayudar</h5>
+		            
+		            <p class="text-justify">
+		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit amet neque efficitur.
+		            </p>
+		              
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Cómo puedes ayudar</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/servicios/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getDonativosMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Donativos</h5>
+		            
+		            <p class="text-justify">
+		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
+		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
+		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
+		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
+		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
+		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
+		              amet neque efficitur.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Opciones para donar</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/donativos/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getAportacionesMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Que puedes aportar</h5>
+		            
+		            <p class="text-justify">
+		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
+		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
+		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
+		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
+		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
+		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
+		              amet neque efficitur.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Opciones para donar</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/que-puedes-aportar/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
+	public function getProductosMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		              
+					<h5>Productos</h5>
+		            
+		            <p class="text-justify">
+		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
+		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
+		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
+		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
+		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
+		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
+		              amet neque efficitur.
+		            </p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Productos con causa</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/producto/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/"><?php echo $item['title']; ?></a></h5>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+	
     public function getSobreNosotros()
     {
     	ob_start();
@@ -2543,29 +3509,38 @@ class Layout_View
 			<div class="container">
 				<h3 class="text-center">Más Sobre Nosotros</h3>
 				<div class="row offs1">
-					<div class="col-xs-4">
+					<div class="col-xs-3">
 						<ul class="marked-list offs2">
 							<li><a href="/logros/">Logros</a></li>
 							<li><a href="/directorio/">Directorio</a></li>
 							<li><a href="/aliados-y-donantes/">Aliados</a></li>
 						</ul>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-3">
 						<ul class="marked-list offs2">
 							<li><a href="/causas/">Causas</a></li>
 							<li><a href="/proyectos/">Proyectos</a></li>
 							<li><a href="/actividades/">Actividades</a></li>
 							<li><a href="/campanas/">Campa&ntilde;as</a></li>
-							<li><a href="materiales-educativos.html">Materiales Educativos</a></li>
+							<li><a href="/materiales/">Materiales Educativos</a></li>
 							<li><a href="/noticias/">Noticias</a></li>
 						</ul>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-3">
 						<ul class="marked-list offs2">
-							<li><a href="practicas-profesionales.html">Prácticas Profesionales</a></li>
-							<li><a href="voluntariado-dia.html">Voluntariado por un día</a></li>
-							<li><a href="experiencia-360.html">Experiencia 360</a></li>
-							<li><a href="embajador.html">Embajadores por el mundo</a></li>
+							<li><a href="/servicio-social/">Servicio Social</a></li>
+							<li><a href="/practicas/">Prácticas Profesionales</a></li>
+							<li><a href="/voluntariado-por-un-dia/">Voluntariado por un día</a></li>
+							<li><a href="/experiencia-360/">Experiencia 360</a></li>
+							<li><a href="/embajadores/">Embajadores por el mundo</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-3">
+						<ul class="marked-list offs2">
+							<li><a href="/servicio-social/">Donativos</a></li>
+							<li><a href="/practicas/">Que puedes aportar</a></li>
+							<li><a href="/voluntariado-por-un-dia/">Productos con causa</a></li>
 						</ul>
 					</div>
 				</div>    

@@ -179,6 +179,16 @@ class Layout_Model
 		}
 	}
 	
+	public function getAllNewsRange($from, $to)
+	{
+		try {
+			$query = 'SELECT * FROM noticias WHERE date BETWEEN "'.$from.'" AND "'.$to.'" ORDER BY date DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function getLastConservacionTwoNews()
 	{
 		try {
@@ -349,6 +359,26 @@ class Layout_Model
 		}
 	}
 	
+	public function getAllActividadesRange($from, $to)
+	{
+		try {
+			$query = 'SELECT * FROM actividades WHERE date BETWEEN "'.$from.'" AND "'.$to.'" ORDER BY date DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAllActividadesRangeVoluntariado($from, $to)
+	{
+		try {
+			$query = 'SELECT * FROM actividades WHERE date BETWEEN "'.$from.'" AND "'.$to.'" AND voluntariado = 1 ORDER BY date DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function getActividadesById($actividades_id)
 	{
 		try {
@@ -481,4 +511,177 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getVoluntariado($type)
+	{
+		try {
+			$query = 'SELECT * FROM voluntariado WHERE type = '.$type.' ORDER BY voluntariado_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getVoluntariadoById($id)
+	{
+		try {
+			$id = (int) $id;
+			$query = 'SELECT * FROM voluntariado WHERE voluntariado_id = '.$id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEmbajadores()
+	{
+		try {
+			$query = 'SELECT * FROM embajadores ORDER BY materiales_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEmbajadoresById($id)
+	{
+		try {
+			$id = (int) $id;
+			$query = 'SELECT * FROM embajadores WHERE materiales_id = '.$id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEmbajadoresGallery($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM embajadores_gallery WHERE materiales_id = '.$materiales_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEmbajadoresVideo($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM embajadores_videos WHERE materiales_id = '.$materiales_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getTestimoniosBySection($section)
+	{
+		try {
+			$query = 'SELECT * FROM testimonios WHERE '.$section.' = 1 ORDER BY testimonios_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProyectosAliados($section)
+	{
+		try {
+			$query = 'SELECT * FROM proyectos_aliados pa 
+					LEFT JOIN aliados a ON a.aliado_id = pa.aliado_id
+					WHERE proyectos_id = '.$section;
+			
+			return $this->db->getArray($query);
+			
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEspaciosContenidos($section)
+	{
+		try {
+			$query = 'SELECT * FROM espacios_contenidos ec 
+					LEFT JOIN contenidos c ON c.materiales_id = ec.materiales_id
+					WHERE ec.espacios_id ='.$section;
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getContenidosById($id)
+	{
+		try {
+			$id = (int) $id;
+			$query = 'SELECT * FROM contenidos WHERE materiales_id = '.$id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getContenidosGallery($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM contenidos_gallery WHERE materiales_id = '.$materiales_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getContenidosVideo($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM contenidos_videos WHERE materiales_id = '.$materiales_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProductos()
+	{
+		try {
+			$query = 'SELECT * FROM productos ORDER BY materiales_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProductosById($id)
+	{
+		try {
+			$id = (int) $id;
+			$query = 'SELECT * FROM productos WHERE materiales_id = '.$id;
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProductosGallery($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM productos_gallery WHERE materiales_id = '.$materiales_id.' ORDER BY picture_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getProductosVideo($materiales_id)
+	{
+		try {
+			$query = 'SELECT * FROM productos_videos WHERE materiales_id = '.$materiales_id.' ORDER BY video_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	
 }

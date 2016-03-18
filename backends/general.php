@@ -110,6 +110,9 @@ class generalFrontBackend
 						$data['news'] 	= $newsArray;
 					break;
 				}
+				
+				$proyectosArray 	= $this->model->getCausasProyectos($_GET['sectionId']);
+				$data['proyectos'] 	= $proyectosArray;
 			break;
 			
 			case 'all-causas':
@@ -127,6 +130,9 @@ class generalFrontBackend
 				
 				$bloquesArray 		= $this->model->getEspaciosBloques($_GET['sectionId']);
 				$data['bloques'] 	= $bloquesArray;
+				
+				$espaciosArray 		= $this->model->getEspaciosContenidos($_GET['sectionId']);
+				$data['contenidos']	= $espaciosArray;
 			break;
 			
 			case 'noticia':
@@ -167,7 +173,19 @@ class generalFrontBackend
 			break;
 			
 			case 'noticias':
-				$noticiasArray 		= $this->model->getAllNews();
+				$from = $_GET['from'];
+				$to = $_GET['to'];
+				
+				if ($from && $to)
+				{
+					$noticiasArray 		= $this->model->getAllNewsRange($from, $to);
+				}
+				else
+				{
+					$noticiasArray 		= $this->model->getAllNews();
+				}
+				
+				
 				$data['noticias'] 	= $noticiasArray;
 			break;
 			
@@ -194,10 +212,33 @@ class generalFrontBackend
 				
 				$videosArray		= $this->model->getProyectosVideo($_GET['sectionId']);
 				$data['videos'] 	= $videosArray;
+				
+				$aliadosArray		= $this->model->getProyectosAliados($_GET['sectionId']);
+				$data['aliados']	= $aliadosArray;
 			break;
 			
 			case 'actividades':
-				$newsArray 			= $this->model->getLastTwoActividades();
+				$from = $_GET['from'];
+				$to = $_GET['to'];
+				$kind = $_GET['kind'];
+				
+				if ($from && $to)
+				{
+					if ($kind=="voluntariado")
+					{
+						$newsArray 		= $this->model->getAllActividadesRangeVoluntariado($from, $to);
+					}
+					else 
+					{
+						$newsArray 		= $this->model->getAllActividadesRange($from, $to);
+					}
+				}
+				else
+				{
+					$newsArray 			= $this->model->getLastTwoActividades();
+				}
+				
+				
 				$data['actividades'] 	= $newsArray;
 			break;
 			
@@ -251,6 +292,99 @@ class generalFrontBackend
 					
 				$videosArray		= $this->model->getMaterialesVideo($_GET['sectionId']);
 				$data['videos'] 	= $videosArray;
+			break;
+			
+			case 'servicio':
+				$newsArray 		= $this->model->getVoluntariado(1);
+				$data['items'] 	= $newsArray;
+				
+				$infoArray	= $this->model->getTestimoniosBySection('servicios');
+				$data['testimonios'] = $infoArray;
+			break;
+			
+			case 'practicas':
+				$newsArray 		= $this->model->getVoluntariado(2);
+				$data['items'] 	= $newsArray;
+				
+				$infoArray				= $this->model->getTestimoniosBySection('practicas');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'donativos':
+				$newsArray 		= $this->model->getVoluntariado(3);
+				$data['items'] 	= $newsArray;
+			break;
+			
+			case 'aportaciones':
+				$newsArray 		= $this->model->getVoluntariado(4);
+				$data['items'] 	= $newsArray;
+			break;
+			
+			case 'un-dia':
+				$infoArray				= $this->model->getTestimoniosBySection('voluntariado');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'experiencia':
+				$infoArray				= $this->model->getTestimoniosBySection('experiencia');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'embajadores':
+				$newsArray 			= $this->model->getEmbajadores();
+				$data['items'] 		= $newsArray;
+				
+				$infoArray				= $this->model->getTestimoniosBySection('embajadores');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'embajador':
+				$sectionRow 		= $this->model->getEmbajadoresById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+	
+				$galleryArray  		= $this->model->getEmbajadoresGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
+	
+				$videosArray	= $this->model->getEmbajadoresVideo($_GET['sectionId']);
+				$data['videos'] = $videosArray;
+				
+				$infoArray				= $this->model->getTestimoniosBySection('embajadores');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'voluntariado-item': // voluntariado
+				$sectionRow 		= $this->model->getVoluntariadoById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+				
+				$infoArray				= $this->model->getTestimoniosBySection($_GET['kind']);
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'contenido':
+				$sectionRow 		= $this->model->getContenidosById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+					
+				$galleryArray  		= $this->model->getContenidosGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
+					
+				$videosArray		= $this->model->getContenidosVideo($_GET['sectionId']);
+				$data['videos'] 	= $videosArray;
+			break;
+			
+			case 'productos':
+				$newsArray 			= $this->model->getProductos();
+				$data['items'] 	= $newsArray;
+			break;
+			
+			case 'producto':
+				$sectionRow 		= $this->model->getProductosById($_GET['sectionId']);
+				$data['section'] 	= $sectionRow;
+					
+				$galleryArray  		= $this->model->getProductosGallery($_GET['sectionId']);
+				$data['gallery'] 	= $galleryArray;
+					
+				$videosArray	= $this->model->getProductosVideo($_GET['sectionId']);
+				$data['videos'] = $videosArray;
 			break;
 			
 			default:

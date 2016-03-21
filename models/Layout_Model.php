@@ -683,5 +683,16 @@ class Layout_Model
 		}
 	}
 	
+	public function getCausasProyectos($section)
+	{
+		try {
+			$query = 'SELECT * FROM causas_proyectos cp
+					LEFT JOIN proyectos p ON p.proyectos_id = cp.proyectos_id
+					WHERE cp.causa_id = '.$section;
 	
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

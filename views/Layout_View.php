@@ -541,7 +541,7 @@ class Layout_View
                 <div class="container">
                     <div class="navbar-header">
                         <h1 class="">
-                            <a  href="index.html"><br /><small class=""> </small></a>
+                            <a  href="/"><br /><small class=""> </small></a>
                         </h1>
                     </div>
                     <h3 class="text-center  fw-n"></h3>
@@ -604,13 +604,13 @@ class Layout_View
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-3">
-						<a href="quiero-ayudar.html" class="index-icons">
+						<a href="/quiero-ayudar/" class="index-icons">
 							<i class="fa fa-credit-card"></i>
 						</a>
 						<p>Ayudar</p>
 					</div>
 					<div class="col-sm-3">
-						<a href="voluntariado.html" class="index-icons">
+						<a href="/voluntariado/" class="index-icons">
 							<i class="fa fa-user-plus"></i>
 						</a>
 						<p>Voluntariado</p>
@@ -642,7 +642,7 @@ class Layout_View
 					<div class="overlay">
 						<time datetime="2015"><span><?php echo $section['title']; ?></span></time>
 						<p class="ins3"></p>
-						<a href="proyectos.html" class="btn btn-default">Ver m&aacute;s</a>
+						<a href="/proyectos/" class="btn btn-default">Ver m&aacute;s</a>
 					</div>
 				</div>
 				<?php
@@ -896,7 +896,11 @@ class Layout_View
 		</section>
     	<?php
         }
+        ?>
         
+        
+        
+        <?php
         echo self::getSobreNosotros();
         
     	$index = ob_get_contents();
@@ -1018,6 +1022,164 @@ class Layout_View
 				</div>
 			</div>
 		</section>
+		
+		<section class="well well3 well3_ins1 text-center">
+
+                <h3 class="text-center">
+                  Calendario de Actividades
+                </h3>
+
+                <div class="img_block_calendar">
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='.5s'>
+                        <img src="/images/calendario/enero.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Enero</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-01-01/2016-02-01/" class="btn btn-default">enero</a>
+                        </div>
+                    </div>
+
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
+                        <img src="/images/calendario/febrero.jpg" alt="calendario-febrero">
+                        <div class="overlay">
+                            <time datetime="2015"> <span>Febrero </span></time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-02-01/2016-03-01/" class="btn btn-default"> Febrero</a>
+                        </div>
+                    </div>
+                    
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
+                        <img src="/images/calendario/marzo.jpg" alt="calendario-febrero">
+                        <div class="overlay">
+                            <time datetime="2015"> <span>Marzo </span></time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-03-01/2016-04-01/" class="btn btn-default"> Marzo</a>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
+                        <img src="/images/calendario/abril.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Abril</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-04-01/2016-05-01/" class="btn btn-default">Abril</a>
+                        </div>
+                    </div>
+                    
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2.5s'>
+                        <img src="/images/calendario/mayo.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Mayo</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-05-01/2016-06-01/" class="btn btn-default">Mayo</a>
+                        </div>
+                    </div>
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
+                        <img src="/images/calendario/junio.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Junio</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-06-01/2016-07-01/" class="btn btn-default">Junio</a>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+            </section>
+        
+        <section class="well well3 well3_ins1 text-center">
+
+                <div class="img_block_calendar">
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='.5s'>
+                        <img src="/images/calendario/julio.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Julio</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-07-01/2016-08-01/" class="btn btn-default">Julio</a>
+                        </div>
+                    </div>
+
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
+                        <img src="/images/calendario/agosto.jpg" alt="calendario-febrero">
+                        <div class="overlay">
+                            <time datetime="2015"> <span>Agosto </span></time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-08-01/2016-09-01/" class="btn btn-default"> Agosto</a>
+                        </div>
+                    </div>
+                    
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1.5s'>
+                        <img src="/images/calendario/septiembre.jpg" alt="calendario-marzo">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Septiembre</span></time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-09-01/2016-10-01/" class="btn btn-default">Setiembre</a>
+                        </div>
+                    </div>
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
+                        <img src="/images/calendario/octubre.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Octubre</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-10-01/2016-11-01/" class="btn btn-default">Octubre</a>
+                        </div>
+                    </div>
+                    
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2.5s'>
+                        <img src="/images/calendario/noviembre.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Noviembre</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-11-01/2016-12-01/" class="btn btn-default">Noviembre</a>
+                        </div>
+                    </div>
+                    <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
+                        <img src="/images/calendario/diciembre.jpg" alt="calendario-enero">
+                        <div class="overlay">
+                            <time datetime="2015"><span> Diciembre</span>
+                            </time>
+                            <p class="ins3">
+                                
+                            </p>
+                            <a href="/actividades/todas/2016-12-01/2017-01-01/" class="btn btn-default">Diciembre</a>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+            </section>
     	<?php
     	echo self::getSobreNosotros();
     	$index = ob_get_contents();
@@ -1965,9 +2127,18 @@ class Layout_View
               			<?php 
               			foreach ($this->data['links-1'] as $link)
               			{
-              				?>
-              				<li><i class="fa-li fa fa-asterisk"></i><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
-              				<?php
+              				if ($link['url'])
+              				{
+              					?>
+              					<li><i class="fa-li fa fa-asterisk"></i><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+              					<?php
+              				}
+              				else
+              				{
+              					?>
+              					<li><i class="fa-li fa fa-asterisk"></i><?php echo $link['title']; ?></li>
+              					<?php
+              				}
               			}
               			?>
               			</ul>  
@@ -1979,9 +2150,18 @@ class Layout_View
 	                	<?php 
 	              		foreach ($this->data['links-2'] as $link)
 	              		{
-	              			?>
-	              			<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
-	              			<?php
+    						if ($link['url'])
+              				{
+              					?>
+              					<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+              					<?php
+              				}
+              				else
+              				{
+              					?>
+              					<li><?php echo $link['title']; ?></li>
+              					<?php
+              				}
 	              		}
 	              		?>            
 	              		</ul>
@@ -1994,9 +2174,18 @@ class Layout_View
 		                	<?php 
 		              		foreach ($this->data['links-3'] as $link)
 		              		{
-		              			?>
-		              		<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
-		              			<?php
+	    						if ($link['url'])
+	              				{
+	              					?>
+	              					<li><a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></li>
+	              					<?php
+	              				}
+	              				else
+	              				{
+	              					?>
+	              					<li><?php echo $link['title']; ?></li>
+	              					<?php
+	              				}
 		              		}
 		              		?>            
 	              		</ul>
@@ -2473,33 +2662,6 @@ class Layout_View
                   			<?php echo $this->data['section']['second_column_content']; ?>
               			</article>
               			
-              			<h3 class="text-center">SPOTS DE RADIO</h3>
-						
-						<article>
-	                  		<ul class="marked-list"> 
-	                  		<?php 
-							if ($this->data['links-4'])
-							{
-								foreach ($this->data['links-4'] as $link)
-								{
-									?>
-							<li>
-			                  <a href="<?php echo $link['url']; ?>" target="_blank">
-			                    <?php echo $link['title']; ?>
-			                  </a>
-			                </li>
-									<?php
-								}
-							}
-							?>    
-	              			</ul>
-              			</article>
-              			
-						<h3 class="text-center">Otros</h3>
-						
-						<article>
-                  		<?php echo $this->data['section']['otros_content']; ?>
-              			</article>
                     </div>
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
@@ -2511,13 +2673,22 @@ class Layout_View
 							{
 								foreach ($this->data['links-3'] as $link)
 								{
-									?>
+									if ($link['url'])
+									{
+										?>
 							<li>
 			                  <a href="<?php echo $link['url']; ?>" target="_blank">
 			                    <?php echo $link['title']; ?>
 			                  </a>
 			                </li>
-									<?php
+										<?php
+									}
+									else 
+									{
+										?>
+							<li><?php echo $link['title']; ?></li>
+										<?php
+									}
 								}
 							}
 							?>    
@@ -2784,7 +2955,7 @@ class Layout_View
 				<div class="donantes_grid">
 					<div class="item">
 						<div class="row text-center">
-							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+							<div class="col-md-2 col-md-offset-1 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 								<div class="box2 ta__c">
 									<div class="member">
 										<a href="/servicio-social/"> <img src="/images/servicio-social.jpg" alt="Flora y Fauna"></a>

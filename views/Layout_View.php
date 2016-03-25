@@ -667,21 +667,26 @@ class Layout_View
 					<div class="item">
 						<div class="row">
 							<?php 
+							$i = 1;
 							foreach ($this->data['espacios'] as $section)
                             {
+                            	$offset = '';
+                            	if ($i == 1)
+                            		$offset = 'col-md-offset-1';
                             ?>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="<?php echo $offset; ?> col-md-2 col-sm-6 col-xs-12">
                               	<div class="thumbnail">
 									<a href="/espacios/<?php echo $section['espacios_id']; ?>/<?php echo Tools::slugify($section['title']); ?>/">
 										<div class="img-thumbnail">
 											<img alt="<?php echo $section['title']; ?>" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $section['icon'];?>">
 										</div>
 										<h5 class="text-center"><?php echo $section['title']; ?></h5>
-										<p class="text-justify"><?php echo $section['description']; ?></p>
+										<p class="text-justify elements"><?php echo $section['description']; ?></p>
 									</a>
 								</div>
 							</div>
 							<?php
+							$i++;
                             }
                             ?>
 						</div>
@@ -3680,14 +3685,14 @@ class Layout_View
 			<div class="container">
 				<h3 class="text-center">Más Sobre Nosotros</h3>
 				<div class="row offs1">
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<ul class="marked-list offs2">
 							<li><a href="/logros/">Logros</a></li>
 							<li><a href="/directorio/">Directorio</a></li>
 							<li><a href="/aliados-y-donantes/">Aliados</a></li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<ul class="marked-list offs2">
 							<li><a href="/causas/">Causas</a></li>
 							<li><a href="/proyectos/">Proyectos</a></li>
@@ -3697,7 +3702,7 @@ class Layout_View
 							<li><a href="/noticias/">Noticias</a></li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<ul class="marked-list offs2">
 							<li><a href="/servicio-social/">Servicio Social</a></li>
 							<li><a href="/practicas/">Prácticas Profesionales</a></li>
@@ -3707,7 +3712,7 @@ class Layout_View
 						</ul>
 					</div>
 					
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<ul class="marked-list offs2">
 							<li><a href="/servicio-social/">Donativos</a></li>
 							<li><a href="/practicas/">Que puedes aportar</a></li>

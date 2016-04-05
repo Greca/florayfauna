@@ -159,6 +159,8 @@ class generalFrontBackend
 			case 'que-hacemos':
 				$topArray			= $this->model->getCausas();
 				$data['causas']		= $topArray;
+				$linkInfo			= $this->model->getLinkByCode('que-hacemos');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'logros':
@@ -184,7 +186,6 @@ class generalFrontBackend
 				{
 					$noticiasArray 		= $this->model->getAllNews();
 				}
-				
 				
 				$data['noticias'] 	= $noticiasArray;
 			break;
@@ -238,6 +239,8 @@ class generalFrontBackend
 					$newsArray 			= $this->model->getLastTwoActividades();
 				}
 				
+				$linkInfo			= $this->model->getLinkByCode('actividades');
+				$data['linkInfo'] 	= $linkInfo;
 				
 				$data['actividades'] 	= $newsArray;
 			break;
@@ -276,6 +279,9 @@ class generalFrontBackend
 					
 				$videosArray	= $this->model->getCampanasVideo($_GET['sectionId']);
 				$data['videos'] = $videosArray;
+				
+				$aliadosArray		= $this->model->getCampanasAliados($_GET['sectionId']);
+				$data['aliados']	= $aliadosArray;
 			break;
 			
 			case 'materiales':

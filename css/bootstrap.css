@@ -7346,7 +7346,7 @@ a.badge:focus {
 
 .jumbotron {
     padding-top: 35px;
-    padding-bottom: 47px;
+    padding-bottom: 10px;
 }
 
 .jumbotron h5 + * {
@@ -7409,7 +7409,8 @@ a.badge:focus {
 }
 
 .thumbnail-1 .caption {
-    margin-top: 32px;
+    margin-top: 28px;
+    height: 180px;
 }
 
 .thumbnail-1 .caption a:hover {
@@ -7437,7 +7438,7 @@ a.badge:focus {
     max-width: 270px;
     max-height: 270px!important;
     width: 270px;
-    height: 270px!important;
+    height: 200px!important;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -8365,7 +8366,7 @@ a.list-group-item-danger.active:focus {
 }
 
 .well {
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     padding-top: 50px;
 }
 
@@ -8411,8 +8412,8 @@ a.list-group-item-danger.active:focus {
 }
 
 .well4 {
-    padding-top: 84px;
-    padding-bottom: 71px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .well5 {
@@ -8422,16 +8423,16 @@ a.list-group-item-danger.active:focus {
 
 .well6 {
     padding-top: 25px;
-    padding-bottom: 90px;
+    padding-bottom: 10px;
 }
 
 .well7 {
-    padding-top: 79px;
-    padding-bottom: 90px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .well7_ins1 {
-    padding-bottom: 129px;
+    padding-bottom: 20px;
 }
 
 @media (max-width: 767px) {
@@ -8441,13 +8442,13 @@ a.list-group-item-danger.active:focus {
 }
 
 .well8 {
-    padding-top: 79px;
-    padding-bottom: 129px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 @media (max-width: 767px) {
     .well8 {
-        padding-bottom: 80px;
+        padding-bottom: 20px;
     }
 }
 

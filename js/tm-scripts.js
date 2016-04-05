@@ -200,11 +200,14 @@ include('js/jquery.easing.1.3.js');
             o.owlCarousel({
                 margin: 30,
                 smartSpeed: 450,
-                loop: true,
+                loop: false,
                 dots: false,
                 dotsEach: 1,
                 nav: true,
+                items:1,
+                autoplay: true,
                 navClass: ['owl-prev fa fa-chevron-left', 'owl-next fa fa-chevron-right'],
+                navText: false,
                 responsive: {
                     0: { items: 1 },
                     768: { items: 1},

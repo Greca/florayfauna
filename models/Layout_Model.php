@@ -695,4 +695,28 @@ class Layout_Model
 			return false;
 		}
 	}
+	
+	public function getCampanasAliados($section)
+	{
+		try {
+			$query = 'SELECT * FROM campanas_aliados pa
+					LEFT JOIN aliados a ON a.aliado_id = pa.aliado_id
+					WHERE proyectos_id = '.$section;
+				
+			return $this->db->getArray($query);
+				
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getLinkByCode($code)
+	{
+		try {
+			$query = 'SELECT * FROM links WHERE code = "'.$code.'"';
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

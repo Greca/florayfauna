@@ -157,6 +157,10 @@ class Layout_View
 					echo self::getSingleNoticiaHeader();
 				break;
 				
+				case 'contenido':
+					echo self::getSingleNoticiaHeader();
+				break;
+				
 				case 'producto':
 					echo self::getSingleNoticiaHeader();
 				break;
@@ -600,7 +604,7 @@ class Layout_View
     	?>
 		<section class="well well3 text-center wow fadeIn" data-wow-duration='3s'>
 			<div class="container">
-				<h2 class="h2_bord">S&Uacute;MATE <br /><small class="small-lines small-lines1"></small></h2>
+				<h2 class="h2_bord">S&Uacute;MATE<br /><small class="small-lines small-lines1"></small></h2>
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-3">
@@ -828,18 +832,55 @@ class Layout_View
     	return $sponsors;
     }
     
+    public function getSocialNetworks()
+    {
+    	ob_start();
+    	?>
+    	<!-- ALIADOS Y DONANTES -->
+        <section class="well well4">
+            <div class="container">
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+					<div id="twitter_box">
+						<div id="twitter">
+							<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/FloraFaunaCultu" data-widget-id="657991383806971904">Tweets por el @FloraFaunaCultu.</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	                   </div><!-- /Twitter -->
+                    </div>
+                    
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+					<div id="facebook_index">
+						<div class="fb-like-box" data-href="http://www.facebook.com/FloraFaunayCulturadeMexico"
+                                data-width="500" data-height="470" data-show-faces="true"
+                                data-colorscheme="dark" style="color: #111; " 
+                                data-stream="true" data-show-border="false" data-header="false">
+                        </div>
+					</div>
+					<div class="clear"></div>
+                </div>
+            </div>
+        </section>
+    	<?php
+    	$sponsors = ob_get_contents();
+    	ob_end_clean();
+    	return $sponsors;
+    }
+    
+    
+    
+    
     public function getIndexContent()
     {
     	ob_start();
+    	
     	echo self::getTopItems();
     	echo self::getIndexCall();
     	echo self::getWhatToDo();
     	echo self::getSpaces();
     	echo self::getNews();
     	echo self::getSponsors();
-    	?>
-    	
-    	<?php
+    	echo self::getSocialNetworks();
+
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
@@ -1423,11 +1464,10 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3>Conoce nuestro trabajo</h3>
-					<p class="text-justify">Flora, Fauna y Cultura de México A.C, trabaja día a día para generar estrategias 
-					para el cuidado del medio ambiente así como para la promoción de espacios culturales 
-					que generen actividades de bienestar comunitario.</p>
-					<br>
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div>
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -2301,8 +2341,8 @@ class Layout_View
         <section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3>Participa</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<p><?php echo $this->data['linkInfo']['content']; ?></p>
 				</div>
 			</div>
 		</section>
@@ -2743,8 +2783,7 @@ class Layout_View
 		</section>
 		<?php 
       	}
-		?>
-    	<?php
+      	echo self::getSponsors();
     	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();

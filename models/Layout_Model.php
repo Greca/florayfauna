@@ -104,7 +104,7 @@ class Layout_Model
 	public function getLinks()
 	{
 		try {
-			$query = 'SELECT * FROM links';
+			$query = 'SELECT * FROM links WHERE index = 1';
 				
 			return $this->db->getArray($query);
 		} catch (Exception $e) {

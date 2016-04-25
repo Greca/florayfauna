@@ -68,6 +68,9 @@ class generalFrontBackend
 		
 		$espaciosArray 		= $this->model->getEspacios();
 		$data['espacios'] 	= $espaciosArray;
+		
+		$footerArray 		= $this->model->getFooter();
+		$data['footer'] 	= $footerArray;
 
 		switch ($section)
 		{
@@ -87,6 +90,14 @@ class generalFrontBackend
 				$noticiasArray		= $this->model->getLastTwoNews();
 				$data['noticias'] 	= $noticiasArray;
 				
+			break;
+			
+			case 'nosotros':
+				$linkInfo			= $this->model->getLinkByCode('nosotros');
+				$data['linkInfo'] 	= $linkInfo;
+				
+				$nosotrosItems 		= $this->model->getNosotrosLinks();
+				$data['items']		= $nosotrosItems;
 			break;
 			
 			case 'causas':
@@ -121,7 +132,8 @@ class generalFrontBackend
 			break;
 			
 			case 'all-espacios':
-				
+				$linkInfo			= $this->model->getLinkByCode('espacios');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'espacios':
@@ -133,6 +145,9 @@ class generalFrontBackend
 				
 				$espaciosArray 		= $this->model->getEspaciosContenidos($_GET['sectionId']);
 				$data['contenidos']	= $espaciosArray;
+				
+				$aliadosArray		= $this->model->getEspaciosAliados($_GET['sectionId']);
+				$data['aliados']	= $aliadosArray;
 			break;
 			
 			case 'noticia':
@@ -154,6 +169,9 @@ class generalFrontBackend
 			case 'aliados':
 				$slidersArray 		= $this->model->getAliados();
 				$data['aliados'] 	= $slidersArray;
+				
+				$infoArray				= $this->model->getTestimoniosBySection('aliados');
+				$data['testimonios'] 	= $infoArray;
 			break;
 			
 			case 'que-hacemos':
@@ -304,8 +322,11 @@ class generalFrontBackend
 				$newsArray 		= $this->model->getVoluntariado(1);
 				$data['items'] 	= $newsArray;
 				
-				$infoArray	= $this->model->getTestimoniosBySection('servicios');
-				$data['testimonios'] = $infoArray;
+				$infoArray				= $this->model->getTestimoniosBySection('servicios');
+				$data['testimonios'] 	= $infoArray;
+				
+				$linkInfo			= $this->model->getLinkByCode('servicio-social');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'practicas':
@@ -314,16 +335,25 @@ class generalFrontBackend
 				
 				$infoArray				= $this->model->getTestimoniosBySection('practicas');
 				$data['testimonios'] 	= $infoArray;
+				
+				$linkInfo			= $this->model->getLinkByCode('practicas-profesionales');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'donativos':
 				$newsArray 		= $this->model->getVoluntariado(3);
 				$data['items'] 	= $newsArray;
+				
+				$linkInfo			= $this->model->getLinkByCode('donativos');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'aportaciones':
 				$newsArray 		= $this->model->getVoluntariado(4);
 				$data['items'] 	= $newsArray;
+				
+				$linkInfo			= $this->model->getLinkByCode('aportar');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'un-dia':
@@ -337,8 +367,8 @@ class generalFrontBackend
 			break;
 			
 			case 'embajadores':
-				$newsArray 			= $this->model->getEmbajadores();
-				$data['items'] 		= $newsArray;
+				$newsArray 				= $this->model->getEmbajadores();
+				$data['items'] 			= $newsArray;
 				
 				$infoArray				= $this->model->getTestimoniosBySection('embajadores');
 				$data['testimonios'] 	= $infoArray;
@@ -351,11 +381,24 @@ class generalFrontBackend
 				$galleryArray  		= $this->model->getEmbajadoresGallery($_GET['sectionId']);
 				$data['gallery'] 	= $galleryArray;
 	
-				$videosArray	= $this->model->getEmbajadoresVideo($_GET['sectionId']);
-				$data['videos'] = $videosArray;
+				$videosArray		= $this->model->getEmbajadoresVideo($_GET['sectionId']);
+				$data['videos'] 	= $videosArray;
 				
 				$infoArray				= $this->model->getTestimoniosBySection('embajadores');
 				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'voluntariado':
+				$linkInfo			= $this->model->getLinkByCode('voluntariado');
+				$data['linkInfo'] 	= $linkInfo;
+			break;
+			
+			case 'ayudar':
+				$linkInfo			= $this->model->getLinkByCode('quiero-ayudar');
+				$data['linkInfo'] 	= $linkInfo;
+				
+				$nosotrosItems 		= $this->model->getAyudarLinks();
+				$data['items']		= $nosotrosItems;
 			break;
 			
 			case 'voluntariado-item': // voluntariado
@@ -380,6 +423,9 @@ class generalFrontBackend
 			case 'productos':
 				$newsArray 			= $this->model->getProductos();
 				$data['items'] 	= $newsArray;
+				
+				$linkInfo			= $this->model->getLinkByCode('productos');
+				$data['linkInfo'] 	= $linkInfo;
 			break;
 			
 			case 'producto':

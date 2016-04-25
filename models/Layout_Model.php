@@ -64,6 +64,18 @@ class Layout_Model
 		}
 	}
 	
+	public function getFooter()
+	{
+		try {
+			$query = 'SELECT * FROM footer';
+	
+			return $this->db->getRow($query);
+	
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function getAliados()
 	{
 		try {
@@ -104,7 +116,7 @@ class Layout_Model
 	public function getLinks()
 	{
 		try {
-			$query = 'SELECT * FROM links WHERE index = 1';
+			$query = 'SELECT * FROM links WHERE indexSection = 1';
 				
 			return $this->db->getArray($query);
 		} catch (Exception $e) {
@@ -715,6 +727,40 @@ class Layout_Model
 		try {
 			$query = 'SELECT * FROM links WHERE code = "'.$code.'"';
 			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getNosotrosLinks()
+	{
+		try {
+			$query = 'SELECT * FROM links WHERE nosotros = 1';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAyudarLinks()
+	{
+		try {
+			$query = 'SELECT * FROM links WHERE ayudar = 1';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getEspaciosAliados($section)
+	{
+		try {
+			$query = 'SELECT * FROM espacios_aliados pa
+					LEFT JOIN aliados a ON a.aliado_id = pa.aliado_id
+					WHERE espacio_id = '.$section;
+				
+			return $this->db->getArray($query);
+				
 		} catch (Exception $e) {
 			return false;
 		}

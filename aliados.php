@@ -25,7 +25,6 @@
 	require_once $root.'/'.'views/Layout_View.php';
 	$option 	= 'aliados';
 	$data 		= $backend->loadBackend($option);
-	
 	$view 		= new Layout_View($data, 'Aliados y donantes');
 	
 	echo $view->printHTMLPage($option);

@@ -25,7 +25,6 @@
 	require_once $root.'/'.'views/Layout_View.php';
 	$option 	= 'nosotros';
 	$data 		= $backend->loadBackend($option);
-	
-	$view 		= new Layout_View($data, 'Directorio');
+	$view 		= new Layout_View($data, 'Nosotros');
 	
 	echo $view->printHTMLPage($option);

@@ -419,6 +419,33 @@ class Layout_View
 		  fjs.parentNode.insertBefore(js, fjs);
 		  $('.messageBody').attr('color', '#fff');
 		}(document, 'script', 'facebook-jssdk'));</script>
+		<script>
+		$(document).ready(function () {
+
+			<?php 
+    		if ($_GET['logo'] == 1)
+    		{
+    			?>
+    			$('.logo-nav').hide();
+				<?php 
+    		}
+			?>	 
+			var menu = $('.well1');
+			var origOffsetY = menu.offset().top;
+
+			function scroll() 
+			{
+			    if ($(window).scrollTop() >= origOffsetY) 
+				{
+			    	$('.logo-nav').show();
+			    } else {
+			    	$('.logo-nav').hide();
+			    }
+			}		
+
+		document.onscroll = scroll;
+		});
+		</script>
     	<?php
     	$indexHeader = ob_get_contents();
     	ob_end_clean();
@@ -449,9 +476,11 @@ class Layout_View
         <header class="<? echo $headerClass; ?>">
 
             <div id="stuck_container" class="<?php echo $stuckClass; ?>" <?php echo $stuckStyle; ?>>
-                <nav class="navbar navbar-default navbar-static-top ">
+                <nav class="navbar navbar-default navbar-static-top " >
+		    		<a href="/" class="pull-left logo-nav " >
+                    	<img src="/images/logo-tab.jpg" >
+                    </a>
                     <div class="container">
-
                         <div class="">
                             <ul class="navbar-nav sf-menu" data-type="navbar">
                                 <li class="active">
@@ -463,18 +492,18 @@ class Layout_View
 
                                         <li><a href="/logros/">Logros </a></li>
                                         <li><a href="/directorio/">Directorio</a></li>
-                                        <li><a href="/aliados-y-donantes/">Aliados y Donantes</a></li>
+                                        <li><a href="/aliados-y-donantes/">Aliados y donantes</a></li>
                                     </ul>
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="/que-hacemos/">Qué Hacemos</a>
+                                    <a href="/que-hacemos/">Qué hacemos</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/causas/">Causas</a></li>
                                         <li><a href="/proyectos/">Proyectos </a></li>
                                         <li><a href="/actividades/">Actividades </a></li>
                                         <li><a href="/campanas/">Campa&ntilde;as </a></li>
-                                        <li><a href="/materiales/">Materiales Educativos </a></li>
+                                        <li><a href="/materiales/">Materiales educativos </a></li>
                                         <li><a href="/noticias/">Noticias</a></li>
 
                                     </ul>
@@ -496,8 +525,8 @@ class Layout_View
                                 <li class="dropdown">
                                     <a href="/voluntariado/">Voluntariado</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/servicio-social/">Servicio Social </a></li>
-                                        <li><a href="/practicas/">Prácticas Profesionales </a></li>
+                                        <li><a href="/servicio-social/">Servicio social </a></li>
+                                        <li><a href="/practicas/">Pr&aacute;cticas profesionales </a></li>
                                         <li><a href="/voluntariado-por-un-dia/">Voluntario por un día </a></li>
                                         <li><a href="/experiencia-360/">Experiencia 360 </a></li>
                                         <li><a href="/embajadores/">Embajadores por el mundo </a></li>
@@ -505,7 +534,7 @@ class Layout_View
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="/quiero-ayudar/">Quiero Ayudar</a>
+                                    <a href="/quiero-ayudar/">Quiero ayudar</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/donativos/">Donativos </a></li>
                                         <li><a href="/que-puedes-aportar/">Qué puedes aportar </a></li>
@@ -545,7 +574,10 @@ class Layout_View
                 <div class="container">
                     <div class="navbar-header">
                         <h1 class="">
-                            <a  href="/"><br /><small class=""> </small></a>
+                            <a  href="/">
+			                  <img src="/images/logo-ffcm.jpg" alt="FFCM" />
+			                  <br />
+			              </a>
                         </h1>
                     </div>
                     <h3 class="text-center  fw-n"></h3>
@@ -646,7 +678,7 @@ class Layout_View
 					<div class="overlay">
 						<time datetime="2015"><span><?php echo $section['title']; ?></span></time>
 						<p class="ins3"></p>
-						<a href="/proyectos/" class="btn btn-default">Ver m&aacute;s</a>
+						<a href="<?php echo $section['link']; ?>" class="btn btn-default">Ver m&aacute;s</a>
 					</div>
 				</div>
 				<?php
@@ -664,38 +696,33 @@ class Layout_View
     {
     	ob_start();
     	?>
-    	<section class="well well4">
-			<div class="container">
-				<h3 class="text-center white">Espacios</h3>
-				<div>
-					<div class="item">
-						<div class="row">
-							<?php 
-							$i = 1;
-							foreach ($this->data['espacios'] as $section)
-                            {
-                            	$offset = '';
-                            	if ($i == 1)
-                            		$offset = 'col-md-offset-1';
-                            ?>
-                            <div class="<?php echo $offset; ?> col-md-2 col-sm-6 col-xs-12">
-                              	<div class="thumbnail">
-									<a href="/espacios/<?php echo $section['espacios_id']; ?>/<?php echo Tools::slugify($section['title']); ?>/">
-										<div class="img-thumbnail">
-											<img alt="<?php echo $section['title']; ?>" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $section['icon'];?>">
-										</div>
-										<h5 class="text-center"><?php echo $section['title']; ?></h5>
-										<p class="text-justify elements"><?php echo $section['description']; ?></p>
-									</a>
-								</div>
-							</div>
-							<?php
-							$i++;
-                            }
-                            ?>
+		<section class="well well3 well3_ins1 text-center">
+			<h3 class="text-center">Espacios</h3>
+				
+			<div class="img_block">
+	        <?php 
+			$i = 1;
+			foreach ($this->data['espacios'] as $section)
+            {
+               	$offset = '';
+               	if ($i == 1)
+                $offset = 'col-md-offset-1';
+            ?>
+			<div class="<?php echo $offset; ?> col-md-2 col-sm-6 col-xs-12">
+				<div class="thumbnail">
+					<a href="/espacios/<?php echo $section['espacios_id']; ?>/<?php echo Tools::slugify($section['title']); ?>/">
+						<div class="img-thumbnail">
+							<img alt="<?php echo $section['title']; ?>" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $section['icon'];?>">
 						</div>
-					</div>
+						<h5 class="text-center"><?php echo $section['title']; ?></h5>
+						<p class="text-justify elements"><?php echo $section['description']; ?></p>
+					</a>
 				</div>
+			</div>
+			<?php
+			$i++;
+			}
+			?>
 			</div>
 		</section>
     	<?php
@@ -988,6 +1015,33 @@ class Layout_View
         });
     	</script>
     	<script>
+		$(document).ready(function () {
+
+			<?php 
+    		if ($_GET['logo'] == 1)
+    		{
+    			?>
+    			$('.logo-nav').hide();
+				<?php 
+    		}
+			?>	 
+			var menu = $('.well1');
+			var origOffsetY = menu.offset().top;
+
+			function scroll() 
+			{
+			    if ($(window).scrollTop() >= origOffsetY) 
+				{
+			    	$('.logo-nav').show();
+			    } else {
+			    	$('.logo-nav').hide();
+			    }
+			}		
+
+		document.onscroll = scroll;
+		});
+		</script>
+    	<script>
         $(function () {
         	$(window).ready(function() {
         		
@@ -1011,9 +1065,16 @@ class Layout_View
 				<div class="row">
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['title']; ?></h3>
+						<?php 
+						if ($this->data['section']['video'])
+						{
+							?>
 						<a rel="vimeo" href="https://youtu.be/<?php echo $this->data['section']['video']; ?>" class="swipebox-video">
 							<img class="wow fadeInLeft" data-wow-duration='1s' src="http://img.youtube.com/vi/<?php echo $this->data['section']['video']; ?>/0.jpg" alt="<?php echo $this->data['section']['title']; ?>">
 						</a>
+							<?php
+						}
+						?>
 						<br />
 						<div class="text-justify">
 							<?php echo $this->data['section']['content']; ?>
@@ -1226,7 +1287,9 @@ class Layout_View
                 </div>
 
             </section>
+            
     	<?php
+    	echo self::getSponsors();
     	echo self::getSobreNosotros();
     	$index = ob_get_contents();
     	ob_end_clean();
@@ -1387,66 +1450,35 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3>Flora, Fauna y Cultura de México AC.</h3>
-					<h5>Sembrando futuro...</h5>
-					<p class="text-justify">
-					Somos Flora Fauna y Cultura de México A.C., organización de la sociedad civil sin fines de 
-					lucro y trabajamos por la conservación de nuestro patrimonio natural y cultural.
-					                
-					Surgimos como respuesta a las problemáticas ambientales y culturales generadas por el 
-					acelerado desarrollo urbano y turístico registrado en el estado de Quintana Roo en las 
-					últimas décadas. Fungimos como un vínculo entre los diferentes actores sociales con el 
-					fin es sumar esfuerzos para conseguir beneficios colectivos. 
-					</p>
+					<h3><?php echo $this->data['appInfo']['siteName']; ?></h3>
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					
+					<div>
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 				</div>
 			</div>
 		</section>
 		
 		<section class="well well6">
 			<div class="container">
-				<div class="row col-4_mod">
+				<?php 
+				foreach ($this->data['items'] as $item)
+				{
+					?>
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<div class="thumbnail-2">
-							<img src="/images/mision.png" alt="Mision - Flora, Fauna y Cultura de México AC.">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?> - Flora, Fauna y Cultura de México AC.">
 							<div class="caption">
 								<p class="text-info">
-									<span>Contribuir a mejorar la calidad de vida de nuestra sociedad 
-									a través de fomentar la revalorización, el respeto y la conservación 
-									del patrimonio natural y cultural de México. 
-									</span>
+									<span><?php echo $item['description']; ?></span>
 								</p>
 							</div>
 						</div>
 					</div>
-					
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="thumbnail-2">
-							<img src="/images/vision.png" alt="Vision - Flora, Fauna y Cultura de México AC.">
-							<div class="caption">
-								<p class="text-info">
-									<span>Un mundo en el que nuestro patrimonio natural y cultural sea 
-									valorado, cuidado, respetado y compartido por toda la sociedad 
-									como algo propio y para beneficio de todos.
-									</span>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="thumbnail-2">
-							<img src="/images/valores.png" alt="Valores - Flora, Fauna y Cultura de México AC.">
-							<div class="caption">
-								<p class="text-info">
-									<span>Amor por la cultura mexicana, amor a la naturaleza, amor a las 
-									personas, transparencia, compromiso, alegría, congruencia y 
-									honestidad.<br>
-									</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				
+					<?php
+				}
+				?>
 				</div>
 			</div>        
 		</section>
@@ -1555,13 +1587,10 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3>ESPACIOS</h3>
-					<p class="text-justify">Flora, Fauna y Cultura de México A.C. opera cinco espacios, ubicados desde el 
-					municipio de Tulum hasta el municipio de Solidaridad. Estos espacios son base para el desarrollo 
-					de diversos proyectos de Conservación tanto de especies como de ecosistemas claves para la salud 
-					ambiental; de Bienestar Comunitario, donde la vinculación con la comunidad y la búsqueda de su bienestar 
-					es otro de los ejes principales de trabajo; y de Educación Ambiental que consideramos imprescindibles para 
-					un adecuado equilibrio entre ser humano y la naturaleza.</p>
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div class="text-justify">
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 					<br>
 				</div>
 			</div>
@@ -1662,6 +1691,23 @@ class Layout_View
 						?>
 						</div>
 					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
 				</div>
 			</div>
 		</section>
@@ -1777,9 +1823,18 @@ class Layout_View
 							{
 								foreach ($this->data['fechasDestacadas'] as $fecha)
 								{
-								?>
-								<li class="fa fa-calendar-check-o"><a href="<?php echo $fecha['url']; ?>"><?php echo $fecha['title']; ?></a></li><br>
-								<?php
+									if ($fecha['url'])
+									{
+										?>
+									<li class="fa fa-calendar-check-o"><a href="<?php echo $fecha['url']; ?>">&nbsp;&nbsp;<?php echo $fecha['title']; ?></a></li><br>
+										<?php
+									}
+									else 
+									{
+										?>
+									<li class="fa fa-calendar-check-o">&nbsp;&nbsp;<?php echo $fecha['title']; ?></li><br>
+										<?php 
+									}
 								}
 							}
 							?>
@@ -1793,7 +1848,7 @@ class Layout_View
 						<?php 
 						if ($this->data['otrosLogros'])
 						{
-							foreach ($this->data['fechasDestacadas'] as $fecha)
+							foreach ($this->data['otrosLogros'] as $fecha)
 							{
 							?>
 							<li>- <?php echo $fecha['title']; ?></li>
@@ -1848,6 +1903,7 @@ class Layout_View
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
+							<li><a href="/noticias/todas/2010-01-01/2016-01-01/">Anteriores</a></li>
 							<li><a href="/noticias/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
 							<li><a href="/noticias/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
 							<li><a href="/noticias/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
@@ -2313,7 +2369,7 @@ class Layout_View
     	?>
 		<section class="well well7">
 	        <div class="container">
-	        	<h3 class="h3 text-center">Actividades</h3>
+	        	<h3 class="h3 text-center">Pr&oacute;ximos eventos</h3>
 	        	<div class="row offs1">
 	        	<?php 
 	        	foreach ($this->data['actividades'] as $actividad)
@@ -2691,9 +2747,17 @@ class Layout_View
 	        	<div class="row offs1">
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['title']; ?></h3>
+						<?php 
+						if ($this->data['section']['video'])
+						{
+							?>
 						<a rel="vimeo" href="https://youtu.be/<?php echo $this->data['section']['video']; ?>" class="swipebox-video">
 							<img class="wow fadeInLeft" data-wow-duration='1s' src="http://img.youtube.com/vi/<?php echo $this->data['section']['video']; ?>/0.jpg" alt="<?php echo $this->data['section']['title']; ?>">
 						</a>
+							<?php
+						}
+						?>
+						
 						<br />
 						<div class="text-justify">
 							<?php echo $this->data['section']['content']; ?>
@@ -2885,7 +2949,7 @@ class Layout_View
 			<div class="container text-center">
 				<div class="jumbotron">
 					<h3>
-						<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $this->data['section']['icon']; ?>" alt="<?php echo $this->data['section']['title']; ?>">
+						<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $this->data['section']['portrait']; ?>" alt="<?php echo $this->data['section']['title']; ?>">
 					</h3>
 					<h5><?php echo $this->data['section']['title']; ?></h5>
 					<div class="text-justify"><?php echo $this->data['section']['content']; ?></div>
@@ -2973,20 +3037,10 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3>Voluntariado</h3>
-		            <h5>¿Qué es ser un voluntario para Flora Fauna y Cultura de México A.C.?</h5>
-		            <p>
-		              	Es donar tu tiempo a cambio de experiencias extraordinarias; 
-		                experiencias que cambian tu perspectivas personales y te 
-		                hacen más consciente de tu responsabilidad con el medio 
-		                ambiente y tu  comunidad.
-		            </p>
-		            <h5>¿Quieres ser parte del cambio?</h5>
-		              
-					<p>Aporta tu tiempo a cualquiera de nuestros proyectos<br> <br> <br>
-		             <strong>“La mejor forma de encontrarse con uno mismo. 
-		                 Es perderse en el servicio hacia otros”</strong><br> Gandhi.
-		            </p>
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div>
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -2995,7 +3049,6 @@ class Layout_View
 		<!-- ALIADOS Y DONANTES -->
 		<section class="well well4">
 			<div class="container">
-				<h3 class="text-center">Voluntariado</h3>
 				<div class="donantes_grid">
 					<div class="item">
 						<div class="row text-center">
@@ -3076,22 +3129,10 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Servicio Social</h5>
-		            
-		            <p class="text-justify">
-		              El servicio social es una actividad en la cual contribuyes a mejorar 
-		              el medio ambiente y tu comunidad.También es la oportunidad perfecta 
-		              para que desarrolles nuevas actitudes y habilidades además que puede 
-		              poner en práctica los conocimientos obtenidos a lo largo de tus estudios 
-		              universitarios.
-		            </p>
-		            <p class="text-justify">¡Puede ser que desarrolles pasiones que nunca creíste tener!</p>
-		              
-		            <p class="text-justify">La duración del servicio social depende de la institución a la 
-		                  que perteneces.Te invitamos a hacer tu servicio social en el 
-		                  programa que más se ajuste a la experiencia que estás buscando.
-		            </p>
+		            <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div class="text-justify">
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -3150,21 +3191,10 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Pr&aacute;cticas profesionales</h5>
-		            
-		            <p class="text-justify">
-		              Es un estancia temporal en la cual puedes adentrarte al mundo laboral y desarrollar 
-		              experiencia en causas como conservación protección, rescate e investigación de 
-		              nuestros ecosistemas, especies amenazadas y en peligro de extinción así como en el 
-		              impulso de educación ambiental y bienestar comunitario.
-		            </p>
-		            <br><br>
-		            <p class="text-justify">La duración depende de la institución a la que perteneces. 
-		            Debido a que somos una organización sin ánimo de lucro no podemos ofrecerte una beca 
-		            pero en todos nuestros programas ofrecemos una comida diaria, uniforme, si tu estancia 
-		            es igual o mayor de un mes eres acreedor a un pase sencillo para los parques Xcaret o 
-		            Xel-Há y en algunos espacios puedes recibir alojamiento.</p>
+		            <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div class="text-justify">
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -3517,13 +3547,8 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Quiero Ayudar</h5>
-		            
-		            <p class="text-justify">
-		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit amet neque efficitur.
-		            </p>
-		              
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+		            <div><?php echo $this->data['linkInfo']['content']; ?></div>
 				</div>
 			</div>
 		</section>
@@ -3533,15 +3558,18 @@ class Layout_View
 				<h3 class="h3 text-center">Cómo puedes ayudar</h3>
 				<div class="row">
 				<?php 
+				$i = 1;
 	        	foreach ($this->data['items'] as $item)
 	        	{
+	        		$offset = '';
+	        		if ($i == 1)
+	        			$offset = 'col-md-offset-1';
 	        		?>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="thumbnail thumbnail-1">
-							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+					<div class="col-md-3 col-sm-6 col-xs-12 <?php echo $offset; ?>">
+						<div class="thumbnail thumbnail-2">
+							<a href="<?php echo $item['link']; ?>"><img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>"></a>
 							<div class="caption">
-								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/servicios/"><?php echo $item['title']; ?></a></h5>
-								<p><?php echo $item['description']; ?></p>
+								<h5 class="text-center"><a href="<?php echo $item['link']; ?>"><?php echo $item['title']; ?></a></h5>
 							</div>  
 						</div>
 					</div>
@@ -3565,18 +3593,8 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Donativos</h5>
-		            
-		            <p class="text-justify">
-		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
-		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
-		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
-		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
-		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
-		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
-		              amet neque efficitur.
-		            </p>
+		            <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+		            <div><?php echo $this->data['linkInfo']['content']; ?></div>
 				</div>
 			</div>
 		</section>
@@ -3618,18 +3636,8 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Que puedes aportar</h5>
-		            
-		            <p class="text-justify">
-		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
-		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
-		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
-		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
-		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
-		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
-		              amet neque efficitur.
-		            </p>
+		            <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+		            <div><?php echo $this->data['linkInfo']['content']; ?></div>
 				</div>
 			</div>
 		</section>
@@ -3671,18 +3679,8 @@ class Layout_View
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-		              
-					<h5>Productos</h5>
-		            
-		            <p class="text-justify">
-		              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend 
-		              sed nisl ut dapibus. Curabitur quis accumsan dolor. Nullam dui nulla, placerat vel 
-		              diam quis, facilisis consequat metus. Curabitur sed arcu eu sem varius congue non at 
-		              ligula. Nam sollicitudin eros sit amet ultricies tempus. Vivamus faucibus sollicitudin 
-		              quam sit amet efficitur. Integer luctus aliquam dui sit amet hendrerit. Curabitur laoreet 
-		              velit est, quis tempus tortor pellentesque vitae. Mauris tempus rutrum tempus. Proin sit 
-		              amet neque efficitur.
-		            </p>
+		             <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+		            <div><?php echo $this->data['linkInfo']['content']; ?></div>
 				</div>
 			</div>
 		</section>
@@ -3700,6 +3698,7 @@ class Layout_View
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
 							<div class="caption">
 								<h5><a href="/producto/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
 							</div>  
 						</div>
 					</div>
@@ -3770,11 +3769,12 @@ class Layout_View
     public function getFooter()
     {
     	ob_start();
+    	$footerBg = $this->data['footer']['banner'];
     	?>
     	<!--========================================================
                             FOOTER
 		  =========================================================-->
-		<footer class="foot1 parallax" data-url="/images/parallax1.jpg" data-mobile="true" data-direction="inverse">
+		<footer class="foot1 parallax" data-url="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $footerBg; ?>" data-mobile="true" data-direction="inverse">
 			<section class="well5">      
 				<div class="container text-center"> 
 					<div class="navbar-header">

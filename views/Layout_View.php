@@ -1104,7 +1104,7 @@ class Layout_View
                     </div>
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
-						<div class="text-justify"><?php echo $this->data['section']['third_column_content']; ?></div>
+						<div class="text-justify"><?php echo stripslashes(stripslashes(stripslashes(mysql_real_escape_string($this->data['section']['third_column_content'])))); ?></div>
 					</div>
 				</div>
 			</div>
@@ -1474,7 +1474,7 @@ class Layout_View
 						<div class="thumbnail-2">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?> - Flora, Fauna y Cultura de México AC.">
 							<div class="caption">
-								<p class="text-info">
+								<p class="text-info text-justify" style="margin-top: 30px;">
 									<span><?php echo $item['description']; ?></span>
 								</p>
 							</div>
@@ -2341,7 +2341,7 @@ class Layout_View
 	        		?>
 					<div class="col-sm-6 col-xs-12">
 						<div class="thumbnail-1">
-							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $actividad['portrait']; ?>" alt="">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $actividad['icon']; ?>" alt="">
 							<div class="caption">
 								<time datetime='2016'><?php echo Tools::formatMYSQLToFront($actividad['date']); ?></time>
 								<p>
@@ -2851,7 +2851,7 @@ class Layout_View
 	        	{
 	        		?>
 					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="thumbnail-2">
+						<div class="thumbnail-3">
 							<a class="thumb" data-fancybox-group="1" href="/material/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
 							<span class="thumb_overlay"></span>
@@ -3078,8 +3078,6 @@ class Layout_View
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<p class="mwidth"><span class="span_blc"><?php echo $testimonio['description']; ?></span></p>
 		</div>
-		<br>
-		<br>
 		<?php
 		$testimonio = ob_get_contents();
 		ob_end_clean();

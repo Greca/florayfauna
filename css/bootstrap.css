@@ -1367,10 +1367,9 @@ th {
 /*==================  Stuck menu  ======================*/
 
 .isStuck {
-    background: #000000;
     z-index: 9999;
     box-shadow: 0 1px 2px #bbb;
-    background: rgba(0, 138, 60, 1);
+    background: #008245;
     height: 70px;
 }
 
@@ -2445,7 +2444,7 @@ p {
     height: 8px;
     bottom: 12px;
     width: 23%;
-    background: #008A3C;
+    background: #008245;
 }
 
 .small-lines:after {
@@ -2455,17 +2454,17 @@ p {
     height: 8px;
     bottom: 12px;
     width: 23%;
-    background: #008A3C;
+    background: #008245;
 }
 
 .small-lines1:before {
     width: 38%;
-    background: #008A3C ;
+    background: #008245 ;
 }
 
 .small-lines1:after {
     width: 38%;
-    background: #008A3C ;
+    background: #008245 ;
 }
 
 .line1 {
@@ -2492,7 +2491,7 @@ p {
     text-align: center;
     position: relative;
     display: inline-block;
-    border-top: 8px solid #008A3C ;
+    border-top: 8px solid #008245 ;
     padding: 16px 10px 0px 32px;
 }
 
@@ -2503,7 +2502,7 @@ p {
     top: -8px;
     width: 8px;
     bottom: 12px;
-    background: #008A3C ;
+    background: #008245 ;
 }
 
 .h2_bord:after {
@@ -2513,18 +2512,18 @@ p {
     top: -8px;
     width: 8px;
     bottom: 12px;
-    background: #008A3C ;
+    background: #008245 ;
 }
 
 @media (max-width: 991px) {
     .h2_bord {
-        border: 8px solid #008A3C ;
+        border: 8px solid #008245 ;
         padding: 5px 10px;
     }
 }
 
 .h2_bord1 {
-    border: 8px solid #008A3C ;
+    border: 8px solid #008245 ;
     padding: 16px 43px 32px;
 }
 
@@ -2832,7 +2831,7 @@ mark,
 }
 
 .text-info {
-    color: #008A3C;
+    color: #008245;
 }
 
 .text-warning {
@@ -2938,7 +2937,7 @@ ol li a {
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
-    color: #008A3C;
+    color: #008245;
     position: absolute;
     z-index: 2;
     left: -24px;
@@ -3258,7 +3257,7 @@ time {
 }
 
 time span {
-    color: #008A3C;
+    color: #008245;
 }
 
 time + * {
@@ -6868,7 +6867,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     text-align: center;
     position: relative;
     display: inline-block;
-    border-top: 8px solid #008A3C ;
+    border-top: 8px solid #008245 ;
     padding: 5px 10px 0px 32px;
 }
 
@@ -6879,7 +6878,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     top: -8px;
     width: 8px;
     bottom: 12px;
-    background: #008A3C ;
+    background: #008245 ;
 }
 
 .navbar-brand:after {
@@ -6889,7 +6888,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     top: -8px;
     width: 8px;
     bottom: 12px;
-    background: #008A3C;
+    background: #008245;
 }
 
 .navbar-brand a:hover,
@@ -6900,7 +6899,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
 @media (max-width: 991px) {
     .navbar-brand {
-        border: 8px solid #008A3C;
+        border: 8px solid #008245;
         padding: 5px 10px;
     }
 }
@@ -7404,7 +7403,7 @@ a.badge:focus {
 }
 
 .thumbnail:hover * {
-    color: #008A3C;
+    color: #008245;
 }
 
 .thumbnail:hover .img-thumbnail:before {
@@ -7421,7 +7420,7 @@ a.badge:focus {
 }
 
 .thumbnail-1 .caption a:hover {
-    color: #008A3C;
+    color: #008245;
 }
 
 .thumbnail-2 {
@@ -9767,3 +9766,4 @@ p.elements {
 .privacidad {
 	margin-top: 40px;
 }
+

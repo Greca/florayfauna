@@ -179,6 +179,8 @@ class generalFrontBackend
 				$data['causas']		= $topArray;
 				$linkInfo			= $this->model->getLinkByCode('que-hacemos');
 				$data['linkInfo'] 	= $linkInfo;
+				$linksArray			= $this->model->getLinks();
+				$data['links']		= $linksArray;
 			break;
 			
 			case 'logros':

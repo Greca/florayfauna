@@ -200,7 +200,7 @@ include('js/jquery.easing.1.3.js');
             o.owlCarousel({
                 margin: 30,
                 smartSpeed: 450,
-                loop: false,
+                loop: true,
                 dots: false,
                 dotsEach: 1,
                 nav: true,

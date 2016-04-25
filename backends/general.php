@@ -439,6 +439,11 @@ class generalFrontBackend
 				$data['videos'] = $videosArray;
 			break;
 			
+			case 'aviso':
+				$linkInfo			= $this->model->getLinkByCode('aviso');
+				$data['linkInfo'] 	= $linkInfo;
+			break;
+			
 			default:
 			break;
 		}

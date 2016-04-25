@@ -325,6 +325,10 @@ class Layout_View
  						echo self::getSingleNoticiaContent();
  					break;
  					
+ 					case 'aviso':
+ 						echo self::getAvisoMain();
+ 					break;
+ 					
 					default :
 						# code...
 					break;
@@ -3766,6 +3770,27 @@ class Layout_View
     	return $nosotros;
     }
     
+    public function getAvisoMain()
+	{
+		ob_start();
+		?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+		            <h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div class="text-justify">
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+	}
+    
     public function getFooter()
     {
     	ob_start();
@@ -3794,8 +3819,11 @@ class Layout_View
 						<li><a href="<?php echo $this->data['appInfo']['instagram']; ?>" target="_blank" class="fa  fa-instagram"> Instagram</a></li>
 						<li><a href="<?php echo $this->data['appInfo']['googleplus']; ?>" target="_blank" class="fa fa-google-plus">google-plus</a></li>
 						<li><a href="<?php echo $this->data['appInfo']['youtube']; ?>" target="_blank" class="fa fa-youtube">google-plus</a></li>
-					</ul>               
-				</div> 
+					</ul>   
+				</div>
+				<div class="container text-center privacidad">
+					<a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+				</div>
 			</section>  
 		</footer>
     	<?php

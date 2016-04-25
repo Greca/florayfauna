@@ -574,19 +574,23 @@ class Layout_View
     		if ($_GET['section'] == 1)
     		{
     			?>
-    		<section class="well well1">
-                <div class="container">
-                    <div class="navbar-header">
-                        <h1 class="">
-                            <a  href="/">
-			                  <img src="/images/logo-ffcm.jpg" alt="FFCM" />
-			                  <br />
-			              </a>
-                        </h1>
-                    </div>
-                    <h3 class="text-center  fw-n"></h3>
-                </div>
-            </section>
+            
+            <section class="well well1">
+        <div class="container"  style="z-index: 9999">
+          <div class="navbar-header" style="z-index: 9999">
+            <h1 class="">
+              <a href="index.html" >
+                  <img src="images/logo-ffcm.jpg" alt="FFCM">
+                  <br>
+                <small class="" style="margin-top: 20px; margin-left: -40px;">Flora, Fauna y Cultura de México</small>
+              </a>
+            </h1>
+          </div>
+          <h3 class="text-center fw-n">
+          
+          </h3>
+        </div>
+      </section>
     		<?php 
     		}
     		?>

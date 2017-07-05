@@ -20,7 +20,7 @@ $(window).load(function(){
 					,responseMessageClass:'response-message'
 					,processingClass:'processing'
 					,onceVerifiedClass:'once-verified'
-					,mailHandlerURL:'/email/send-email.php'					
+					,mailHandlerURL:'/bat/send-email.php'					
 					,successShowDelay:'4000'
 					,stripHTML:true
 					,recaptchaPublicKey:''
@@ -173,8 +173,8 @@ $(window).load(function(){
 								.removeClass(opt.processingClass)
 								.addClass(opt.successClass)
 
-							modal.find('.modal-title').text('Success!')
-							modal.find('.modal-body').text('Your message has been successfully sent!')
+							modal.find('.modal-title').text('')
+							modal.find('.modal-body').text('Gracias, tu mensaje se ha enviado correctamente')
 
 							setTimeout(function(){
 								form

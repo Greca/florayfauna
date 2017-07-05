@@ -364,7 +364,7 @@ class Layout_Model
 	public function getLastTwoActividades()
 	{
 		try {
-			$query = 'SELECT * FROM actividades ORDER BY date DESC LIMIT 2';
+			$query = 'SELECT * FROM actividades WHERE date > CURDATE() ORDER BY date ASC';
 			return $this->db->getArray($query);
 		} catch (Exception $e) {
 			return false;

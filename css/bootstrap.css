@@ -6867,8 +6867,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     text-align: center;
     position: relative;
     display: inline-block;
-    border-top: 8px solid #008245 ;
-    padding: 5px 10px 0px 32px;
 }
 
 .navbar-brand:before {
@@ -6877,8 +6875,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     left: -8px;
     top: -8px;
     width: 8px;
-    bottom: 12px;
-    background: #008245 ;
+    
 }
 
 .navbar-brand:after {
@@ -6887,8 +6884,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     right: -8px;
     top: -8px;
     width: 8px;
-    bottom: 12px;
-    background: #008245;
 }
 
 .navbar-brand a:hover,
@@ -9769,7 +9764,8 @@ button.close {
     }
 
 .first-column a {
-	font-size: 24px;
+	font-size: 16px;
+	font-weigth: bold;
     line-height: 1;
     letter-spacing: 1.05px;
 }
@@ -9784,5 +9780,13 @@ p.elements {
 
 .privacidad {
 	margin-top: 40px;
+}
+
+.noticia-item {
+	/*border: 1px solid red;*/
+}
+
+#oldCalendar {
+	display: none;
 }
 

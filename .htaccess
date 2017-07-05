@@ -10,14 +10,8 @@ ErrorDocument 500 /not-found.html
 Options -Indexes +FollowSymLinks -MultiViews
 
 # Canonical host
-RewriteCond %{HTTP_HOST}    ^www\.(.*)      [NC]
-RewriteRule ^(.*)$          http://%1/$1    [L,R,NE]
-
-#Needed
-RewriteRule ^sitemap.xml$ sitemap.xml
-
-# Rewrite Rules
-
+#RewriteCond %{HTTP_HOST}    ^www\.(.*)      [NC]
+#RewriteRule ^(.*)$          http://%1/$1    [L,R,NE]
 
 # Front End
 RewriteRule ^$ 		/index.php?section=1&logo=1
@@ -36,14 +30,14 @@ RewriteRule ^todos-los-espacios/$ 				/all-espacios.php?section=19
 RewriteRule ^logros/$ 							/logros.php?section=19
 RewriteRule ^noticias/$ 						/noticias.php?section=19
 RewriteRule ^contacto/$ 						/contacto.php?section=19
-RewriteRule ^registrarte/$ 						/registro.php?section=19
+RewriteRule ^suscribirse/$ 						/registro.php?section=19
 RewriteRule ^voluntariado/$ 					/voluntariado.php?section=19
 RewriteRule ^servicio-social/$ 					/servicio-social.php?section=19
 RewriteRule ^practicas/$ 						/practicas.php?section=19
 RewriteRule ^donativos/$ 						/donativos.php?section=19
 RewriteRule ^que-puedes-aportar/$ 				/aportaciones.php?section=19
 RewriteRule ^voluntariado-por-un-dia/$ 			/voluntariado-dia.php?section=19
-RewriteRule ^experiencia-360/$ 					/experiencia-360.php?section=19
+RewriteRule ^voluntariado-corporativo/$ 		/experiencia-360.php?section=19
 RewriteRule ^embajadores/$ 						/embajadores.php?section=19
 RewriteRule ^quiero-ayudar/$ 					/quiero-ayudar.php?section=19
 RewriteRule ^productos/$ 						/productos.php?section=19
@@ -65,8 +59,6 @@ RewriteRule ^noticias/todas/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/noticias.php?se
 RewriteRule ^actividades/todas/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.php?section=4&from=$1&to=$2
 RewriteRule ^actividades/voluntariado/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.php?section=4&from=$1&to=$2&kind=voluntariado
 RewriteRule ^producto/([0-9]+)/([A-Za-z0-9-]+)/$ 		/producto.php?section=4&sectionId=$1
-
-
 
 
 

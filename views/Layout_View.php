@@ -2,8 +2,8 @@
 /**
  * This file has the main view of the project
  *
- * @package    Reservation System
- * @subpackage Tropical Casa Blanca Hotel
+ * @package    Flora, Fauna y Cultura
+ * @subpackage Flora, Fauna y Cultura
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * @author     Raul Castro <rd.castro.silva@gmail.com>
  */
@@ -19,8 +19,8 @@ require_once $root.'/Framework/Tools.php';
  * 
  * Is the main class, almost everything is printed from here
  * 
- * @package 	Reservation System
- * @subpackage 	Tropical Casa Blanca Hotel
+ * @package 	Front end
+ * @subpackage 	Flora, Fauna y Cultura de México
  * @author 		Raul Castro <rd.castro.silva@gmail.com>
  * 
  */
@@ -173,6 +173,16 @@ class Layout_View
 			?>
 		</head>
 		<body>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-98653116-1', 'auto');
+ga('send', 'pageview');
+
+</script>
 			<div class="page">
 			<?php 
  			echo self :: getHeader();
@@ -390,10 +400,10 @@ class Layout_View
     	?>
     	<style type="text/css">
     		<?php 
-    		if ($this->data['section']['has_bg'] == 1 || $_GET['section'] == 1)
+    		if (isset($this->data['section']['has_bg']) == 1 || $_GET['section'] == 1)
     		{
     			$banner = '';
-    			if ($this->data['section']['background'])
+    			if (isset($this->data['section']['background']))
     				$banner = $this->data['section']['background'];
     			else 
     				$banner = $this->data['banner']['banner'];
@@ -424,7 +434,7 @@ class Layout_View
 		  $('.messageBody').attr('color', '#fff');
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<script>
-		$(document).ready(function () {
+		/*$(document).ready(function () {
 
 			<?php 
     		if ($_GET['logo'] == 1)
@@ -448,7 +458,7 @@ class Layout_View
 			}		
 
 		document.onscroll = scroll;
-		});
+		});*/
 		</script>
     	<?php
     	$indexHeader = ob_get_contents();
@@ -460,7 +470,7 @@ class Layout_View
     {
     	ob_start();
 
-    	if ($this->data['section']['has_bg'] == 1 || $_GET['section'] == 1)
+    	if (isset($this->data['section']['has_bg']) == 1 || $_GET['section'] == 1)
     	{
     		$headerClass = 'head1';
     		$stuckClass = 'stuck_container';
@@ -532,7 +542,7 @@ class Layout_View
                                         <li><a href="/servicio-social/">Servicio social </a></li>
                                         <li><a href="/practicas/">Pr&aacute;cticas profesionales </a></li>
                                         <li><a href="/voluntariado-por-un-dia/">Voluntario por un día </a></li>
-                                        <li><a href="/experiencia-360/">Experiencia 360 </a></li>
+                                        <li><a href="/voluntariado-corporativo/">Voluntariado Corporativo </a></li>
                                         <li><a href="/embajadores/">Embajadores por el mundo </a></li>
                                     </ul>
                                 </li>
@@ -549,7 +559,7 @@ class Layout_View
                                 <li class="dropdown">
                                     <a href="/contacto/">Contacto</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/registrarte/">Registrarte </a></li>
+                                        <li><a href="/suscribirse/">Suscribirse</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -559,7 +569,7 @@ class Layout_View
             </div>
 
             <?php 
-    		if ($this->data['section']['has_bg'] == 1)
+    		if (isset($this->data['section']['has_bg']) == 1)
     		{
     			?>
     		<section class="well well1">
@@ -579,7 +589,7 @@ class Layout_View
         <div class="container"  style="z-index: 9999">
           <div class="navbar-header" style="z-index: 9999">
             <h1 class="">
-              <a href="index.html" >
+              <a href="/" >
                   <img src="images/logo-ffcm.jpg" alt="FFCM">
                   <br>
                 <small class="" style="margin-top: 20px; margin-left: -40px;">Flora, Fauna y Cultura de México</small>
@@ -825,8 +835,11 @@ class Layout_View
                 <h3 class="text-center white">
                     Aliados y donantes
                 </h3>
-
-                <div class="owl-carousel">
+				<?php
+				if (count($this->data['aliados']) > 6 )
+					$class="owl-carousel";	
+				?>
+                <div class="<?php echo $class; ?>">
 				<?php 
 				if ($this->data['aliados'])
 				{
@@ -881,7 +894,6 @@ class Layout_View
 							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	                   </div><!-- /Twitter -->
                     </div>
-                    
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 					<div id="facebook_index">
@@ -900,9 +912,6 @@ class Layout_View
     	ob_end_clean();
     	return $sponsors;
     }
-    
-    
-    
     
     public function getIndexContent()
     {
@@ -1108,7 +1117,7 @@ class Layout_View
                     </div>
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
-						<div class="text-justify"><?php echo stripslashes(stripslashes(stripslashes(mysql_real_escape_string($this->data['section']['third_column_content'])))); ?></div>
+						<div class="text-justify"><?php echo stripslashes(stripslashes(stripslashes(stripcslashes($this->data['section']['third_column_content'])))); ?></div>
 					</div>
 				</div>
 			</div>
@@ -1153,7 +1162,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-01-01/2016-02-01/" class="btn btn-default">enero</a>
+                            <a href="/actividades/todas/2017-01-01/2017-02-01/" class="btn btn-default">Enero</a>
                         </div>
                     </div>
 
@@ -1164,7 +1173,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-02-01/2016-03-01/" class="btn btn-default"> Febrero</a>
+                            <a href="/actividades/todas/2017-02-01/2017-03-01/" class="btn btn-default"> Febrero</a>
                         </div>
                     </div>
                     
@@ -1175,7 +1184,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-03-01/2016-04-01/" class="btn btn-default"> Marzo</a>
+                            <a href="/actividades/todas/2017-03-01/2017-04-01/" class="btn btn-default"> Marzo</a>
                         </div>
                     </div>
                     
@@ -1188,7 +1197,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-04-01/2016-05-01/" class="btn btn-default">Abril</a>
+                            <a href="/actividades/todas/2017-04-01/2017-05-01/" class="btn btn-default">Abril</a>
                         </div>
                     </div>
                     
@@ -1200,7 +1209,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-05-01/2016-06-01/" class="btn btn-default">Mayo</a>
+                            <a href="/actividades/todas/2017-05-01/2017-06-01/" class="btn btn-default">Mayo</a>
                         </div>
                     </div>
                     <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
@@ -1211,7 +1220,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-06-01/2016-07-01/" class="btn btn-default">Junio</a>
+                            <a href="/actividades/todas/2017-06-01/2017-07-01/" class="btn btn-default">Junio</a>
                         </div>
                     </div>
                     
@@ -1220,8 +1229,7 @@ class Layout_View
 
             </section>
         
-        <section class="well well3 well3_ins1 text-center">
-
+        	<section class="well well3 well3_ins1 text-center">
                 <div class="img_block_calendar">
                     <div class="img_cnt wow fadeInLeft" data-wow-duration='.5s'>
                         <img src="/images/calendario/julio.jpg" alt="calendario-enero">
@@ -1231,7 +1239,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-07-01/2016-08-01/" class="btn btn-default">Julio</a>
+                            <a href="/actividades/todas/2017-07-01/2017-08-01/" class="btn btn-default">Julio</a>
                         </div>
                     </div>
 
@@ -1242,7 +1250,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-08-01/2016-09-01/" class="btn btn-default"> Agosto</a>
+                            <a href="/actividades/todas/2017-08-01/2017-09-01/" class="btn btn-default"> Agosto</a>
                         </div>
                     </div>
                     
@@ -1253,7 +1261,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-09-01/2016-10-01/" class="btn btn-default">Setiembre</a>
+                            <a href="/actividades/todas/2017-09-01/2017-10-01/" class="btn btn-default">Setiembre</a>
                         </div>
                     </div>
                     <div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
@@ -1264,7 +1272,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-10-01/2016-11-01/" class="btn btn-default">Octubre</a>
+                            <a href="/actividades/todas/2017-10-01/2017-11-01/" class="btn btn-default">Octubre</a>
                         </div>
                     </div>
                     
@@ -1276,7 +1284,7 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-11-01/2016-12-01/" class="btn btn-default">Noviembre</a>
+                            <a href="/actividades/todas/2017-11-01/2017-12-01/" class="btn btn-default">Noviembre</a>
                         </div>
                     </div>
                     <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
@@ -1287,15 +1295,51 @@ class Layout_View
                             <p class="ins3">
                                 
                             </p>
-                            <a href="/actividades/todas/2016-12-01/2017-01-01/" class="btn btn-default">Diciembre</a>
+                            <a href="/actividades/todas/2017-12-01/2018-01-01/" class="btn btn-default">Diciembre</a>
                         </div>
                     </div>
-                    
-
                 </div>
-
             </section>
             
+            <br>
+            <br>
+			<div class="container">
+				<div class="row offs1">
+					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
+				</div>		
+			</div>
+			<br>
+			<br>
+            <div class="container" id="oldCalendar">
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
+							<li><a href="/actividades/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
+							<li><a href="/actividades/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
+							<li><a href="/actividades/todas/2016-04-01/2016-05-01/">Abril 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-05-01/2016-06-01/">Mayo 2016</a></li>
+							<li><a href="/actividades/todas/2016-06-01/2016-07-01/">Junio 2016</a></li>  
+							<li><a href="/actividades/todas/2016-07-01/2016-08-01/">Julio 2016</a></li>
+							<li><a href="/actividades/todas/2016-08-01/2016-09-01/">Agosto 2016</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
+							<li><a href="/actividades/todas/2016-10-01/2016-11-01/">Octubre 2016</a></li>
+							<li><a href="/actividades/todas/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
+							<li><a href="/actividades/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
     	<?php
     	echo self::getSponsors();
     	echo self::getSobreNosotros();
@@ -1844,23 +1888,37 @@ class Layout_View
 			<div class="container">
 				<h3 class="text-center">Noticias</h3>
 				<div class="row offs1">
-				<?php 
+				<?php
+				$c = 0;
 				foreach ($this->data['noticias'] as $noticia)
 				{
 					?>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-		              <img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $noticia['icon']; ?>" alt="<?php echo $noticia['title']; ?>" alt="">
-		            </div>
-		            <div class="col-md-3 col-sm-6 col-xs-12">
-						<div class=" mwidth">
-							<time datetime='2015'><?php echo Tools::formatMYSQLToFront($noticia['date']); ?></time>
-							<p class="text-info"><?php echo $noticia['title']; ?></p>
-							<p class=""><?php echo $noticia['description']; ?> </p>
-							<p class="text-info"> <a href="/noticia/<?php echo $noticia['noticias_id'].'/'.Tools::slugify($noticia['title']).'/';  ?>">Leer más</a></p>
-						</div>  
+					<div class="noticia-item col-sm-6 col-xs-12"">
+						<div class="col-sm-6" >
+			              <img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $noticia['icon']; ?>" alt="<?php echo $noticia['title']; ?>" alt="">
+			            </div>
+			            <div class="col-sm-6">
+							<div class=" mwidth">
+								<time datetime='2015'><?php echo Tools::translateMonth(Tools::formatMYSQLToFront($noticia['date'])); ?></time>
+								<p class="text-info"><?php echo $noticia['title']; ?></p>
+								<p class=""><?php echo $noticia['description']; ?> </p>
+								<p class="text-info"> <a href="/noticia/<?php echo $noticia['noticias_id'].'/'.Tools::slugify($noticia['title']).'/';  ?>">Leer más</a></p>
+							</div>  
+						</div>
 					</div>
 				<?php
+					$c++;
+					if ($c == 2)
+					{
+						?>
+					</div>
+					<div class="row offs1">
+						<?php
+						$c = 0;
+					}
 				}
+				
+				
 				?>
 				</div>
 			</div>
@@ -1871,7 +1929,44 @@ class Layout_View
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
-							<li><a href="/noticias/todas/2010-01-01/2016-01-01/">Anteriores</a></li>
+							<li><a href="/noticias/todas/2017-01-01/2017-02-01/">Enero 2017</a></li>
+							<li><a href="/noticias/todas/2017-02-01/2017-03-01/">Febrero 2017</a></li>
+							<li><a href="/noticias/todas/2017-03-01/2017-04-01/">Marzo 2017</a></li>
+							<li><a href="/noticias/todas/2017-04-01/2017-05-01/">Abril 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/noticias/todas/2017-05-01/2017-06-01/">Mayo 2017</a></li>
+							<li><a href="/noticias/todas/2017-06-01/2017-07-01/">Junio 2017</a></li>  
+							<li><a href="/noticias/todas/2017-07-01/2017-08-01/">Julio 2017</a></li>
+							<li><a href="/noticias/todas/2017-08-01/2017-09-01/">Agosto 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/noticias/todas/2017-09-01/2017-10-01/">Septiembre 2017</a></li>
+							<li><a href="/noticias/todas/2017-10-01/2017-11-01/">Octubre 2017</a></li>
+							<li><a href="/noticias/todas/2017-11-01/2017-12-01/">Noviembre 2017</a></li>
+							<li><a href="/noticias/todas/2017-12-01/2018-01-01/">Diciembre 2017</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+			<br>
+			<div class="container">
+				<div class="row offs1">
+					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
+				</div>		
+			</div>
+			<br>
+			<div class="container" id="oldCalendar">
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							
 							<li><a href="/noticias/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
 							<li><a href="/noticias/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
 							<li><a href="/noticias/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
@@ -1893,7 +1988,8 @@ class Layout_View
 							<li><a href="/noticias/todas/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
 							<li><a href="/noticias/todas/2016-10-01/2016-11-01/">Octubre 2016</a></li>
 							<li><a href="/noticias/todas/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
-							<li><a href="/noticias/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
+							<li><a href="/noticias/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>
+							<li><a href="/noticias/todas/2010-01-01/2016-01-01/">Anteriores</a></li>               
 						</ul>
 					</div>
 				</div>    
@@ -1929,14 +2025,17 @@ class Layout_View
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-12">
-						<h3 class="text-center">Direccion</h3>
-						<h5 class=" offs1">Playa Del Carmen</h5>
-						<address>Calle</address>
+						<h3 class="text-center"></h3>
+						<h5 class=" offs1">Mar Loera</h5>
 						<address class="addr1">                                           
-							<p class="text-primary">Tel:</p>    
-							<p>Office<a href='callto:#'> +52 1 984 000 000</a></p>
-							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
-							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p><a href='mailto:redes@florafaunaycultura.org'>redes@florafaunaycultura.org</a></p>
+							
+						</address>
+						<address class="addr1">                                           
+							<p class="text-primary">Dirección:</p>    
+							<p>Km. 282 Carretera Chetumal-Puerto Juárez,  C.P. 77710</p>
+							<p>Playa del Carmen, Quintana Roo, México</p>
+							<p>Tel:<a href='callto:(984) 8715-289'> (984) 8715-289 y 290</a></p>
 						</address>
 					</div>
 					
@@ -1946,33 +2045,34 @@ class Layout_View
 							<div class="contact-form-loader"></div>
 							<fieldset>
 								<label class="name">
-									<input type="text" name="name" placeholder="Name" value="" data-constraints="@Required @JustLetters" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid name.</span>
+									<input type="hidden" name="form-type" value="contact" />
+									<input type="text" name="name" placeholder="Nombre" value="" data-constraints="@Required @JustLetters" />
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un nombre v&aacutelido.</span>
 								</label>
 								
 								<label class="email">
 									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid email.</span>
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un e-mail v&aacutelido.</span>
 								</label>
 								
 								<label class="phone">
-									<input type="text" name="phone" placeholder="Phone" value="" data-constraints="@JustNumbers" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid phone.</span>
+									<input type="text" name="phone" placeholder="Tel&eacute;fono" value="" data-constraints="@JustNumbers" />
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un e-mail v&aacutelido.</span>
 								</label>
 								
 								<label class="message">
-									<textarea name="message" placeholder="Message" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*The message is too short.</span>
+									<textarea name="message" placeholder="Mensaje" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*El mensaje es muy corto.</span>
 								</label>
 								
 								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
 								
 								<div class="btn-wr text-primary">
-								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Send</a>
+								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
 								</div>
 							</fieldset>
 							<div class="modal fade response-message">
@@ -1982,9 +2082,9 @@ class Layout_View
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 											&times;
 											</button>
-											<h4 class="modal-title">Modal title</h4>
+											<h4 class="modal-title"></h4>
 										</div>
-										<div class="modal-body">You message has been sent! We will be in touch soon.</div>
+										<div class="modal-body">Tu mensaje ha sido enviado.</div>
 									</div>
 								</div>
 							</div>
@@ -2021,50 +2121,48 @@ class Layout_View
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-12">
-						<h3 class="text-center">Direccion</h3>
-						<h5 class=" offs1">Playa Del Carmen</h5>
-						<address>Calle</address>
+						<h3 class="text-center"></h3>
+						<h5 class=" offs1">Mar Loera</h5>
 						<address class="addr1">                                           
-							<p class="text-primary">Tel:</p>    
-							<p>Office<a href='callto:#'> +52 1 984 000 000</a></p>
-							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
-							<p>cell<a href='callto:#'> +52 1 984 000 000</a></p>
+							<p><a href='mailto:redes@florafaunaycultura.org'>redes@florafaunaycultura.org</a></p>
+							
+						</address>
+						<address class="addr1">                                           
+							<p class="text-primary">Dirección:</p>    
+							<p>Km. 282 Carretera Chetumal-Puerto Juárez,  C.P. 77710</p>
+							<p>Playa del Carmen, Quintana Roo, México</p>
+							<p>Tel:<a href='callto:(984) 8715-289'> (984) 8715-289 y 290</a></p>
 						</address>
 					</div>
 					
 					<div class="col-md-9 col-xs-12">
-						<h3 class="text-center">NEWSLETTER</h3>
+						<h3 class="text-center">Suscribirse</h3>
 						<form id="contact-form" class='contact-form'>
 							<div class="contact-form-loader"></div>
 							<fieldset>
 								<label class="name">
-									<input type="text" name="name" placeholder="Name" value="" data-constraints="@Required @JustLetters" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid name.</span>
+									<input type="hidden" name="form-type" value="subscribe" />
+									<input type="text" name="name" placeholder="Nombre" value="" data-constraints="@Required @JustLetters" />
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un nombre v&aacutelido.</span>
 								</label>
 								
 								<label class="email">
 									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid email.</span>
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un e-mail v&aacutelido.</span>
 								</label>
 								
 								<label class="phone">
-									<input type="text" name="phone" placeholder="Phone" value="" data-constraints="@JustNumbers" />
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*This is not a valid phone.</span>
-								</label>
-								
-								<label class="message">
-									<textarea name="message" placeholder="Message" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
-									<span class="empty-message">*This field is required.</span>
-									<span class="error-message">*The message is too short.</span>
+									<input type="text" name="phone" placeholder="Tel&eacute;fono" value="" data-constraints="@JustNumbers" />
+									<span class="empty-message">*Este campo es obligatorio.</span>
+									<span class="error-message">*No es un e-mail v&aacutelido.</span>
 								</label>
 								
 								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
 								
 								<div class="btn-wr text-primary">
-								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Send</a>
+								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
 								</div>
 							</fieldset>
 							<div class="modal fade response-message">
@@ -2074,9 +2172,9 @@ class Layout_View
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 											&times;
 											</button>
-											<h4 class="modal-title">Modal title</h4>
+											<h4 class="modal-title"></h4>
 										</div>
-										<div class="modal-body">You message has been sent! We will be in touch soon.</div>
+										<div class="modal-body">Tu mensaje ha sido enviado.</div>
 									</div>
 								</div>
 							</div>
@@ -2121,6 +2219,7 @@ class Layout_View
 	        	<h3 class="h3 text-center">Proyectos</h3>
 	        	<div class="row">
 	        	<?php 
+	        	$c = 0;
 	        	foreach ($this->data['proyectos'] as $proyecto)
 	        	{
 	        		?>
@@ -2134,6 +2233,15 @@ class Layout_View
 						</div>
 					</div>
 	        		<?php
+	        		$c++;
+	        		if ($c == 4)
+	        		{
+	        			?>
+	        	</div>
+	        	<div class="row">
+	        			<?php
+	        			$c = 0;
+	        		}
 	        	}
 	        	?>
 	            </div>
@@ -2317,6 +2425,7 @@ class Layout_View
     	?>
     	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
     	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<script type="text/javascript" src="/js/calendar.js"></script>
     	<link rel="stylesheet" href="/css/jquery.fancybox.css">
     	<script>
         $(document).ready(function () {
@@ -2347,7 +2456,7 @@ class Layout_View
 						<div class="thumbnail-1">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $actividad['icon']; ?>" alt="">
 							<div class="caption">
-								<time datetime='2016'><?php echo Tools::formatMYSQLToFront($actividad['date']); ?></time>
+								<time datetime='2016'><?php echo Tools::translateMonth(Tools::formatMYSQLToFront($actividad['date'])); ?></time>
 								<p>
 								<?php echo $actividad['description']; ?> 
 								</p>
@@ -2385,6 +2494,43 @@ class Layout_View
     	<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
 			<div class="container">
 				<h3 class="text-center">Calendario Actividades</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2017-01-01/2017-02-01/">Enero 2017</a></li>
+							<li><a href="/actividades/todas/2017-02-01/2017-03-01/">Febrero 2017</a></li>
+							<li><a href="/actividades/todas/2017-03-01/2017-04-01/">Marzo 2017</a></li>
+							<li><a href="/actividades/todas/2017-04-01/2017-05-01/">Abril 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2017-05-01/2017-06-01/">Mayo 2017</a></li>
+							<li><a href="/actividades/todas/2017-06-01/2017-07-01/">Junio 2017</a></li>  
+							<li><a href="/actividades/todas/2017-07-01/2017-08-01/">Julio 2017</a></li>
+							<li><a href="/actividades/todas/2017-08-01/2017-09-01/">Agosto 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2017-09-01/2017-10-01/">Septiembre 2017</a></li>
+							<li><a href="/actividades/todas/2017-10-01/2017-11-01/">Octubre 2017</a></li>
+							<li><a href="/actividades/todas/2017-11-01/2017-12-01/">Noviembre 2017</a></li>
+							<li><a href="/actividades/todas/2017-12-01/2018-01-01/">Diciembre 2017</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+			<br>
+			<div class="container">
+				<div class="row offs1">
+					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
+				</div>		
+			</div>
+			<br>
+			<div class="container" id="oldCalendar">
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
@@ -2428,6 +2574,43 @@ class Layout_View
     	<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
 			<div class="container">
 				<h3 class="text-center">Calendario Actividades</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2017-01-01/2017-02-01/">Enero 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-02-01/2017-03-01/">Febrero 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-03-01/2017-04-01/">Marzo 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-04-01/2017-05-01/">Abril 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2017-05-01/2017-06-01/">Mayo 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-06-01/2017-07-01/">Junio 2017</a></li>  
+							<li><a href="/actividades/voluntariado/2017-07-01/2017-08-01/">Julio 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-08-01/2017-09-01/">Agosto 2017</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/voluntariado/2017-09-01/2017-10-01/">Septiembre 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-10-01/2017-11-01/">Octubre 2017</a></li>
+							<li><a href="/actividades/voluntariados/2017-11-01/2017-12-01/">Noviembre 2017</a></li>
+							<li><a href="/actividades/voluntariado/2017-12-01/2018-01-01/">Diciembre 2017</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+			<br>
+			<div class="container">
+				<div class="row offs1">
+					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
+				</div>		
+			</div>
+			<br>
+			<div class="container" id="oldCalendar">
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
@@ -2551,46 +2734,7 @@ class Layout_View
 		<?php 
       	}
 		?>
-		
-		<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
-        <div class="container">
-          
-            <h3 class="text-center">
-              Calendario de Actividades
-            </h3>
-          <div class="row offs1">
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-enero.html">Enero </a></li>
-                <li><a href="actividades-febrero.html">Febrero</a></li>
-                <li><a href="actividades-marzo.html">Marzo</a></li>
-                <li><a href="actividades-abril.html">Abril</a></li>
-                               
-              </ul>
-            </div>
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-mayo.html">Mayo</a></li>
-                <li><a href="actividades-junio.html">Junio</a></li>
-                <li><a href="actividades-julio.html">Julio</a></li>
-                <li><a href="actividades-agosto.html">Agosto</a></li>
-                
-                               
-              </ul>
-            </div>
-            <div class="col-xs-4">
-              <ul class="marked-list offs2">
-                <li><a href="actividades-septiembre.html">Septiembre</a></li>
-                <li><a href="actividades-octubre.html">Octubre</a></li>
-                <li><a href="actividades-noviembre.html">Noviembre</a></li>
-                <li><a href="actividades-diciembre.html">Diciembre</a></li>
-                               
-              </ul>
-            </div>
-          </div>    
-          
-        </div>
-      </section>
+		<?php echo Layout_View::getActividadesCalendar(); ?>
     	<?php
     	echo self::getSobreNosotros();
     	$index = ob_get_contents();
@@ -3047,7 +3191,7 @@ class Layout_View
 							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 								<div class="box2 ta__c">
 									<div class="member">
-										<a href="/experiencia-360/"> <img src="/images/experiencia.jpg" alt="Flora y Fauna"></a>
+										<a href="/voluntariado-corporativo/"> <img src="/images/experiencia.jpg" alt="Flora y Fauna"></a>
 									</div>
 								</div>
 							</div>
@@ -3263,13 +3407,24 @@ class Layout_View
 			<div class="container text-center">
 				<div class="jumbotron">
 		              
-					<h5>Experiencia 360</h5>
+					<h5>Voluntariado Corporativo</h5>
 		            
 		            <p class="text-justify">
 		              FFCM es una organización con muchos espacios y actividades donde generamos 
-		              comunidad. Experiencia 360 te ayuda a conocer a nuestra organización siendo 
+		              comunidad. Voluntariado Corporativo te ayuda a conocer a nuestra organización siendo 
 		              voluntario por un día en cada uno de nuestros espacios y programas.
 		            </p>
+		            
+		            <h5>Tipos de voluntariado corporativo:</h5>
+
+					<p><strong>PRÁCTICO:</strong>  la gente aporta trabajo físico a tareas de mantenimiento
+					Por lo general se realizan en un día.
+					Pintar, talachas, sembrar, etc.</p>
+					 
+					<p><strong>PROFESIONAL:</strong> los empleados dan asesoría técnica especializada en proyectos y aportan su conocimiento y talento.</p>
+					
+					<h5>Beneficios y motivaciones</h5>
+					<p>El voluntariado corporativo tiene muchos beneficios para las organizaciones sin fines de lucro, así como para la comunidad en su conjunto. Se promueve un buen desarrollo personal y profesional, ofreciendo también una experiencia de vida y aprendizajes.</p>
 				</div>
 			</div>
 		</section>
@@ -3711,7 +3866,7 @@ class Layout_View
 							<li><a href="/servicio-social/">Servicio Social</a></li>
 							<li><a href="/practicas/">Prácticas Profesionales</a></li>
 							<li><a href="/voluntariado-por-un-dia/">Voluntariado por un día</a></li>
-							<li><a href="/experiencia-360/">Experiencia 360</a></li>
+							<li><a href="/voluntariado-corporativo/">Voluntariado Corporativo</a></li>
 							<li><a href="/embajadores/">Embajadores por el mundo</a></li>
 						</ul>
 					</div>
@@ -3766,12 +3921,12 @@ class Layout_View
 				<div class="container text-center"> 
 					<div class="navbar-header">
 						<h1 class="navbar-brand">
-							<img src="/images/logo-png.png" alt="<?php echo $this->data['appInfo']['title']; ?>" />
-							<small class="small-lines">
+							<img src="/images/Logo-FFCM-Footer.png" alt="<?php echo $this->data['appInfo']['title']; ?>" />
+							<!-- <small class="">
 								&#169; <span id="copyright-year"></span>   
 								<a class="policy" href="#"></a>
 								<!-- {%FOOTER_LINK} -->
-							</small>             
+							<!-- </small>        -->      
 						</h1>
 					</div>
 					

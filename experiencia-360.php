@@ -26,6 +26,6 @@
 	$option 	= 'experiencia';
 	$data 		= $backend->loadBackend($option);
 	
-	$view 		= new Layout_View($data, 'Experiencia 360');
+	$view 		= new Layout_View($data, 'Voluntariado corporativo');
 	
 	echo $view->printHTMLPage($option);

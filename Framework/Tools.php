@@ -557,5 +557,75 @@ class Tools
 		$user_ts = strtotime($evaluame);
 		return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
 	}
+	
+	public static function translateMonth($date)
+	{
+		//     	echo "from ".$date;
+		//     	2016-01-10
+		$month = "";
+		
+		if ($date)
+		{
+			if (sizeof(explode('-', $date)) > 1)
+			{
+				$date = explode('-', $date);
+				
+				switch ($date[1])
+				{
+					case "Jan":
+						$month = "Enero";
+					break;
+					
+					case "Feb":
+						$month = "Febrero";
+					break;
+					
+					case "Mar":
+						$month = "Marzo";
+					break;
+					
+					case "Apr":
+						$month = "Abril";
+					break;
+					
+					case "May":
+						$month = "Mayo";
+					break;
+					
+					case "Jun":
+						$month = "Junio";
+					break;
+					
+					case "Jul":
+						$month = "Julio";
+					break;
+					
+					case "Aug":
+						$month = "Agosto";
+					break;
+					
+					case "Sep":
+						$month = "Septiembre";
+					break;
+					
+					case "Oct":
+						$month = "Octubre";
+					break;
+					
+					case "Nov":
+						$month = "Noviembre";
+					break;
+					
+					case "Dec":
+						$month = "December";
+					break;
+				}
+				
+				$date = $date[0].' '.$month.' '.$date[2];
+			}
+			// 			echo " to ".$date.' <br>';
+			return $date;
+		}
+	}
 }
 ?>

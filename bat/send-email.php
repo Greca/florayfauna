@@ -86,15 +86,15 @@ try {
     $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
     $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-    $mail->Username   = "raul@wheretogo.com.mx";  // GMAIL username
-    $mail->Password   = "----";            // GMAIL password
+    $mail->Username   = "wetzz.ffcm@gmail.com";  // GMAIL username
+    $mail->Password   = "lolme!";            // GMAIL password
 
     foreach ($addresses[0] as $key => $value) {
         $mail->addAddress($value[0]);
     }
 
     $mail->CharSet = 'utf-8';
-    $mail->addBCC('sistemas@greca.mx');
+    $mail->addBCC('raul@wheretogo.com.mx');
     $mail->Subject = $subject;
     $mail->MsgHTML($template);
 

@@ -94,7 +94,7 @@ class Layout_View
 			switch ($section) 
 			{
 				case 'index':
- 					echo self :: getIndexHeader();
+ 					echo self::getIndexHeader();
 				break;
 				
 				case 'espacios':
@@ -192,7 +192,7 @@ ga('send', 'pageview');
 				switch ($section) 
 				{
 					case 'index':
-						echo self :: getIndexContent();
+						echo self::getIndexContent();
 					break;
 					
 					case 'nosotros':
@@ -208,11 +208,11 @@ ga('send', 'pageview');
 					break;
 					
 					case 'causas':
-						echo self :: getSingleCausasContent();
+						echo self::getSingleCausasContent();
 					break;
 					
 					case 'espacios':
-						echo self :: getSingleEspaciosContent();
+						echo self::getSingleEspaciosContent();
 					break;
 					
 					case 'noticia':
@@ -1599,7 +1599,7 @@ ga('send', 'pageview');
 		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
-					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<!-- <h3><?php echo $this->data['linkInfo']['title']; ?></h3> -->
 					<div class="text-justify">
 						<?php echo $this->data['linkInfo']['content']; ?>
 					</div>

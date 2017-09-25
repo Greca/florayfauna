@@ -511,14 +511,14 @@ ga('send', 'pageview');
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="/que-hacemos/">Qué hacemos</a>
+                                    <a href="/que-hacemos/">Qu&eacute; hacemos</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/causas/">Causas</a></li>
                                         <li><a href="/proyectos/">Proyectos </a></li>
-                                        <li><a href="/actividades/">Actividades </a></li>
                                         <li><a href="/campanas/">Campa&ntilde;as </a></li>
-                                        <li><a href="/materiales/">Materiales educativos </a></li>
-                                        <li><a href="/noticias/">Noticias</a></li>
+                                        <li><a href="/actividades/">Actividades </a></li>
+                                        <!-- <li><a href="/materiales/">Materiales educativos </a></li>
+                                        <li><a href="/noticias/">Noticias</a></li> -->
 
                                     </ul>
                                 </li>

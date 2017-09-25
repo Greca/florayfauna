@@ -546,15 +546,17 @@ ga('send', 'pageview');
                                         <li><a href="/embajadores/">Embajadores por el mundo </a></li>
                                     </ul>
                                 </li>
-
-                                <li class="dropdown">
+								
+								<li><a href="/noticias/">Noticias</a></li>
+								
+                                <!-- <li class="dropdown">
                                     <a href="/quiero-ayudar/">Quiero ayudar</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/donativos/">Donativos </a></li>
                                         <li><a href="/que-puedes-aportar/">Qué puedes aportar </a></li>
                                         <li><a href="/productos/">Productos con causa </a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 
                                 <li class="dropdown">
                                     <a href="/contacto/">Contacto</a>

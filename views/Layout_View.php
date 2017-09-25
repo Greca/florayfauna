@@ -77,9 +77,9 @@ class Layout_View
 			<!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
 			<meta charset="utf-8" />
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    		<meta name="viewport" content="width=device-width, initial-scale=1">
-    		<meta name="format-detection" content="telephone=no" />
-    		<meta name="google-site-verification" content="" />
+	    		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    		<meta name="format-detection" content="telephone=no" />
+	    		<meta name="google-site-verification" content="" />
 			<link rel="shortcut icon" href="favicon.ico" />
 			<link rel="icon" type="image/gif" href="favicon.ico" />
 			<title><?php echo $this->title; ?> - <?php echo $this->data['appInfo']['title']; ?></title>
@@ -370,7 +370,7 @@ ga('send', 'pageview');
 	    <!-- Links -->
 	    <link rel="stylesheet" href="/css/owl-carousel.css">
 	    <link rel="stylesheet" href="/css/google-map.css">
-	
+		<link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.min.css">
 	    <!--JS-->
 	    <script src="/js/jquery.js"></script>
 	    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
@@ -1643,7 +1643,10 @@ ga('send', 'pageview');
 							if ($directorio['e_mail'])
 							{
 								?>
-							<a class="font-directory" href="#"><?php echo $directorio['e_mail']; ?></a>
+								<a href="mailto: <?php echo $directorio['e_mail']; ?>" class="tooltip-right" data-tooltip="<?php echo $directorio['e_mail']; ?>">
+									<i class="fa icon-envelope-alt"></i>
+								</a>
+							<!-- <a class="font-directory" href="#"></a> -->
 								<?php
 							}
 							?>

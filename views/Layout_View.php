@@ -1123,14 +1123,18 @@ ga('send', 'pageview');
 			</div>
 		</section>
 		
+		<?php 
+		if ($this->data['contenidos'])
+		{
+		?>
 		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 			<div class="container">
 				<h3 class="h3 text-center">Contenidos destacados</h3>
 				<div class="row">
 				<?php 
-	        	foreach ($this->data['contenidos'] as $item)
-	        	{
-	        		?>
+		        	foreach ($this->data['contenidos'] as $item)
+		        	{
+		        		?>
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="thumbnail thumbnail-1">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
@@ -1140,12 +1144,15 @@ ga('send', 'pageview');
 							</div>  
 						</div>
 					</div>
-	        		<?php
-	        	}
-	        	?>
+		        		<?php
+		        	}
+		        	?>
 				</div>
 			</div>
 		</section>
+		<?php
+		}
+		?>
 		
 		<section class="well well3 well3_ins1 text-center">
 

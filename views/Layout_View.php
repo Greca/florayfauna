@@ -970,7 +970,7 @@ ga('send', 'pageview');
         </section>
         
         <?php 
-        if ($this->data['news'])
+        /*if ($this->data['news'])
         {
         ?>
 		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
@@ -987,10 +987,8 @@ ga('send', 'pageview');
 			</div>
 		</section>
     	<?php
-        }
+        }*/
         ?>
-        
-        
         
         <?php
         echo self::getSobreNosotros();

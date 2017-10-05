@@ -1,2 +1,2 @@
-rsync -rvz /var/www/florayfauna/* wheretogo.com.mx@s161140.gridserver.com:/home/161140/users/.home/domains/fyf.dev/html --exclude-from rsync_exclude.txt
+rsync -rvz /var/www/flora_root/* supreme@45.55.32.178:/var/www/ffcm.auxgreca.com/public_html --exclude-from rsync_exclude.txt
 

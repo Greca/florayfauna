@@ -10,5 +10,5 @@
 deploy/
 databases/
 
-#Framework/Connection_Data.php
-#fonts/
+Framework/Connection_Data.php
+fonts/

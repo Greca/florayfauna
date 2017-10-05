@@ -26,6 +26,6 @@
 	$option 	= 'donativos';
 	$data 		= $backend->loadBackend($option);
 	
-	$view 		= new Layout_View($data, 'Donativoss');
+	$view 		= new Layout_View($data, 'Donativos');
 	
 	echo $view->printHTMLPage($option);

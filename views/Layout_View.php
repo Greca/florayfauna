@@ -53,7 +53,7 @@ class Layout_View
 	 */
 	public function __construct($data, $title)
 	{
-		$this->data 	= $data;
+		$this->data 		= $data;
 		$this->title 	= $title;
 		$this->url		= $data['appInfo']['url'];
 	}    
@@ -87,7 +87,7 @@ class Layout_View
 			<meta name="description" content="<?php echo $this->data['appInfo']['description']; ?>" />
 			<meta property="og:type" content="website" /> 
 			<meta property="og:url" content="<?php echo $this->data['appInfo']['url']; ?>" />
-			<meta property="og:site_name" content="<?php echo $this->data['appInfo']['siteName']; ?> />
+			<meta property="og:site_name" content="<?php echo $this->data['appInfo']['siteName']; ?>" />
 			<link rel='canonical' href="<?php echo $this->data['appInfo']['url']; ?>" />
 			<?php echo self::getCommonDocuments(); ?>			
 			<?php 
@@ -173,19 +173,19 @@ class Layout_View
 			?>
 		</head>
 		<body>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-98653116-1', 'auto');
-ga('send', 'pageview');
-
-</script>
+			<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-98653116-1', 'auto');
+			ga('send', 'pageview');
+			
+			</script>
 			<div class="page">
 			<?php 
- 			echo self :: getHeader();
+ 				echo self :: getHeader();
 			?>
 				<main>
 				<?php 
@@ -374,10 +374,7 @@ ga('send', 'pageview');
 	    <!--JS-->
 	    <script src="/js/jquery.js"></script>
 	    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
-	    
 	    <script src="/js/wow.js"></script>
-    	
-	
 	    <!--[if lt IE 9]>
 	    <div style=' clear: both; text-align:center; position: relative;'>
 	        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
@@ -417,13 +414,13 @@ ga('send', 'pageview');
     		?>
 	        
 	    </style>
-    	<script>
-        $(document).ready(function () {
-            if ($('html').hasClass('desktop')) {
-                new WOW().init();
-            }
-        });
-    	</script>
+	    	<script>
+	        $(document).ready(function () {
+	            if ($('html').hasClass('desktop')) {
+	                new WOW().init();
+	            }
+	        });
+	    	</script>
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
@@ -460,30 +457,30 @@ ga('send', 'pageview');
 		document.onscroll = scroll;
 		});*/
 		</script>
-    	<?php
-    	$indexHeader = ob_get_contents();
-    	ob_end_clean();
-    	return $indexHeader;
-    }
-    
-    public function getHeader()
-    {
-    	ob_start();
-
-    	if (isset($this->data['section']['has_bg']) == 1 || $_GET['section'] == 1)
-    	{
-    		$headerClass = 'head1';
-    		$stuckClass = 'stuck_container';
-    		$stuckStyle = '';
-    	}
-    	else
-    	{
-    		$headerClass = 'head-stuck custom-head';
-    		$stuckClass = 'stuck_container navbar-static-top isStuck';
-    		$stuckStyle = 'style="top: 0px; visibility: visible; position: fixed; width: 100%; margin-top: 0px;"';
-    	}
-    		
-    	?>
+	    	<?php
+	    	$indexHeader = ob_get_contents();
+	    	ob_end_clean();
+	    	return $indexHeader;
+	    }
+	    
+	    public function getHeader()
+	    {
+	    	ob_start();
+	
+	    	if (isset($this->data['section']['has_bg']) == 1 || $_GET['section'] == 1)
+	    	{
+	    		$headerClass = 'head1';
+	    		$stuckClass = 'stuck_container';
+	    		$stuckStyle = '';
+	    	}
+	    	else
+	    	{
+	    		$headerClass = 'head-stuck custom-head';
+	    		$stuckClass = 'stuck_container navbar-static-top isStuck';
+	    		$stuckStyle = 'style="top: 0px; visibility: visible; position: fixed; width: 100%; margin-top: 0px;"';
+	    	}
+	    		
+	    	?>
 	   	<!--========================================================
                             HEADER
   		=========================================================-->
@@ -536,14 +533,24 @@ ga('send', 'pageview');
                                     </ul>
                                 </li>
 
-                                <li class="dropdown">
-                                    <a href="/voluntariado/">Voluntariado</a>
+								<!-- 
+								<li class="dropdown">
+                                    <a href="/voluntariado/">S&uacute;mate</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/servicio-social/">Servicio social </a></li>
-                                        <li><a href="/practicas/">Pr&aacute;cticas profesionales </a></li>
+                                        <li><a href="/practicas/">Pr&aacute;cticas profesionales </a></li> 
                                         <li><a href="/voluntariado-por-un-dia/">Voluntario por un día </a></li>
                                         <li><a href="/voluntariado-corporativo/">Voluntariado Corporativo </a></li>
                                         <li><a href="/embajadores/">Embajadores por el mundo </a></li>
+                                    </ul>
+                                </li>
+								 -->
+
+                                <li class="dropdown">
+                                    <a href="/voluntariado/">S&uacute;mate</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/voluntariado/">Voluntariado</a></li>
+                                        <li><a href="/quiero-ayudar/">Donativos</a></li>
                                     </ul>
                                 </li>
 								
@@ -571,38 +578,35 @@ ga('send', 'pageview');
             </div>
 
             <?php 
-    		if (isset($this->data['section']['has_bg']) == 1)
-    		{
+	    		if (isset($this->data['section']['has_bg']) == 1)
+	    		{
     			?>
-    		<section class="well well1">
+    			<section class="well well1">
                 <div class="container">
                 </div>
             </section>
-    		<?php 
-    		}
-    		?>
+	    		<?php 
+	    		}
+	    		?>
     		
     		<?php 
     		if ($_GET['section'] == 1)
     		{
     			?>
-            
-            <section class="well well1">
-        <div class="container"  style="z-index: 9999">
-          <div class="navbar-header" style="z-index: 9999">
-            <h1 class="">
-              <a href="/" >
-                  <img src="images/logo-ffcm.jpg" alt="FFCM">
-                  <br>
-                <small class="" style="margin-top: 20px; margin-left: -40px;">Flora, Fauna y Cultura de México</small>
-              </a>
-            </h1>
-          </div>
-          <h3 class="text-center fw-n">
-          
-          </h3>
-        </div>
-      </section>
+			<section class="well well1">
+				<div class="container"  style="z-index: 9999">
+					<div class="navbar-header" style="z-index: 9999">
+						<h1 class="">
+							<a href="/" >
+								<img src="images/logo-ffcm.jpg" alt="FFCM">
+								<br>
+								<small class="" style="margin-top: 20px; margin-left: -40px;">Flora, Fauna y Cultura de México</small>
+							</a>
+						</h1>
+					</div>
+					<h3 class="text-center fw-n"></h3>
+				</div>
+			</section>
     		<?php 
     		}
     		?>
@@ -618,7 +622,7 @@ ga('send', 'pageview');
     	ob_start();
     	?>
 		<section class="well well2">
-        	<div class="container">
+        		<div class="container">
 				<div class="row">
 				<?php 
 				foreach ($this->data['causas'] as $section)
@@ -685,7 +689,7 @@ ga('send', 'pageview');
     {
     	ob_start();
     	?>
-    	<section class="well well3 well3_ins1 text-center">
+    		<section class="well well3 well3_ins1 text-center">
 			<h3 class="text-center">QU&Eacute; HACEMOS</h3>
 				
 			<div class="img_block">
@@ -755,7 +759,7 @@ ga('send', 'pageview');
     {
     	ob_start();
     	?>
-    	<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
+    		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
 			<div class="container">
 				<h3 class="text-center">Noticias</h3>
                     <div class="row offs1 center767">
@@ -947,8 +951,8 @@ ga('send', 'pageview');
         
         <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 	        <div class="container">
-	        	<h3 class="h3 text-center">Proyectos - <?php echo $this->data['section']['title']; ?></h3>
-	        	<div class="row">
+		        	<h3 class="h3 text-center">Proyectos - <?php echo $this->data['section']['title']; ?></h3>
+		        	<div class="row">
 	        	<?php 
 	        	foreach ($this->data['proyectos'] as $proyecto)
 	        	{
@@ -1058,14 +1062,14 @@ ga('send', 'pageview');
 		document.onscroll = scroll;
 		});
 		</script>
-    	<script>
-        $(function () {
-        	$(window).ready(function() {
-        		
-        		$( '.swipebox-video' ).swipebox();
-        	});
-        });
-    	</script>
+	    	<script>
+	        $(function () {
+	        	$(window).ready(function() {
+	        		
+	        		$( '.swipebox-video' ).swipebox();
+	        	});
+	        });
+	    	</script>
     	
     	<?php
     	$indexHeader = ob_get_contents();
@@ -1230,11 +1234,8 @@ ga('send', 'pageview');
                             <a href="/actividades/todas/2017-06-01/2017-07-01/" class="btn btn-default">Junio</a>
                         </div>
                     </div>
-                    
-
-                </div>
-
-            </section>
+			</div>
+		</section>
         
         	<section class="well well3 well3_ins1 text-center">
                 <div class="img_block_calendar">
@@ -1416,7 +1417,6 @@ ga('send', 'pageview');
 				</div>
 			</div>
 		</section>
-    	
     	<?php 
     	if ($this->data['gallery'])
     	{
@@ -1443,8 +1443,8 @@ ga('send', 'pageview');
       	{ 
       	?>
       	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
-        	<div class="container">
-        		<h3 class="h3 text-center">Galeria de Videos</h3>
+        		<div class="container">
+        			<h3 class="h3 text-center">Galeria de Videos</h3>
           		<div class="row">
           		<?php 
           		foreach ($this->data['videos'] as $video)
@@ -1488,7 +1488,6 @@ ga('send', 'pageview');
     	?>
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="thumbnail thumbnail-1">
-				
 				<div class="caption">
 					<a rel="vimeo" href="https://www.youtube.com/watch?v=<?php echo $video['video']; ?>" class="swipebox-video">
 						<img class="" src="http://img.youtube.com/vi/<?php echo $video['video']; ?>/0.jpg" alt="">
@@ -1525,21 +1524,20 @@ ga('send', 'pageview');
 				foreach ($this->data['items'] as $item)
 				{
 					?>
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="thumbnail-2">
-							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?> - Flora, Fauna y Cultura de México AC.">
-							<div class="caption">
-								<p class="text-info text-justify" style="margin-top: 30px;">
-									<span><?php echo $item['description']; ?></span>
-								</p>
-							</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="thumbnail-2">
+						<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?> - Flora, Fauna y Cultura de México AC.">
+						<div class="caption">
+							<p class="text-info text-justify" style="margin-top: 30px;">
+								<span><?php echo $item['description']; ?></span>
+							</p>
 						</div>
 					</div>
+				</div>
 					<?php
 				}
 				?>
-				</div>
-			</div>        
+			</div>
 		</section>
 		<?php
 		echo self::getSobreNosotros();
@@ -1927,8 +1925,6 @@ ga('send', 'pageview');
 						$c = 0;
 					}
 				}
-				
-				
 				?>
 				</div>
 			</div>
@@ -2025,8 +2021,6 @@ ga('send', 'pageview');
     	return $indexHeader;
     }
     
-    
-    
     public function getContacto()
     {
     	ob_start();
@@ -2044,7 +2038,7 @@ ga('send', 'pageview');
 						<address class="addr1">                                           
 							<p class="text-primary">Dirección:</p>    
 							<p>Km. 282 Carretera Chetumal-Puerto Juárez,  C.P. 77710</p>
-							<p>Playa del Carmen, Quintana Roo, México</p>
+							<p>Playa del Carmen, Quintana Roo, M&eacute;xico</p>
 							<p>Tel:<a href='callto:(984) 8715-289'> (984) 8715-289 y 290</a></p>
 						</address>
 					</div>
@@ -2058,19 +2052,19 @@ ga('send', 'pageview');
 									<input type="hidden" name="form-type" value="contact" />
 									<input type="text" name="name" placeholder="Nombre" value="" data-constraints="@Required @JustLetters" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un nombre v&aacutelido.</span>
+									<span class="error-message">*No es un nombre v&aacute;lido.</span>
 								</label>
 								
 								<label class="email">
 									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un e-mail v&aacutelido.</span>
+									<span class="error-message">*No es un e-mail v&aacute;lido.</span>
 								</label>
 								
 								<label class="phone">
 									<input type="text" name="phone" placeholder="Tel&eacute;fono" value="" data-constraints="@JustNumbers" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un e-mail v&aacutelido.</span>
+									<span class="error-message">*No es un e-mail v&aacute;lido.</span>
 								</label>
 								
 								<label class="message">
@@ -2082,7 +2076,7 @@ ga('send', 'pageview');
 								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
 								
 								<div class="btn-wr text-primary">
-								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
+									<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
 								</div>
 							</fieldset>
 							<div class="modal fade response-message">
@@ -2154,25 +2148,25 @@ ga('send', 'pageview');
 									<input type="hidden" name="form-type" value="subscribe" />
 									<input type="text" name="name" placeholder="Nombre" value="" data-constraints="@Required @JustLetters" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un nombre v&aacutelido.</span>
+									<span class="error-message">*No es un nombre v&aacute;lido.</span>
 								</label>
 								
 								<label class="email">
 									<input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un e-mail v&aacutelido.</span>
+									<span class="error-message">*No es un e-mail v&aacute;lido.</span>
 								</label>
 								
 								<label class="phone">
 									<input type="text" name="phone" placeholder="Tel&eacute;fono" value="" data-constraints="@JustNumbers" />
 									<span class="empty-message">*Este campo es obligatorio.</span>
-									<span class="error-message">*No es un e-mail v&aacutelido.</span>
+									<span class="error-message">*No es un e-mail v&aacute;lido.</span>
 								</label>
 								
 								<!--  <label class="recaptcha"> <span class="empty-message">*This field is required.</span> </label> -->
 								
 								<div class="btn-wr text-primary">
-								<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
+									<a class="btn btn-primary btn-left" href="index-4.html#" data-type="submit">Enviar</a>
 								</div>
 							</fieldset>
 							<div class="modal fade response-message">
@@ -2382,12 +2376,12 @@ ga('send', 'pageview');
 		</section>
 
 		<?php 
-    	if ($this->data['gallery'])
-    	{
-    	?>
+	    	if ($this->data['gallery'])
+	    	{
+	    	?>
 		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 			<div class="container">
-				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<h3 class="h3 text-center">Galer&iacute;a de fotos</h3>
 				<div class="row">
 		            <?php 
 	            	foreach ($this->data['gallery'] as $gallery)
@@ -2399,7 +2393,7 @@ ga('send', 'pageview');
 	        </div>
       	</section>
       	<?php 
-    	}
+    		}
       	?>
       	
       	<?php
@@ -2468,7 +2462,7 @@ ga('send', 'pageview');
 							<div class="caption">
 								<time datetime='2016'><?php echo Tools::translateMonth(Tools::formatMYSQLToFront($actividad['date'])); ?></time>
 								<p>
-								<?php echo $actividad['description']; ?> 
+									<?php echo $actividad['description']; ?> 
 								</p>
 								<br>
 								<a href="/actividad/<?php echo $actividad['actividades_id']; ?>/<?php echo Tools::slugify($actividad['title']); ?>/">Leer más</a>
@@ -3181,7 +3175,7 @@ ga('send', 'pageview');
 									</div>
 								</div>
 							</div>
-							
+							<!-- 
 							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 								<div class="box2 ta__c">
 									<div class="member">
@@ -3189,7 +3183,7 @@ ga('send', 'pageview');
 									</div>
 								</div>
 							</div>
-							
+							 -->
 							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 								<div class="box2 ta__c">
 									<div class="member">

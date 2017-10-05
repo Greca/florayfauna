@@ -3,7 +3,7 @@
  * This file has the main view of the project
  *
  * @package    Flora, Fauna y Cultura
- * @subpackage Flora, Fauna y Cultura
+ * @subpackage Flora, Fauna y Cultura: Front End
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * @author     Raul Castro <rd.castro.silva@gmail.com>
  */
@@ -19,7 +19,7 @@ require_once $root.'/Framework/Tools.php';
  * 
  * Is the main class, almost everything is printed from here
  * 
- * @package 	Front end
+ * @package 		Front end
  * @subpackage 	Flora, Fauna y Cultura de México
  * @author 		Raul Castro <rd.castro.silva@gmail.com>
  * 
@@ -925,9 +925,9 @@ class Layout_View
     	
     	echo self::getTopItems();
     	echo self::getIndexCall();
-    	echo self::getWhatToDo();
-    	echo self::getSpaces();
-    	echo self::getNews();
+    	//echo self::getWhatToDo();
+    	//echo self::getSpaces();
+    	//echo self::getNews();
     	echo self::getSponsors();
     	echo self::getSocialNetworks();
 

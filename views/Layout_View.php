@@ -283,6 +283,10 @@ class Layout_View
  						echo self::getVoluntariadoMain();
  					break;
  					
+ 					case 'sumate':
+ 						echo self::getSumateMain();
+ 					break;
+ 					
  					case 'servicio':
  						echo self::getServicioMain();
  					break;
@@ -547,10 +551,10 @@ class Layout_View
 								 -->
 
                                 <li class="dropdown">
-                                    <a href="/voluntariado/">S&uacute;mate</a>
+                                    <a href="/sumate/">S&uacute;mate</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/voluntariado/">Voluntariado</a></li>
-                                        <li><a href="/quiero-ayudar/">Donativos</a></li>
+                                        <li><a href="/donativos/">Donativos</a></li>
                                     </ul>
                                 </li>
 								
@@ -664,16 +668,16 @@ class Layout_View
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-3">
-						<a href="/quiero-ayudar/" class="index-icons">
-							<i class="fa fa-credit-card"></i>
-						</a>
-						<p>Ayudar</p>
-					</div>
-					<div class="col-sm-3">
 						<a href="/voluntariado/" class="index-icons">
 							<i class="fa fa-user-plus"></i>
 						</a>
 						<p>Voluntariado</p>
+					</div>
+					<div class="col-sm-3">
+						<a href="/donativos/" class="index-icons">
+							<i class="fa fa-credit-card"></i>
+						</a>
+						<p>Donativos</p>
 					</div>
 					<div class="col-sm-3"></div>
 				</div>
@@ -723,16 +727,12 @@ class Layout_View
 		<section class="well well3 well3_ins1 text-center">
 			<h3 class="text-center">Espacios</h3>
 				
-			<div class="img_block">
+			<div class="container">
 	        <?php 
-			$i = 1;
 			foreach ($this->data['espacios'] as $section)
             {
-               	$offset = '';
-               	if ($i == 1)
-                $offset = 'col-md-offset-1';
             ?>
-			<div class="<?php echo $offset; ?> col-md-2 col-sm-6 col-xs-12">
+			<div class="<?php echo $offset; ?> col-md-4 col-sm-6 col-xs-12">
 				<div class="thumbnail">
 					<a href="/espacios/<?php echo $section['espacios_id']; ?>/<?php echo Tools::slugify($section['title']); ?>/">
 						<div class="img-thumbnail">
@@ -744,7 +744,6 @@ class Layout_View
 				</div>
 			</div>
 			<?php
-			$i++;
 			}
 			?>
 			</div>
@@ -940,7 +939,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-    	<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
+    		<section class="well well10 parallax" data-url="/images/parallax4.jpg" data-mobile="true">
 			<div class="container text-center">
 				<div class="jumbotron">
 					<h3><?php echo $this->data['section']['title']; ?></h3>
@@ -949,6 +948,10 @@ class Layout_View
             </div>
         </section>
         
+        <?php 
+        if ($this->data['proyectos'] )
+        {
+        ?>
         <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 	        <div class="container">
 		        	<h3 class="h3 text-center">Proyectos - <?php echo $this->data['section']['title']; ?></h3>
@@ -959,7 +962,7 @@ class Layout_View
 	        		?>
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="thumbnail thumbnail-1">
-							<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $proyecto['icon']; ?>"" alt="">
+							<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $proyecto['icon']; ?>" alt="">
 							<div class="caption">
 								<h5><a href="/proyecto/<?php echo $proyecto['proyectos_id']; ?>/<?php echo Tools::slugify($proyecto['title']); ?>/"><?php echo $proyecto['title']; ?></a></h5>
 								<p><?php echo $proyecto['description']; ?></p>
@@ -972,7 +975,76 @@ class Layout_View
 	            </div>
 	        </div>
         </section>
+        <?php 
+        }
+        ?>
         
+        <?php 
+        if ($this->data['materiales'])
+        {
+        ?>
+        <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+	        <div class="container">
+	        	<h3 class="h3 text-center">Materiales Educativos</h3>
+	        	<div class="row offs1">
+	        	<?php 
+	        	foreach ($this->data['materiales'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail-3">
+							<a class="thumb" data-fancybox-group="1" href="/material/<?php echo $item['materiales_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<span class="thumb_overlay"></span>
+							</a>  
+							<div class="caption">
+								<p class="text-info">
+								<?php echo $item['title']; ?><br />
+								<span><?php echo $item['description']; ?></span>
+								</p>
+							</div>
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+	            </div>
+	        </div>
+        </section>
+        <?php 
+        }
+        ?>
+        
+        <?php 
+        if ($this->data['voluntariado'])
+        {
+        ?>
+        <section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">OPCIONES PARA TU VOLUNTARIADO</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['voluntariado'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/servicios/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
+        <?php 
+        }
+        ?>
         <?php 
         /*if ($this->data['news'])
         {
@@ -3161,8 +3233,49 @@ class Layout_View
 			</div>
 		</section>
 		
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">OPCIONES PARA TU VOLUNTARIADO</h3>
+				<div class="row">
+				<?php 
+	        	foreach ($this->data['items'] as $item)
+	        	{
+	        		?>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail thumbnail-1">
+							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
+							<div class="caption">
+								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/servicios/"><?php echo $item['title']; ?></a></h5>
+								<p><?php echo $item['description']; ?></p>
+							</div>  
+						</div>
+					</div>
+	        		<?php
+	        	}
+	        	?>
+				</div>
+			</div>
+		</section>
 		
-		<!-- ALIADOS Y DONANTES -->
+		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="images/parallax3.jpg" data-mobile="true">
+			<div class="container">
+				<h3 class="text-center">Testimonios</h3>
+				<div class="row offs1 center767">
+				<?php 
+				if ($this->data['testimonios'])
+				{
+					foreach ($this->data['testimonios'] as $testimonio)
+					{
+						echo self::getTestimoniosItem($testimonio);
+					}
+				}
+				?>
+				</div>
+			</div>
+		</section>
+		
+		
+		<!-- ALIADOS Y DONANTES 
 		<section class="well well4">
 			<div class="container">
 				<div class="donantes_grid">
@@ -3175,15 +3288,6 @@ class Layout_View
 									</div>
 								</div>
 							</div>
-							<!-- 
-							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-								<div class="box2 ta__c">
-									<div class="member">
-										<a href="/practicas/"> <img src="/images/practicas.jpg" alt="Flora y Fauna"></a>
-									</div>
-								</div>
-							</div>
-							 -->
 							<div class="col-md-2 col-sm-3 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 								<div class="box2 ta__c">
 									<div class="member">
@@ -3212,8 +3316,32 @@ class Layout_View
 				</div>
 			</div>
 		</section>
+				-->
+		<?php
+		echo self::getSobreNosotros();
+		$section = ob_get_contents();
+		ob_end_clean();
+		return $section;
+    }
+    
+    public function getSumateMain()
+    {
+    	ob_start();
+    	?>
+		<section class="well well10 parallax" data-url="images/parallax4.jpg" data-mobile="true">
+			<div class="container text-center">
+				<div class="jumbotron">
+					<h3><?php echo $this->data['linkInfo']['title']; ?></h3>
+					<div>
+						<?php echo $this->data['linkInfo']['content']; ?>
+					</div>
+				</div>
+			</div>
+		</section>
+		
 				
 		<?php
+		echo self::getIndexCall();
 		echo self::getSobreNosotros();
 		$section = ob_get_contents();
 		ob_end_clean();
@@ -3732,7 +3860,7 @@ class Layout_View
 	        	foreach ($this->data['items'] as $item)
 	        	{
 	        		?>
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="thumbnail thumbnail-1">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
 							<div class="caption">

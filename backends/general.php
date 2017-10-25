@@ -56,7 +56,7 @@ class generalFrontBackend
 				'twitter' 		=> $appInfoRow['twitter'],
 				'facebook' 		=> $appInfoRow['facebook'],
 				'googleplus' 	=> $appInfoRow['googleplus'],
-				'pinterest' 	=> $appInfoRow['pinterest'],
+				'pinterest' 		=> $appInfoRow['pinterest'],
 				'linkedin' 		=> $appInfoRow['linkedin'],
 				'youtube' 		=> $appInfoRow['youtube'],
 				'instagram'		=> $appInfoRow['instagram'],
@@ -124,6 +124,12 @@ class generalFrontBackend
 				
 				$proyectosArray 	= $this->model->getCausasProyectos($_GET['sectionId']);
 				$data['proyectos'] 	= $proyectosArray;
+				
+				$materialesArray = $this->model->getCausasMateriales($_GET['sectionId']);
+				$data['materiales'] = $materialesArray;
+				
+				$voluntariadoArray = $this->model->getCausasVoluntariado($_GET['sectionId']);
+				$data['voluntariado'] = $voluntariadoArray;
 			break;
 			
 			case 'all-causas':
@@ -329,6 +335,8 @@ class generalFrontBackend
 				
 				$linkInfo			= $this->model->getLinkByCode('servicio-social');
 				$data['linkInfo'] 	= $linkInfo;
+				
+				
 			break;
 			
 			case 'practicas':
@@ -392,6 +400,17 @@ class generalFrontBackend
 			
 			case 'voluntariado':
 				$linkInfo			= $this->model->getLinkByCode('voluntariado');
+				$data['linkInfo'] 	= $linkInfo;
+				
+				$newsArray 		= $this->model->getVoluntariado(1);
+				$data['items'] 	= $newsArray;
+				
+				$infoArray				= $this->model->getTestimoniosBySection('servicios');
+				$data['testimonios'] 	= $infoArray;
+			break;
+			
+			case 'sumate':
+				$linkInfo			= $this->model->getLinkByCode('sumate');
 				$data['linkInfo'] 	= $linkInfo;
 			break;
 			

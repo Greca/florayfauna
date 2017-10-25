@@ -42,6 +42,7 @@ RewriteRule ^embajadores/$ 						/embajadores.php?section=19
 RewriteRule ^quiero-ayudar/$ 					/quiero-ayudar.php?section=19
 RewriteRule ^productos/$ 						/productos.php?section=19
 RewriteRule ^aviso-de-privacidad/$ 				/aviso.php?section=19
+RewriteRule ^sumate/$ 						/sumate.php?section=19
 
 
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=3&sectionId=$1

@@ -127,7 +127,7 @@ class Layout_Model
 	public function getEspacios()
 	{
 		try {
-			$query = 'SELECT * FROM espacios';
+			$query = 'SELECT * FROM espacios WHERE active = 1';
 				
 			return $this->db->getArray($query);
 		} catch (Exception $e) {
@@ -702,6 +702,32 @@ class Layout_Model
 					LEFT JOIN proyectos p ON p.proyectos_id = cp.proyectos_id
 					WHERE cp.causa_id = '.$section;
 	
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCausasMateriales($section)
+	{
+		try {
+			$query = 'SELECT * FROM causas_materiales cm
+					LEFT JOIN materiales m ON m.materiales_id = cm.materiales_id
+					WHERE cm.causa_id = '.$section;
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getCausasVoluntariado($section)
+	{
+		try {
+			$query = 'SELECT * FROM causas_voluntariado cv
+					LEFT JOIN voluntariado v ON v.voluntariado_id = cv.voluntariado_id
+					WHERE cv.causa_id = '.$section;
+			
 			return $this->db->getArray($query);
 		} catch (Exception $e) {
 			return false;

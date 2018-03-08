@@ -53,7 +53,7 @@ class Layout_View
 	 */
 	public function __construct($data, $title)
 	{
-		$this->data 		= $data;
+		$this->data 	= $data;
 		$this->title 	= $title;
 		$this->url		= $data['appInfo']['url'];
 	}    
@@ -77,9 +77,9 @@ class Layout_View
 			<!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
 			<meta charset="utf-8" />
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    		<meta name="viewport" content="width=device-width, initial-scale=1">
-	    		<meta name="format-detection" content="telephone=no" />
-	    		<meta name="google-site-verification" content="" />
+	    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	    	<meta name="format-detection" content="telephone=no" />
+	    	<meta name="google-site-verification" content="" />
 			<link rel="shortcut icon" href="favicon.ico" />
 			<link rel="icon" type="image/gif" href="favicon.ico" />
 			<title><?php echo $this->title; ?> - <?php echo $this->data['appInfo']['title']; ?></title>
@@ -471,11 +471,11 @@ class Layout_View
 	    {
 	    	ob_start();
 	
-	    	if (isset($this->data['section']['has_bg']) == 1 || $_GET['section'] == 1)
+	    	if ($this->data['section']['has_bg'] == 1 || $_GET['section'] == 1)
 	    	{
-	    		$headerClass = 'head1';
-	    		$stuckClass = 'stuck_container';
-	    		$stuckStyle = '';
+	    		$headerClass 	= 'head1';
+	    		$stuckClass 	= 'stuck_container';
+	    		$stuckStyle 	= '';
 	    	}
 	    	else
 	    	{
@@ -488,7 +488,7 @@ class Layout_View
 	   	<!--========================================================
                             HEADER
   		=========================================================-->
-        <header class="<? echo $headerClass; ?>">
+        <header class="<?php echo $headerClass; ?>">
 
             <div id="stuck_container" class="<?php echo $stuckClass; ?>" <?php echo $stuckStyle; ?>>
                 <nav class="navbar navbar-default navbar-static-top " >
@@ -626,13 +626,13 @@ class Layout_View
     	ob_start();
     	?>
 		<section class="well well2">
-        		<div class="container">
+        	<div class="container">
 				<div class="row">
 				<?php 
 				foreach ($this->data['causas'] as $section)
 				{
 					?>
-					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="col-md-4 col-sm-12 col-xs-12">
 							<div class="text-center ins1">
 								<img alt="<?php echo $section['title']; ?>" src="<?php echo $this->data['appInfo']['url']?>images-system/medium/<?php echo $section['icon'];?>">
 							</div>
@@ -693,7 +693,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-    		<section class="well well3 well3_ins1 text-center">
+    	<section class="well well3 well3_ins1 text-center">
 			<h3 class="text-center">QU&Eacute; HACEMOS</h3>
 				
 			<div class="img_block">
@@ -758,7 +758,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-    		<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
+    	<section class="well well8 parallax wow fadeIn" data-wow-duration='3s' data-url="/images/parallax3.jpg" data-mobile="true">
 			<div class="container">
 				<h3 class="text-center">Noticias</h3>
                     <div class="row offs1 center767">
@@ -1080,26 +1080,7 @@ class Layout_View
     	?>
     	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
     	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
-    	<style type="text/css">
-    		<?php 
-    		if ($this->data['section']['has_bg'] == 1)
-    		{
-    			$banner = '';
-    			if ($this->data['section']['background'])
-    				$banner = $this->data['section']['background'];
-    			else 
-    				$banner = $this->data['banner']['banner'];
-    			?>
-    		header 
-    		{
-		    	background: #000000 url(<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $banner; ?>) no-repeat;
-		    	padding-top: 64px;
-    			padding-bottom: 40px;
-			}
-    			<?php
-    		}
-    		?>
-	    </style>
+    	
     	<script>
         $(document).ready(function () {
             if ($('html').hasClass('desktop')) {
@@ -1109,7 +1090,6 @@ class Layout_View
     	</script>
     	<script>
 		$(document).ready(function () {
-
 			<?php 
     		if ($_GET['logo'] == 1)
     		{
@@ -1134,14 +1114,13 @@ class Layout_View
 		document.onscroll = scroll;
 		});
 		</script>
-	    	<script>
-	        $(function () {
-	        	$(window).ready(function() {
-	        		
-	        		$( '.swipebox-video' ).swipebox();
-	        	});
-	        });
-	    	</script>
+    	<script>
+        $(function () {
+        	$(window).ready(function() {
+        		$( '.swipebox-video' ).swipebox();
+        	});
+        });
+    	</script>
     	
     	<?php
     	$indexHeader = ob_get_contents();
@@ -1153,6 +1132,34 @@ class Layout_View
     {
     	ob_start();
     	?>
+    	<section class="well well6">
+    		<div class="row owl-carousel">
+    			<div class="item">
+    				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+						<div class="box2 ta__c">
+							<div class="">
+								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/original/<?php echo $this->data['section']['background'];?>" alt="Flora, Fauna y Cultura de México">
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				
+				<div class="item">
+    				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+						<div class="box2 ta__c">
+							<div class="">
+								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/original/<?php echo $this->data['section']['background'];?>" alt="Flora, Fauna y Cultura de México">
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+    	</section>
+    	
         <section class="well well6">
 			<div class="container">
 				<div class="row">

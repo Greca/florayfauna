@@ -56,7 +56,7 @@ class generalFrontBackend
 				'twitter' 		=> $appInfoRow['twitter'],
 				'facebook' 		=> $appInfoRow['facebook'],
 				'googleplus' 	=> $appInfoRow['googleplus'],
-				'pinterest' 		=> $appInfoRow['pinterest'],
+				'pinterest' 	=> $appInfoRow['pinterest'],
 				'linkedin' 		=> $appInfoRow['linkedin'],
 				'youtube' 		=> $appInfoRow['youtube'],
 				'instagram'		=> $appInfoRow['instagram'],

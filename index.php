@@ -25,7 +25,7 @@
 	require_once $root.'/'.'views/Layout_View.php';
 	$option		= 'index';
 	$data 		= $backend->loadBackend($option);
-	
+// 	var_dump($data);
 	$view 		= new Layout_View($data, 'Inicio');
 	
 	echo $view->printHTMLPage($option);

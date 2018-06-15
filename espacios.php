@@ -24,8 +24,8 @@
 
 	require_once $root.'/'.'views/Layout_View.php';
 	$option 	= 'espacios';
-	$data 		= $backend->loadBackend($option);
+	$data 	= $backend->loadBackend($option);
 	
-	$view 		= new Layout_View($data, $data['section']['title']);
+	$view 	= new Layout_View($data, $data['section']['title']);
 	
 	echo $view->printHTMLPage($option);

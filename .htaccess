@@ -47,7 +47,7 @@ RewriteRule ^sumate/$ 						/sumate.php?section=19
 
 RewriteRule ^causas/([0-9]+)/([A-Za-z0-9-]+)/$ 			/causas.php?section=3&sectionId=$1
 RewriteRule ^espacios/([0-9]+)/([A-Za-z0-9-]+)/$ 		/espacios.php?section=2&logo=1&sectionId=$1
-RewriteRule ^noticia/([0-9]+)/([A-Za-z0-9-]+)/$ 		/noticia.php?section=4&sectionId=$1
+RewriteRule ^noticia/([0-9]+)/([A-Za-z0-9-]+)/$ 			/noticia.php?section=4&sectionId=$1
 
 RewriteRule ^proyecto/([0-9]+)/([A-Za-z0-9-]+)/$ 		/proyecto.php?section=4&sectionId=$1
 RewriteRule ^actividad/([0-9]+)/([A-Za-z0-9-]+)/$ 		/actividad.php?section=4&sectionId=$1

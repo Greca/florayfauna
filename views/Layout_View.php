@@ -582,7 +582,7 @@ class Layout_View
             </div>
 
             <?php 
-	    		if (isset($this->data['section']['has_bg']) == 1)
+	    		if ($this->data['section']['has_bg'] == 1)
 	    		{
     			?>
     			<section class="well well1">
@@ -1132,7 +1132,7 @@ class Layout_View
     {
     	ob_start();
     	?>
-    	<section class="well well6">
+    	<section class="well well1 noPad">
     		<div class="row owl-carousel">
     			<div class="item">
     				<div class="row">

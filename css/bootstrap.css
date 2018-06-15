@@ -2146,7 +2146,7 @@ header.head1:before {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .lt-ie9 header.head1:before {
@@ -9999,4 +9999,9 @@ p.elements {
 .tooltip-right:after {
   margin-left: 0;
   margin-bottom: -16px;
+}
+
+.noPad {
+	padding-top: 30px!important;
+	padding-bottom: 30px!important;
 }

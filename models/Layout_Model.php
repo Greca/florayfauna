@@ -160,6 +160,19 @@ class Layout_Model
 		}
 	}
 	
+	public function getEspaciosSliders($espacioId)
+	{
+	    try {
+	        $espacioId = (int) $espacioId;
+	        
+	        $query = "SELECT * FROM slider_espacios WHERE espacios_id = ".$espacioId;
+	        
+	        return $this->db->getArray($query);
+	    } catch (Exception $e) {
+	        return false;
+	    }
+	}
+	
 	public function getNewsById($noticiasId)
 	{
 		try {

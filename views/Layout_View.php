@@ -77,9 +77,9 @@ class Layout_View
 			<!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
 			<meta charset="utf-8" />
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    	<meta name="viewport" content="width=device-width, initial-scale=1">
-	    	<meta name="format-detection" content="telephone=no" />
-	    	<meta name="google-site-verification" content="" />
+        	    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        	    	<meta name="format-detection" content="telephone=no" />
+        	    	<meta name="google-site-verification" content="" />
 			<link rel="shortcut icon" href="favicon.ico" />
 			<link rel="icon" type="image/gif" href="favicon.ico" />
 			<title><?php echo $this->title; ?> - <?php echo $this->data['appInfo']['title']; ?></title>
@@ -1134,36 +1134,34 @@ class Layout_View
     	?>
     	<section class="well well1 noPad">
     		<div class="row owl-carousel">
-    			<div class="item">
-    				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-						<div class="box2 ta__c">
-							<div class="">
-								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/original/<?php echo $this->data['section']['background'];?>" alt="Flora, Fauna y Cultura de México">
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-				
+    			<?php 
+    			if (isset($this->data['sliders']) && sizeof($this->data['sliders'] > 1)) 
+    			{
+    			    foreach ($this->data['sliders'] as $slider)
+    			    {
+    			        ?>
 				<div class="item">
-    				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-						<div class="box2 ta__c">
-							<div class="">
-								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/original/<?php echo $this->data['section']['background'];?>" alt="Flora, Fauna y Cultura de México">
-							</div>
-						</div>
-					</div>
+    					<div class="row">
+        					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+        						<div class="box2 ta__c">
+        							<div class="">
+        								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/original/<?php echo $slider['image_name'];?>" alt="Flora, Fauna y Cultura de México">
+        							</div>
+        						</div>
+        					</div>
 					</div>
 				</div>
+    			        <?php
+    			    }
+    			}
+    			?>
 			</div>
     	</section>
     	
         <section class="well well6">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['title']; ?></h3>
 						<?php 
 						if ($this->data['section']['video'])
@@ -1181,6 +1179,7 @@ class Layout_View
 						</div>
 					</div>
 					
+					<!-- 
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['second_column_title']; ?></h3>
 						<?php 
@@ -1198,7 +1197,8 @@ class Layout_View
 						}
 						?>
                     </div>
-					<div class="col-md-4 col-sm-6 col-xs-12">
+                     -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<h3 class="text-center"><?php echo $this->data['section']['third_column_title']; ?></h3>
 						<div class="text-justify"><?php echo stripslashes(stripslashes(stripslashes(stripcslashes($this->data['section']['third_column_content'])))); ?></div>
 					</div>
@@ -1496,13 +1496,60 @@ class Layout_View
 				</div>
 			</div>
 		</section>
+		
+		<!-- ALIADOS Y DONANTES -->
+        <section class="well well4">
+            <div class="container">
+                <h3 class="text-center white">
+                    Galería de fotos
+                </h3>
+				<?php
+				if (count($this->data['gallery']) > 4 )
+					$class="owl-carousel";	
+				?>
+                <div class="<?php echo $class; ?>">
+				<?php 
+				if ($this->data['gallery'])
+				{
+					?>
+					<div class="item">
+                        <div class="row">
+                        <?php
+                        $i = 0; 
+                        foreach ($this->data['gallery'] as $aliado)
+                        {
+                        	$i++;
+                        	
+                        	echo self::getContenidoGalleryItem($aliado);
+                        	
+                        	if ($i >= 4)
+                        	{
+                        		?>
+                        </div>
+					</div>	
+					<div class="item">
+						<div class="row">
+                        	<?php
+                        	$i = 0;
+                        	}
+                    	}
+                    	?>
+                        </div>
+                    </div>
+					<?php
+				}
+				?>
+                </div>
+            </div>
+        </section>
+		
     	<?php 
-    	if ($this->data['gallery'])
+    /*	if ($this->data['gallery'])
     	{
     	?>
 		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 			<div class="container">
-				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<h3 class="h3 text-center">Galería de fotos</h3>
 				<div class="row">
 		            <?php 
 	            	foreach ($this->data['gallery'] as $gallery)
@@ -1514,7 +1561,7 @@ class Layout_View
 	        </div>
       	</section>
       	<?php 
-    	}
+    	}*/
       	?>
       	
       	<?php
@@ -1523,7 +1570,7 @@ class Layout_View
       	?>
       	<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
         		<div class="container">
-        			<h3 class="h3 text-center">Galeria de Videos</h3>
+        			<h3 class="h3 text-center">Galería de Videos</h3>
           		<div class="row">
           		<?php 
           		foreach ($this->data['videos'] as $video)
@@ -1541,6 +1588,24 @@ class Layout_View
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
+    }
+    
+    public function getContenidoGalleryItem($aliado)
+    {
+        ob_start();
+        ?>
+    		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="thumbnail thumbnail-news">
+				<a class="thumb" data-fancybox-group="1" href="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $aliado['picture']; ?>">
+					<img class="" src="<?php echo $this->data['appInfo']['url']?>images-system/medium/<?php echo $aliado['picture']; ?>" alt="">
+					<span class="thumb_overlay"></span>
+				</a> 
+			</div>
+		</div>
+    	<?php
+    	$item = ob_get_contents();
+    	ob_end_clean();
+    	return $item;
     }
     
     public function getNewsGalleryItem($picture)
@@ -2454,8 +2519,54 @@ class Layout_View
 			</div>
 		</section>
 
+		<!-- ALIADOS Y DONANTES -->
+        <section class="well well4">
+            <div class="container">
+                <h3 class="text-center white">
+                    Galería de fotos
+                </h3>
+				<?php
+				if (count($this->data['gallery']) > 4 )
+					$class="owl-carousel";	
+				?>
+                <div class="<?php echo $class; ?>">
+				<?php 
+				if ($this->data['gallery'])
+				{
+					?>
+					<div class="item">
+                        <div class="row">
+                        <?php
+                        $i = 0; 
+                        foreach ($this->data['gallery'] as $aliado)
+                        {
+                        	$i++;
+                        	
+                        	echo self::getContenidoGalleryItem($aliado);
+                        	
+                        	if ($i >= 4)
+                        	{
+                        		?>
+                        </div>
+					</div>	
+					<div class="item">
+						<div class="row">
+                        	<?php
+                        	$i = 0;
+                        	}
+                    	}
+                    	?>
+                        </div>
+                    </div>
+					<?php
+				}
+				?>
+                </div>
+            </div>
+        </section>
+
 		<?php 
-	    	if ($this->data['gallery'])
+	    	/*if ($this->data['gallery'])
 	    	{
 	    	?>
 		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
@@ -2472,7 +2583,7 @@ class Layout_View
 	        </div>
       	</section>
       	<?php 
-    		}
+    		}*/
       	?>
       	
       	<?php

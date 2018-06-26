@@ -143,7 +143,7 @@ class generalFrontBackend
 			break;
 			
 			case 'espacios':
-				$sectionRow 		= $this->model->getEspaciosByEspacioId($_GET['sectionId']);
+				$sectionRow 		    = $this->model->getEspaciosByEspacioId($_GET['sectionId']);
 				$data['section'] 	= $sectionRow;
 				
 				$bloquesArray 		= $this->model->getEspaciosBloques($_GET['sectionId']);
@@ -153,7 +153,11 @@ class generalFrontBackend
 				$data['contenidos']	= $espaciosArray;
 				
 				$aliadosArray		= $this->model->getEspaciosAliados($_GET['sectionId']);
-				$data['aliados']	= $aliadosArray;
+				$data['aliados']	    = $aliadosArray;
+				
+				$data['sliders']    = $this->model->getEspaciosSliders($_GET['sectionId']);
+				
+				
 			break;
 			
 			case 'noticia':

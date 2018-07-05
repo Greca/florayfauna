@@ -3984,6 +3984,8 @@ class Layout_View
 							<div class="caption">
 								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/donativos/"><?php echo $item['title']; ?></a></h5>
 								<p><?php echo $item['description']; ?></p>
+								<br>
+								<?php echo $item['content']; ?>
 							</div>  
 						</div>
 					</div>

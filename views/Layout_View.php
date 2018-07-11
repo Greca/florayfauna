@@ -2174,7 +2174,8 @@ class Layout_View
 				<div class="row">
 					<div class="col-md-3 col-xs-12">
 						<h3 class="text-center"></h3>
-						<h5 class=" offs1">Mar Loera</h5>
+						<!-- <h5 class=" offs1">Mar Loera</h5> -->
+						<br><br><br>
 						<address class="addr1">                                           
 							<p><a href='mailto:redes@florafaunaycultura.org'>redes@florafaunaycultura.org</a></p>
 							
@@ -3982,7 +3983,8 @@ class Layout_View
 						<div class="thumbnail thumbnail-1">
 							<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $item['icon']; ?>" alt="<?php echo $item['title']; ?>">
 							<div class="caption">
-								<h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/donativos/"><?php echo $item['title']; ?></a></h5>
+								<!-- <h5><a href="/voluntariado-item/<?php echo $item['voluntariado_id']; ?>/<?php echo Tools::slugify($item['title']); ?>/donativos/"><?php echo $item['title']; ?></a></h5> -->
+								<h5><?php echo $item['title']; ?></h5>
 								<p><?php echo $item['description']; ?></p>
 								<br>
 								<?php echo $item['content']; ?>

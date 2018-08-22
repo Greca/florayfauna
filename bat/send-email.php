@@ -86,7 +86,7 @@ try {
     $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
     $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-    $mail->Username   = "wetzz.ffcm@gmail.com";  // GMAIL username
+    $mail->Username   = "ffcm.sender@gmail.com";  // GMAIL username
     $mail->Password   = "lolme!";            // GMAIL password
 
     foreach ($addresses[0] as $key => $value) {

@@ -602,7 +602,7 @@ class Layout_Model
 	public function getTestimoniosBySection($section)
 	{
 		try {
-			$query = 'SELECT * FROM testimonios WHERE '.$section.' = 1 ORDER BY testimonios_id DESC';
+			$query = 'SELECT * FROM testimonios ORDER BY testimonios_id DESC';
 			return $this->db->getArray($query);
 		} catch (Exception $e) {
 			return false;

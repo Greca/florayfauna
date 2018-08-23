@@ -6,7 +6,7 @@
 
 define ('DB_HOST', 'localhost');
 define ('DB_USER', 'root');
-define ('DB_PASS', '');
+define ('DB_PASS', 'root');
 define ('DB_NAME', 'db161140_fyf');
 // define ('DB_PASS', '011235813');
 // define ('DB_NAME', 'ffcm');

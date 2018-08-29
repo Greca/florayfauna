@@ -770,6 +770,17 @@ class Layout_Model
 			return false;
 		}
 	}
+
+	public function getImagesSliderActivities() {
+		try {
+			$query = 'SELECT * FROM activity_slider';
+			
+			return $this->db->getArray($query);
+			
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 	
 	public function getNosotrosLinks()
 	{

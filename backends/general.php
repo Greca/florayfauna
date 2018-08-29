@@ -273,6 +273,7 @@ class generalFrontBackend
 				$data['linkInfo'] 	= $linkInfo;
 				
 				$data['actividades'] 	= $newsArray;
+				$data["sliders"] = $this->model->getImagesSliderActivities();
 			break;
 			
 			case 'actividad':

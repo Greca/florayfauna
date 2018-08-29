@@ -2639,6 +2639,35 @@ class Layout_View
     {
     	ob_start();
     	?>
+
+    	<!-- Inicio del slider -->
+    	<section class="well well1 noPad">
+    		<div class="row owl-carousel">
+    			<?php 
+    			if (isset($this->data['sliders']) && sizeof($this->data['sliders'] > 1)) 
+    			{
+    			    foreach ($this->data['sliders'] as $slider)
+    			    {
+    			        ?>
+				<div class="item">
+    					<div class="row">
+        					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+        						<div class="box2 ta__c">
+        							<div class="">
+        								<img src="<?php echo $this->data['appInfo']['url']; ?>images-system/sliders/<?php echo $slider['image'];?>" alt="Flora, Fauna y Cultura de México"> <!--images-system/original/-->
+        							</div>
+        						</div>
+        					</div>
+					</div>
+				</div>
+    			        <?php
+    			    }
+    			}
+    			?>
+			</div>
+    	</section>
+
+    	<!-- Fin del slider -->
 		<section class="well well7">
 	        <div class="container">
 	        	<h3 class="h3 text-center">Pr&oacute;ximos eventos</h3>

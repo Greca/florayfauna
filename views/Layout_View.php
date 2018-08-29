@@ -53,9 +53,9 @@ class Layout_View
 	 */
 	public function __construct($data, $title)
 	{
-		$this->data 	= $data;
-		$this->title 	= $title;
-		$this->url		= $data['appInfo']['url'];
+		$this->data   = $data;
+		$this->title  = $title;
+		$this->url    = $data['appInfo']['url'];
 	}    
 	
 	/**
@@ -1236,197 +1236,6 @@ class Layout_View
 		<?php
 		}
 		?>
-		
-		<section class="well well3 well3_ins1 text-center">
-
-                <h3 class="text-center">
-                  Calendario de Actividades
-                </h3>
-
-                <div class="img_block_calendar">
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='.5s'>
-                        <img src="/images/calendario/enero.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Enero</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-01-01/2017-02-01/" class="btn btn-default">Enero</a>
-                        </div>
-                    </div>
-
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
-                        <img src="/images/calendario/febrero.jpg" alt="calendario-febrero">
-                        <div class="overlay">
-                            <time datetime="2015"> <span>Febrero </span></time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-02-01/2017-03-01/" class="btn btn-default"> Febrero</a>
-                        </div>
-                    </div>
-                    
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
-                        <img src="/images/calendario/marzo.jpg" alt="calendario-febrero">
-                        <div class="overlay">
-                            <time datetime="2015"> <span>Marzo </span></time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-03-01/2017-04-01/" class="btn btn-default"> Marzo</a>
-                        </div>
-                    </div>
-                    
-                   
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
-                        <img src="/images/calendario/abril.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Abril</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-04-01/2017-05-01/" class="btn btn-default">Abril</a>
-                        </div>
-                    </div>
-                    
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2.5s'>
-                        <img src="/images/calendario/mayo.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Mayo</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-05-01/2017-06-01/" class="btn btn-default">Mayo</a>
-                        </div>
-                    </div>
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
-                        <img src="/images/calendario/junio.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Junio</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-06-01/2017-07-01/" class="btn btn-default">Junio</a>
-                        </div>
-                    </div>
-			</div>
-		</section>
-        
-        	<section class="well well3 well3_ins1 text-center">
-                <div class="img_block_calendar">
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='.5s'>
-                        <img src="/images/calendario/julio.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Julio</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-07-01/2017-08-01/" class="btn btn-default">Julio</a>
-                        </div>
-                    </div>
-
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1s'>
-                        <img src="/images/calendario/agosto.jpg" alt="calendario-febrero">
-                        <div class="overlay">
-                            <time datetime="2015"> <span>Agosto </span></time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-08-01/2017-09-01/" class="btn btn-default"> Agosto</a>
-                        </div>
-                    </div>
-                    
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='1.5s'>
-                        <img src="/images/calendario/septiembre.jpg" alt="calendario-marzo">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Septiembre</span></time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-09-01/2017-10-01/" class="btn btn-default">Setiembre</a>
-                        </div>
-                    </div>
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2s'>
-                        <img src="/images/calendario/octubre.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Octubre</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-10-01/2017-11-01/" class="btn btn-default">Octubre</a>
-                        </div>
-                    </div>
-                    
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='2.5s'>
-                        <img src="/images/calendario/noviembre.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Noviembre</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-11-01/2017-12-01/" class="btn btn-default">Noviembre</a>
-                        </div>
-                    </div>
-                    <div class="img_cnt wow fadeInLeft" data-wow-duration='3s'>
-                        <img src="/images/calendario/diciembre.jpg" alt="calendario-enero">
-                        <div class="overlay">
-                            <time datetime="2015"><span> Diciembre</span>
-                            </time>
-                            <p class="ins3">
-                                
-                            </p>
-                            <a href="/actividades/todas/2017-12-01/2018-01-01/" class="btn btn-default">Diciembre</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <br>
-            <br>
-			<div class="container">
-				<div class="row offs1">
-					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
-				</div>		
-			</div>
-			<br>
-			<br>
-            <div class="container" id="oldCalendar">
-				<div class="row offs1">
-					<div class="col-xs-4">
-						<ul class="marked-list offs2">
-							<li><a href="/actividades/todas/2016-01-01/2016-02-01/">Enero 2016</a></li>
-							<li><a href="/actividades/todas/2016-02-01/2016-03-01/">Febrero 2016</a></li>
-							<li><a href="/actividades/todas/2016-03-01/2016-04-01/">Marzo 2016</a></li>
-							<li><a href="/actividades/todas/2016-04-01/2016-05-01/">Abril 2016</a></li>
-						</ul>
-					</div>
-					
-					<div class="col-xs-4">
-						<ul class="marked-list offs2">
-							<li><a href="/actividades/todas/2016-05-01/2016-06-01/">Mayo 2016</a></li>
-							<li><a href="/actividades/todas/2016-06-01/2016-07-01/">Junio 2016</a></li>  
-							<li><a href="/actividades/todas/2016-07-01/2016-08-01/">Julio 2016</a></li>
-							<li><a href="/actividades/todas/2016-08-01/2016-09-01/">Agosto 2016</a></li>
-						</ul>
-					</div>
-					
-					<div class="col-xs-4">
-						<ul class="marked-list offs2">
-							<li><a href="/actividades/todas/2016-09-01/2016-10-01/">Septiembre 2016</a></li>
-							<li><a href="/actividades/todas/2016-10-01/2016-11-01/">Octubre 2016</a></li>
-							<li><a href="/actividades/todas/2016-11-01/2016-12-01/">Noviembre 2016</a></li>
-							<li><a href="/actividades/todas/2016-12-01/2017-01-01/">Diciembre 2016</a></li>               
-						</ul>
-					</div>
-				</div>    
-			</div>
     	<?php
     	echo self::getSponsors();
     	echo self::getSobreNosotros();
@@ -2717,7 +2526,45 @@ class Layout_View
     	?>
     	<section class="well well7 well7_ins1 parallax" data-url="images/parallax5.jpg" data-mobile="true">
 			<div class="container">
-				<h3 class="text-center">Calendario Actividades</h3>
+				<h3 class="text-center">Calendario de actividades 2018</h3>
+				<div class="row offs1">
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2018-01-01/2018-02-01/">Enero 2018</a></li>
+							<li><a href="/actividades/todas/2018-02-01/2018-03-01/">Febrero 2018</a></li>
+							<li><a href="/actividades/todas/2018-03-01/2018-04-01/">Marzo 2018</a></li>
+							<li><a href="/actividades/todas/2018-04-01/2018-05-01/">Abril 2018</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2018-05-01/2018-06-01/">Mayo 2018</a></li>
+							<li><a href="/actividades/todas/2018-06-01/2018-07-01/">Junio 2018</a></li>  
+							<li><a href="/actividades/todas/2018-07-01/2018-08-01/">Julio 2018</a></li>
+							<li><a href="/actividades/todas/2018-08-01/2018-09-01/">Agosto 2018</a></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-4">
+						<ul class="marked-list offs2">
+							<li><a href="/actividades/todas/2018-09-01/2018-10-01/">Septiembre 2018</a></li>
+							<li><a href="/actividades/todas/2018-10-01/2018-11-01/">Octubre 2018</a></li>
+							<li><a href="/actividades/todas/2018-11-01/2018-12-01/">Noviembre 2018</a></li>
+							<li><a href="/actividades/todas/2018-12-01/2019-01-01/">Diciembre 2018</a></li>               
+						</ul>
+					</div>
+				</div>    
+			</div>
+			<br>
+			<div class="container">
+				<div class="row offs1">
+					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
+				</div>		
+			</div>
+			<br>
+			<div class="container" id="oldCalendar">
+				<h3 class="text-left">2017</h3>
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">
@@ -2745,16 +2592,8 @@ class Layout_View
 							<li><a href="/actividades/todas/2017-12-01/2018-01-01/">Diciembre 2017</a></li>               
 						</ul>
 					</div>
-				</div>    
-			</div>
-			<br>
-			<div class="container">
-				<div class="row offs1">
-					<a href="javascrpt: void(0);" id="showCalendar">Ver meses anteriores</a>
-				</div>		
-			</div>
-			<br>
-			<div class="container" id="oldCalendar">
+				</div>
+				<h3 class="text-left">2016</h3>
 				<div class="row offs1">
 					<div class="col-xs-4">
 						<ul class="marked-list offs2">

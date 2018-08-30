@@ -156,6 +156,8 @@ class generalFrontBackend
 				$data['aliados']	    = $aliadosArray;
 				
 				$data['sliders']    = $this->model->getEspaciosSliders($_GET['sectionId']);
+
+				$data['imagesGallery'] = $this->model->getGalleryByMateriales($_GET['sectionId']);
 				
 				
 			break;

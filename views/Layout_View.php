@@ -1206,7 +1206,7 @@ class Layout_View
 			</div>
 		</section>
 		
-		<?php 
+		<?php //echo "<pre>"; var_dump($this->data['imagesGallery']); exit();
 		if ($this->data['contenidos'])
 		{
 		?>

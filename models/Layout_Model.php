@@ -815,4 +815,23 @@ class Layout_Model
 			return false;
 		}
 	}
+
+	// Obtiene 4 imagenes para una galeria por cada sección de espacios.
+	public function getGalleryByMateriales($section) {
+		try {
+			$query ='
+						SELECT cg.picture FROM espacios_contenidos ec 
+						LEFT JOIN contenidos_gallery cg 
+						ON cg.materiales_id = ec.materiales_id
+						WHERE ec.espacios_id = ' . $section . ' 
+						AND cg.picture IS NOT NULL
+						ORDER BY rand() 
+						LIMIT 4
+					';
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	} 
 }

@@ -1080,6 +1080,7 @@ class Layout_View
     	?>
     	<link href="/css/swipebox.css" media="screen" rel="stylesheet" type="text/css" />
     	<script type="text/javascript" src="/js/jquery.swipebox.js"></script>
+    	<link rel="stylesheet" href="/css/jquery.fancybox.css">
     	
     	<script>
         $(document).ready(function () {
@@ -1210,6 +1211,21 @@ class Layout_View
 		if ($this->data['contenidos'])
 		{
 		?>
+		<!-- Galeria de fotos inicio -->
+		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
+			<div class="container">
+				<h3 class="h3 text-center">Galeria de fotos</h3>
+				<div class="row">
+		            <?php 
+	            	foreach ($this->data['imagesGallery'] as $gallery)
+	            	{
+	            		echo self::getNewsGalleryItem($gallery);
+	            	}
+		            ?>
+		        </div>
+	        </div>
+      	</section>
+      	<!-- Galeria de fotos final -->
 		<section class="well well7 parallax" data-url="images/parallax2.jpg" data-mobile="true" data-direction="inverse">
 			<div class="container">
 				<h3 class="h3 text-center">Contenidos destacados</h3>

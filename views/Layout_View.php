@@ -3355,12 +3355,16 @@ class Layout_View
 	{
 		ob_start();
 		?>
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $testimonio['icon']; ?>" alt="">
-		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<p class="mwidth"><span class="span_blc"><?php echo $testimonio['description']; ?></span></p>
-		</div>
+			<div class="col-md-6" style="margin-bottom: 40px;">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<img src="<?php echo $this->data['appInfo']['url']?>images-system/original/<?php echo $testimonio['icon']; ?>" alt="">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<p class="mwidth"><span class=""><?php echo $testimonio['description']; ?></span></p>
+				</div>
+				
+			</div>
+		
 		<?php
 		$testimonio = ob_get_contents();
 		ob_end_clean();
